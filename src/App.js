@@ -1,7 +1,17 @@
-import TEM from "./tem";
+import Navigation from "./components/Navigation";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 const App = () => {
-  return <div className="App"><TEM/></div>;
+  return (
+    <div className="App">
+      <Navigation />
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  );
 };
 
 export default App;
