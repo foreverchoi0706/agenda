@@ -5,19 +5,16 @@ const RoutersStyled = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
   width: inherit;
   height: 300px;
-  cursor : pointer;
-
-  .hide {
-    top: -300px;
-  }
-  .show {
-    top: 0px;
-  }
+  cursor: pointer;
 `;
 
 const Routers = ({ isClicked, handleClick }) => {
   if (isClicked) {
-    return <RoutersStyled onClick={handleClick} />;
+    return (
+      <RoutersStyled onClick={handleClick}>
+       
+      </RoutersStyled>
+    );
   } else {
     return null;
   }

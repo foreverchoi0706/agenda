@@ -1,0 +1,8 @@
+{
+  "html": ["html5"],
+  "css": ["css3", "scss"],
+  "javascript": ["es5", "es6", "es7", "typescript"],
+  "node.js": ["babel", "webpack"],
+  "react": ["react-redux", "react-router-dom", "styled-component", "hooks"],
+  "aws": ["ec2", "s3", "rdb"]
+}

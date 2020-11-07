@@ -4,10 +4,11 @@ import HamburgerMenu from "./navigation/HamburgerMenu";
 import Routers from "./navigation/Routers";
 
 const NavigationStyled = styled.nav`
-  position: fixed;
+  position: fixed; //고정
   background-color: black;
   width: 100%;
   color: white;
+  z-index: 999; //제일앞으로
 
   display: flex;
   justify-content: space-between;
@@ -32,7 +33,7 @@ const Navigation = () => {
     <NavigationStyled>
       <HamburgerMenu handleClick={handleClick} />
       <h1 className="Navigation-logo">
-        <a href="/">ForeverChoi's portfolio</a>
+        <a href="/portfolio">ForeverChoi's portfolio</a>
       </h1>
       <Routers isClicked={isClicked} handleClick={handleClick} />
     </NavigationStyled>

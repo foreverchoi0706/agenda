@@ -8,6 +8,9 @@ const MainStyled = styled.main`
   background-color: black;
   color: white;
   margin: 0px 10vw 0px 10vw;
+  & > section {
+    padding: 50px; //모든 세션에 패딩값
+  }
 `;
 
 const Main = () => {
