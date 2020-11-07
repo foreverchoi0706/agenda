@@ -1,11 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
-import HamburgerMenu from "./HamburgerMenu";
+import HamburgerMenu from "./navigation/HamburgerMenu";
+import Routers from "./navigation/Routers";
 
 const NavigationStyled = styled.nav`
-  position: absolute;
-  background-color: bisque;
-  width: 100vw;
-  height: 50px;
+  position: fixed;
+  background-color: black;
+  width: 100%;
+  color: white;
 
   display: flex;
   justify-content: space-between;
@@ -20,10 +22,19 @@ const NavigationStyled = styled.nav`
 `;
 
 const Navigation = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+
   return (
     <NavigationStyled>
-      <HamburgerMenu />
-      <h1 className="Navigation-logo">ForeverChoi's portfolio</h1>
+      <HamburgerMenu handleClick={handleClick} />
+      <h1 className="Navigation-logo">
+        <a href="/">ForeverChoi's portfolio</a>
+      </h1>
+      <Routers isClicked={isClicked} handleClick={handleClick} />
     </NavigationStyled>
   );
 };
