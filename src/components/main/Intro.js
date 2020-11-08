@@ -9,6 +9,7 @@ const IntroStyled = styled.section`
     img {
       width: 200px;
       border-radius: 5px;
+      margin : 25px;
     }
     ul {
       list-style: square;
@@ -16,6 +17,12 @@ const IntroStyled = styled.section`
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+    }
+  }
+  @media (max-width: 768px) {
+    .Intro-container {
+      flex-direction: column;
+      align-items: center;
     }
   }
 `;

@@ -8,7 +8,7 @@ const HamburgerMenuStyled = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 0px 0px 0px 20px;
+  padding: 0px;
   .HamburgerMenu-line {
     background-color: white;
     width: inherit;
@@ -18,7 +18,7 @@ const HamburgerMenuStyled = styled.ul`
     //호버되면
     li:nth-child(even) {
       //짝수번째에 애니메이션 적용
-      animation: hover-anime 0.5s forwards;
+      animation: menu-hover-anime 0.5s forwards;
     }
   }
   .clicked-0 {
@@ -40,10 +40,13 @@ const HamburgerMenuStyled = styled.ul`
     transform: rotate(140deg);
   }
 
-  @keyframes hover-anime {
+  @keyframes menu-hover-anime {
     to {
       width: 35px;
     }
+  }
+  @media (max-width: 768px) {
+    padding-left: 20px;
   }
 `;
 

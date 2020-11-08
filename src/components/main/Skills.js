@@ -9,8 +9,7 @@ import react from "../../imgs/react.png";
 import redux from "../../imgs/redux.png";
 import nodeJs from "../../imgs/node-js.png";
 import github from "../../imgs/github.png";
-
-import skillStack from "../../modules/skillStack.json";
+import etc from "../../imgs/etc.png";
 
 const SkillsStyled = styled.section`
   position: relative;
@@ -31,16 +30,6 @@ const SkillsStyled = styled.section`
         width: 105%;
         height: 105%;
       }
-    }
-  }
-  details {
-    textarea {
-      width: 100%;
-      height: 333px;
-      background-color: lightgray;
-      font-weight: bold;
-      border-radius: 5px;
-      font-size: 1.5rem;
     }
   }
 
@@ -74,10 +63,11 @@ const Skills = () => {
   });
 
   const handleChange = (e) => {
+    console.dir(e);
     setModalState({
       ...modalState,
-      xPosition: e.target.screenX,
-      yPosition: e.target.screenY,
+      xPosition: e.screenX,
+      yPosition: e.screenY,
     });
   };
 
@@ -89,12 +79,10 @@ const Skills = () => {
     });
   };
 
-  const { isClicked, division } = modalState;
-
   return (
     <SkillsStyled>
-      <h1>#SKILL STACK</h1>
-      <div className="Skills-container" onMouseMove={handleChange}>
+      <h1>#SKILL STACKS(Click Stack!)</h1>
+      <div className="Skills-container" onChange={handleChange}>
         <img src={html} alt="html" onClick={handleClick} />
         <img src={css} alt="css" onClick={handleClick} />
         <img src={javscript} alt="javscript" onClick={handleClick} />
@@ -102,8 +90,9 @@ const Skills = () => {
         <img src={redux} alt="redux" onClick={handleClick} />
         <img src={nodeJs} alt="nodeJs" onClick={handleClick} />
         <img src={github} alt="github" onClick={handleClick} />
+        <img src={etc} alt="github" onClick={handleClick} />
       </div>
-      <Modal modalState={modalState} />
+      {modalState.isClicked && <Modal {...modalState} />}
     </SkillsStyled>
   );
 };
