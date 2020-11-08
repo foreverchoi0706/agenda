@@ -11,6 +11,13 @@ const MainStyled = styled.main`
   & > section {
     padding: 50px; //모든 세션에 패딩값
   }
+
+  @media (max-width: 768px) {
+   margin : 0px;
+   & > section {
+    padding: 25px; //모든 세션에 패딩값
+  }
+  }
 `;
 
 const Main = () => {

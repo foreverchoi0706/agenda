@@ -4,8 +4,8 @@ import styled from "styled-components";
 import bg from "../imgs/bg.jpg";
 
 const HeaderStyled = styled.header`
-  padding-top: 68px;
-  height: 93vh;
+  padding-top: 66.813px;
+  height: 93.1vh;
   display: flex;
 
   justify-content: center;

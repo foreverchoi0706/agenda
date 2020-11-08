@@ -6,11 +6,10 @@ const ContactStyled = styled.section`
     flex-direction: column;
     align-items: center;
     font-size: 1.5rem;
-    & > * {
-      height : 100px;
-    }
-    & > *:hover {
-      font-size: 3rem;
+  }
+  @media (max-width: 768px) {
+    .Contact-container {
+      font-size: 1rem;
     }
   }
 `;
@@ -18,10 +17,10 @@ const ContactStyled = styled.section`
 const Contact = () => {
   return (
     <ContactStyled>
-      <h1>#CONTACT</h1>
+      <h1>#CONTACT?</h1>
       <div className="Contact-container">
         <h2>foreverchoi0706@gamil.com</h2>
-        <b>else</b>
+        <b>else if</b>
         <h2>
           <a href="mailto:foreverchoi0706@gamil.com">Mail To</a>
         </h2>

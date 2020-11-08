@@ -5,7 +5,7 @@ const PresentationsStyled = styled.section``;
 const Presentations = () => {
   return (
     <PresentationsStyled>
-      <h1>#Presentations</h1>
+      <h1>#PRESENTATIONS</h1>
     </PresentationsStyled>
   );
 };
