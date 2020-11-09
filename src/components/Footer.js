@@ -46,13 +46,13 @@ const Footer = () => {
       <div className="Footer-container">
         <ul>
           <li>
-            <a href="/">#horror movie</a>
+            <a href="/">#todo_web</a>
           </li>
           <li>
-            <a href="/">#horror movie</a>
+            <a href="/">#calculator</a>
           </li>
           <li>
-            <a href="/">#horror movie</a>
+            <a href="/">#</a>
           </li>
         </ul>
         <ul>

@@ -4,7 +4,7 @@ import { context } from "../App";
 
 import Skills from "./main/Skills";
 import Intro from "./main/Intro";
-import Presentations from "./main/Presentations";
+import Projects from "./main/Projects";
 import Contact from "./main/Contact";
 
 const MainStyled = styled.main`
@@ -29,12 +29,10 @@ const Main = () => {
   const { state, dispatch } = useContext(context);
 
   useEffect(() => {
-    console.log(state);
-    console.log(dispatch);
     refMain.current.childNodes.forEach((section) => {
-      console.dir(section);
+      // console.dir(section);
     });
-  }, [refMain,context]);
+  }, [refMain]);
 
   return (
     <MainStyled ref={refMain}>
@@ -42,7 +40,7 @@ const Main = () => {
       <hr/>
       <Skills />
       <hr/>
-      <Presentations />
+      <Projects />
       <hr/>
       <Contact />
     </MainStyled>
