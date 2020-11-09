@@ -17,10 +17,14 @@ const ContactStyled = styled.section`
       transform: translateY(-10px);
     }
   }
-
-  @media (max-width: 768px) {
+  @media (max-width: 1536px) {
     .Contact-container {
       font-size: 1rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .Contact-container {
+      font-size: 0.8rem;
     }
   }
 `;

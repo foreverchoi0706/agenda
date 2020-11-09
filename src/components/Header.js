@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import bg from "../imgs/bg.jpg";
-import Skills from "./header/Skilsl";
+import Typing from "./header/Typing";
 
 const HeaderStyled = styled.header`
   padding-top: 66.813px;
@@ -24,12 +24,6 @@ const HeaderStyled = styled.header`
       opacity: 0;
       margin: 0px 20px 0px 20px;
       animation: appear-anime 2s forwards;
-    }
-    .Header-skills {
-      opacity: 0;
-      animation: appear-anime 2s forwards 1.5s;
-      font-size: 3.5rem;
-      padding-right: 5px;
     }
     .Header-bar {
       background-color: black;
@@ -58,7 +52,7 @@ const Header = () => {
           전문성있는 프론트엔드 개발자를 꿈꿉니다. 향삼심을 가진 주니어 개발자
           최영원입니다.
         </h1>
-        <b className="Header-skills">#<Skills/></b>
+        <Typing />
         <span className="Header-bar"></span>
       </div>
     </HeaderStyled>
