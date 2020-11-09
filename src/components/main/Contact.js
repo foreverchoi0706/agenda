@@ -36,7 +36,7 @@ const Contact = () => {
 
   return (
     <ContactStyled>
-      <h1>#CONTACT?</h1>
+      <h2>#CONTACT ME?</h2>
       <div className="Contact-container">
         {"if(checkMail)  {"} <h2>foreverchoi0706@gmail.com</h2>
         <b>{"} else if(sendMail) {"}</b>
@@ -49,6 +49,7 @@ const Contact = () => {
           />
         </a>
         {"}"}
+        <b>🎃메일 보내주시면 1일 안에 최대한 빠르게 답장 드리겠습니다!🎃</b>
       </div>
     </ContactStyled>
   );

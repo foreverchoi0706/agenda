@@ -81,7 +81,7 @@ const Skills = () => {
 
   return (
     <SkillsStyled>
-      <h1>#SKILL STACKS(Click Stack!)</h1>
+      <h2>#SKILL STACKS(Click Stack!)</h2>
       <div className="Skills-container" onChange={handleChange}>
         <img src={html} alt="html" onClick={handleClick} />
         <img src={css} alt="css" onClick={handleClick} />
