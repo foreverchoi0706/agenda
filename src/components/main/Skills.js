@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import Modal from "./Modal";
 
@@ -62,27 +62,31 @@ const Skills = () => {
     yPosition: 0,
   });
 
-  const handleChange = (e) => {
-    console.dir(e);
-    setModalState({
-      ...modalState,
-      xPosition: e.screenX,
-      yPosition: e.screenY,
-    });
+  const position = useRef({
+    xPosition: 0,
+    yPosition: 0,
+  });
+
+  const handleMouseMove = (e) => {
+    position.current.xPosition = e.screenX;
+    position.current.yPosition = e.screenY;
   };
 
   const handleClick = (e) => {
+    console.log(position.current.xPosition);
+    console.log(position.current.yPosition);
     setModalState({
-      ...modalState,
-      isClicked: true,
+      isClicked: !modalState.isClicked,
       division: e.target.alt,
+      xPosition: position.current.xPosition,
+      yPosition: position.current.yPosition,
     });
   };
 
   return (
-    <SkillsStyled>
+    <SkillsStyled id="skills">
       <h2>#SKILL STACKS(Click Stack!)</h2>
-      <div className="Skills-container" onChange={handleChange}>
+      <div className="Skills-container" onMouseMove={handleMouseMove}>
         <img src={html} alt="html" onClick={handleClick} />
         <img src={css} alt="css" onClick={handleClick} />
         <img src={javscript} alt="javscript" onClick={handleClick} />
@@ -92,7 +96,9 @@ const Skills = () => {
         <img src={github} alt="github" onClick={handleClick} />
         <img src={etc} alt="github" onClick={handleClick} />
       </div>
-      {modalState.isClicked && <Modal {...modalState} />}
+      {modalState.isClicked && (
+        <Modal handleClick={handleClick} {...modalState} />
+      )}
     </SkillsStyled>
   );
 };

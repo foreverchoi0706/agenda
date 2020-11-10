@@ -9,12 +9,19 @@ const ModalStyled = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
 `;
 
-const Modal = ({ isClicked, division, xPosotion, yPosition }) => {
+const Modal = ({ handleClick, isClicked, division, xPosotion, yPosition }) => {
   if (isClicked) {
-    return <ModalStyled style={{
-      top: `${yPosition}px`,
-      left:`${xPosotion}px`
-    }}>{division}</ModalStyled>;
+    return (
+      <ModalStyled
+        onClick={handleClick}
+        style={{
+          bottom: `${xPosotion}px`,
+          right: `${yPosition}px`,
+        }}
+      >
+        {division}
+      </ModalStyled>
+    );
   } else {
     return <div></div>;
   }

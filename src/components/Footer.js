@@ -27,15 +27,22 @@ const FooterStyled = styled.footer`
       }
     }
   }
-
   .Footer-copy {
     font-size: 2rem;
     align-self: center;
   }
   @media (max-width: 768px) {
     padding: 20px 20px 20px 20px;
+    font-size: 1rem;
+    .Footer-copy {
+      font-size: 1.5rem;
+      align-self: center;
+    }
+  }
+  @media (max-width: 512px) {
     .Footer-copy {
       font-size: 1rem;
+      align-self: center;
     }
   }
 `;

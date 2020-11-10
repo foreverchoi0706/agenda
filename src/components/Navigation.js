@@ -7,7 +7,6 @@ const NavigationStyled = styled.nav`
   position: fixed; //고정
   background-color: black;
   width: 80vw;
-  color: white;
   z-index: 999; //제일앞으로
   padding: 0vw 10vw 0vw 10vw; //양사이드 공백
   display: flex;

@@ -57,7 +57,7 @@ const IntroStyled = styled.section`
 
 const Intro = () => {
   return (
-    <IntroStyled>
+    <IntroStyled id="intro">
       <h2>#Intro</h2>
       <div className="Intro-container">
         <div className="Intro-summary">

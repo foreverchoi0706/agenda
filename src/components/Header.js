@@ -12,7 +12,7 @@ const HeaderStyled = styled.header`
 
   text-align: center;
 
-  img {
+  .Header-bg {
     width: 100%;
   }
 
@@ -24,11 +24,6 @@ const HeaderStyled = styled.header`
       opacity: 0;
       margin: 0px 20px 0px 20px;
       animation: appear-anime 2s forwards;
-    }
-    .Header-bar {
-      background-color: black;
-      width: 3px;
-      height: 63px;
     }
   }
 
@@ -46,14 +41,13 @@ const HeaderStyled = styled.header`
 const Header = () => {
   return (
     <HeaderStyled>
-      <img src={bg}></img>
+      <img src={bg} className="Header-bg"></img>
       <div className="Header-container">
         <h1 className="Header-greeting">
           전문성있는 프론트엔드 개발자를 꿈꿉니다. 향삼심을 가진 주니어 개발자
           최영원입니다.
         </h1>
         <Typing />
-        <span className="Header-bar"></span>
       </div>
     </HeaderStyled>
   );

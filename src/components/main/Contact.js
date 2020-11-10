@@ -27,6 +27,11 @@ const ContactStyled = styled.section`
       font-size: 0.8rem;
     }
   }
+  @media (max-width: 512px) {
+    .Contact-container {
+      font-size: 0.7rem;
+    }
+  }
 `;
 
 const Contact = () => {
@@ -39,7 +44,7 @@ const Contact = () => {
   };
 
   return (
-    <ContactStyled>
+    <ContactStyled id="contact">
       <h2>#CONTACT ME?</h2>
       <div className="Contact-container">
         {"if(checkMail)  {"} <h2>foreverchoi0706@gmail.com</h2>
