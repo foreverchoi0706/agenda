@@ -17,22 +17,38 @@ const TypingStyled = styled.b`
   }
 `;
 
-const skills = ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "REDUX"];
+const skills = [
+  { name: "HTML5", color: "rgb(227, 79, 38)" },
+  { name: "CSS3", color: " rgb(33, 150, 243)" },
+  { name: "JAVASCRIPT", color: "rgb(247, 223, 30)" },
+  { name: "REACT", color: "rgb(97, 218, 251)" },
+  { name: "REDUX", color: "rgb(118, 74, 188)" },
+];
+
 let skillsIndex = 0;
 let charIndex = 0;
 let tempSkill = "";
 
 const Typing = () => {
-  const [skill, setSkill] = useState("");
+  const [skill, setSkill] = useState({
+    name: null,
+    color: null,
+  });
 
   const typing = () => {
-    const charArr = skills[skillsIndex].split("");
+    const charArr = skills[skillsIndex].name.split("");
     tempSkill += charArr[charIndex++];
-    setSkill(tempSkill);
+    setSkill({
+      name: tempSkill,
+      color: skills[skillsIndex].color,
+    });
     if (charIndex > charArr.length) {
       charIndex = 0;
       skillsIndex++;
-      setSkill("");
+      setSkill({
+        ...skill,
+        name: "",
+      });
       tempSkill = "";
     }
     if (skillsIndex === skills.length) {
@@ -44,7 +60,14 @@ const Typing = () => {
   useEffect(() => {
     setTimeout(typing, 3000);
   }, []);
-  return <TypingStyled>#{skill}</TypingStyled>;
+
+  const { name, color } = skill;
+
+  return (
+    <TypingStyled style={{ color }}>
+      {name}
+    </TypingStyled>
+  );
 };
 
 export default Typing;
