@@ -17,6 +17,9 @@ const FooterStyled = styled.footer`
     justify-content: space-around;
     ul {
       padding: 0px;
+      a {
+        color: white;
+      }
     }
     .Footer-links {
       li {
@@ -28,14 +31,13 @@ const FooterStyled = styled.footer`
     }
   }
   .Footer-copy {
-    font-size: 2rem;
+    font-size: 1.5rem;
     align-self: center;
   }
   @media (max-width: 768px) {
     padding: 20px 20px 20px 20px;
     font-size: 1rem;
     .Footer-copy {
-      font-size: 1.5rem;
       align-self: center;
     }
   }
