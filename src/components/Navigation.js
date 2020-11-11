@@ -13,6 +13,12 @@ const NavigationStyled = styled.nav`
   justify-content: space-between;
   align-items: center;
 
+  .Navigation-logo {
+    a {
+      color: white;
+    }
+  }
+
   @media (max-width: 400px) {
     font-size: 0.75rem;
   }

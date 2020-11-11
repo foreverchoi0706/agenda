@@ -6,6 +6,9 @@ const TypingStyled = styled.b`
   animation: appear-anime 2s forwards 1.5s;
   font-size: 3.5rem;
   padding-right: 5px;
+  background-color: black;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
@@ -63,11 +66,7 @@ const Typing = () => {
 
   const { name, color } = skill;
 
-  return (
-    <TypingStyled style={{ color }}>
-      {name}
-    </TypingStyled>
-  );
+  return <TypingStyled style={{ color }}>{name}</TypingStyled>;
 };
 
 export default Typing;
