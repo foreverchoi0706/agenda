@@ -7,25 +7,12 @@ const RoutersStyled = styled.div`
   height: 200px;
   top: 0px;
   right: 0px;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
   a {
     font-size: 1.5rem;
     color: black;
-  }
-
-  .Router-close {
-    position: absolute;
-    font-size: 2rem;
-    top: 20px;
-    right: 30px;
-    border: none;
-    color: red;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
   }
 
   @media (max-width: 768px) {
@@ -44,26 +31,32 @@ const RoutersStyled = styled.div`
     a {
       font-size: 0.7rem;
     }
-    .Router-close {
-      font-size: 1rem;
-      top: 10px;
-      right: 10px;
-    }
   }
 `;
+
+const stopBubbling = (e) => {
+  e.stopPropagation();
+};
 
 const Routers = ({ isClicked, handleClick }) => {
   if (isClicked) {
     return (
-      <RoutersStyled>
-        <a href="#root">#Top</a>
-        <a href="#intro">#Intro</a>
-        <a href="#skills">#SKILL STACKS</a>
-        <a href="#projects">#Projects</a>
-        <a href="#contact">#CONTACT ME?</a>
-        <button className="Router-close" onClick={handleClick}>
-          X
-        </button>
+      <RoutersStyled onClick={handleClick}>
+        <a href="#root" onClick={stopBubbling}>
+          #Top
+        </a>
+        <a href="#intro" onClick={stopBubbling}>
+          #Intro
+        </a>
+        <a href="#skills" onClick={stopBubbling}>
+          #SKILL STACKS
+        </a>
+        <a href="#projects" onClick={stopBubbling}>
+          #Projects
+        </a>
+        <a href="#contact" onClick={stopBubbling}>
+          #CONTACT ME?
+        </a>
       </RoutersStyled>
     );
   } else {

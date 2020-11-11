@@ -12,8 +12,6 @@ import github from "../../imgs/github.png";
 import etc from "../../imgs/etc.png";
 
 const SkillsStyled = styled.section`
-  position: relative;
-
   .Skills-container {
     display: grid;
     grid-template-columns: repeat(6, 150px);
@@ -68,16 +66,14 @@ const Skills = () => {
   });
 
   const handleMouseMove = (e) => {
-    position.current.xPosition = e.screenX;
-    position.current.yPosition = e.screenY;
+    position.current.xPosition = e.pageX;
+    position.current.yPosition = e.pageY;
   };
 
-  const handleClick = (e) => {
-    console.log(position.current.xPosition);
-    console.log(position.current.yPosition);
+  const handleClick = (value) => {
     setModalState({
       isClicked: !modalState.isClicked,
-      division: e.target.alt,
+      division: value,
       xPosition: position.current.xPosition,
       yPosition: position.current.yPosition,
     });
@@ -87,14 +83,18 @@ const Skills = () => {
     <SkillsStyled id="skills">
       <h2>#SKILL STACKS(Click Stack!)</h2>
       <div className="Skills-container" onMouseMove={handleMouseMove}>
-        <img src={html} alt="html" onClick={handleClick} />
-        <img src={css} alt="css" onClick={handleClick} />
-        <img src={javscript} alt="javscript" onClick={handleClick} />
-        <img src={react} alt="react" onClick={handleClick} />
-        <img src={redux} alt="redux" onClick={handleClick} />
-        <img src={nodeJs} alt="nodeJs" onClick={handleClick} />
-        <img src={github} alt="github" onClick={handleClick} />
-        <img src={etc} alt="github" onClick={handleClick} />
+        <img src={html} alt="html" onClick={() => handleClick("html")} />
+        <img src={css} alt="css" onClick={() => handleClick("css")} />
+        <img
+          src={javscript}
+          alt="javscript"
+          onClick={() => handleClick("javscript")}
+        />
+        <img src={react} alt="react" onClick={() => handleClick("react")} />
+        <img src={redux} alt="redux" onClick={() => handleClick("redux")} />
+        <img src={nodeJs} alt="nodeJs" onClick={() => handleClick("nodeJs")} />
+        <img src={github} alt="github" onClick={() => handleClick("github")} />
+        <img src={etc} alt="etc" onClick={() => handleClick("etc")} />
       </div>
       {modalState.isClicked && (
         <Modal handleClick={handleClick} {...modalState} />
