@@ -12,10 +12,6 @@ const AppStyled = styled.div`
     list-style: none;
     margin: 0px;
   }
-  & a {
-    //모든 a태그 적용
-    color: white;
-  }
 `;
 export const context = createContext();
 
