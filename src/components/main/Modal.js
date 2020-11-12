@@ -4,8 +4,8 @@ import { useEffect } from "react";
 const ModalStyled = styled.div`
   position: absolute;
   color: black;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
@@ -13,116 +13,162 @@ const ModalStyled = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+`;
 
-  .Modal-level {
-    width: 100%;
-    height: 50%;
+const GraphStyled = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  ul {
+    height: 90%;
+    padding: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    border-bottom: 1px solid black;
+    li {
+      width: 25px;
+      border: 1px solid black;
+    }
   }
-  .Modal-contents {
-    width: 100%;
-    height: 50%;
-    font-weight: bold;
-    text-align: justify;
+  div {
+    display: flex;
+    justify-content: space-around;
+    height: 10%;
+    b {
+      text-align: center;
+      width: 33%;
+    }
   }
 `;
 
 const HtmlModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        태그의 개념과 용도를 알고 있어 상황에 맞게 태그를 적용하여 html 구조에
-        이해하고 사용합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
 const CssModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        기본적은 스타일 적용 및 트랜지션,애니메이션 속성 등 css3의 속성 역시
-        활용 가능합니다. 미디어 쿼리를 반응형 웹 구현이 가능하며 CSS의
-        전처리기인 SCSS 사용하여 유지보수 및 직관적인 코드작성을 위해
-        노력합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
 const JavascriptModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        기본적은 스타일 적용 및 트랜지션,애니메이션 속성 등 css3의 속성 역시
-        활용 가능합니다. 미디어 쿼리를 반응형 웹 구현이 가능하며 CSS의
-        전처리기인 SCSS 사용하여 유지보수 및 직관적인 코드작성을 위해
-        노력합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
 const ReactModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        기본적은 스타일 적용 및 트랜지션,애니메이션 속성 등 css3의 속성 역시
-        활용 가능합니다. 미디어 쿼리를 반응형 웹 구현이 가능하며 CSS의
-        전처리기인 SCSS 사용하여 유지보수 및 직관적인 코드작성을 위해
-        노력합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
 const ReduxModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        기본적은 스타일 적용 및 트랜지션,애니메이션 속성 등 css3의 속성 역시
-        활용 가능합니다. 미디어 쿼리를 반응형 웹 구현이 가능하며 CSS의
-        전처리기인 SCSS 사용하여 유지보수 및 직관적인 코드작성을 위해
-        노력합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
 const NodeJsModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        기본적은 스타일 적용 및 트랜지션,애니메이션 속성 등 css3의 속성 역시
-        활용 가능합니다. 미디어 쿼리를 반응형 웹 구현이 가능하며 CSS의
-        전처리기인 SCSS 사용하여 유지보수 및 직관적인 코드작성을 위해
-        노력합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
 const GithubModal = () => {
   return (
-    <>
-      <div className="Modal-level"></div>
-      <p className="Modal-contents">
-        기본적은 스타일 적용 및 트랜지션,애니메이션 속성 등 css3의 속성 역시
-        활용 가능합니다. 미디어 쿼리를 반응형 웹 구현이 가능하며 CSS의
-        전처리기인 SCSS 사용하여 유지보수 및 직관적인 코드작성을 위해
-        노력합니다.
-      </p>
-    </>
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
   );
 };
 
+const EctModal = () => {
+  return (
+    <GraphStyled>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+      <div>
+        <b>semantic?</b>
+        <b>html5 tag?</b>
+      </div>
+    </GraphStyled>
+  );
+};
 const Modal = ({ handleClick, isClicked, division, xPosition, yPosition }) => {
+  const modalStyle = {
+    left: window.innerWidth > 768 ? `${xPosition}px` : "25%",
+    top: window.innerWidth > 768 ? `${yPosition}px` : "2000px",
+  };
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       handleClick();
@@ -131,13 +177,7 @@ const Modal = ({ handleClick, isClicked, division, xPosition, yPosition }) => {
 
   if (isClicked) {
     return (
-      <ModalStyled
-        onClick={handleClick}
-        style={{
-          left: `${xPosition}px`,
-          top: `${yPosition}px`,
-        }}
-      >
+      <ModalStyled onClick={handleClick} style={modalStyle}>
         {division === "html" && <HtmlModal />}
         {division === "css" && <CssModal />}
         {division === "javscript" && <JavascriptModal />}
@@ -145,6 +185,7 @@ const Modal = ({ handleClick, isClicked, division, xPosition, yPosition }) => {
         {division === "redux" && <ReduxModal />}
         {division === "nodeJs" && <NodeJsModal />}
         {division === "github" && <GithubModal />}
+        {division === "etc" && <EctModal />}
       </ModalStyled>
     );
   } else {
