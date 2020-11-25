@@ -7,6 +7,7 @@ const NavigationStyled = styled.nav`
   position: fixed; //고정
   background-color: black;
   width: 80vw;
+  height: 7.5vh;
   z-index: 999; //제일앞으로
   padding: 0vw 10vw 0vw 10vw; //양사이드 공백
   display: flex;
@@ -34,13 +35,14 @@ const NavigationStyled = styled.nav`
 const Navigation = () => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setIsClicked(!isClicked);
+    const bars = e.target.childNodes;
   };
 
   return (
     <NavigationStyled>
-      <HamburgerMenu handleClick={handleClick} />
+      <HamburgerMenu handleClick={handleClick} isClicked={isClicked} />
       <h1 className="Navigation-logo">
         <a href="/portfolio">ForeverChoi's portfolio</a>
       </h1>

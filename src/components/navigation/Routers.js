@@ -38,10 +38,10 @@ const stopBubbling = (e) => {
   e.stopPropagation();
 };
 
-const Routers = ({ isClicked, handleClick }) => {
+const Routers = ({ isClicked }) => {
   if (isClicked) {
     return (
-      <RoutersStyled onClick={handleClick}>
+      <RoutersStyled>
         <a href="#root" onClick={stopBubbling}>
           #Top
         </a>

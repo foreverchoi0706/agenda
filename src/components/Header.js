@@ -4,8 +4,8 @@ import bg from "../imgs/bg.jpg";
 import Typing from "./header/Typing";
 
 const HeaderStyled = styled.header`
-  padding-top: 66.813px;
-  height: 93.1vh;
+  padding-top: 7.25vh;
+  height: 93vh;
   display: flex;
 
   justify-content: center;

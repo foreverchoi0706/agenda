@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const HamburgerMenuStyled = styled.ul`
+  z-index: 999;
   list-style: none;
   width: 45px;
   cursor: pointer;
@@ -22,22 +23,39 @@ const HamburgerMenuStyled = styled.ul`
     }
   }
   .clicked-0 {
-    transform: translateY(12.5px);
+    background-color: black;
+    transform: translateY(10px);
+    transition-property: background-color, transform;
     transition-duration: 1s;
+    transition-delay: 1s;
   }
+
   .clicked-1 {
-    transition-delay: 1s;
+    opacity: 0;
+    transition-property: opacity;
     transition-duration: 1s;
-    transform: rotate(140deg);
   }
+
   .clicked-2 {
-    transform: translateY(-12.5px);
+    background-color: black;
+    transform: translateY(-10px);
+   
     transition-duration: 1s;
-  }
-  .crossed {
     transition-delay: 1s;
-    transition-duration: 1s;
+  }
+
+  .crossed-0 {
     transform: rotate(140deg);
+    transform-origin: right;
+    transition-property: background-color, transform;
+    transition-delay: 2s;
+  }
+
+  .crossed-2 {
+    transform: rotate(-140deg);
+    transform-origin: left;
+    transition-property: background-color, transform;
+    transition-delay: 2s;
   }
 
   @keyframes menu-hover-anime {
@@ -50,19 +68,24 @@ const HamburgerMenuStyled = styled.ul`
   }
 `;
 
-const HamburgerMenu = ({ handleClick }) => {
-  const refHamberMenu = useRef(null);
+const HamburgerMenu = ({ handleClick, isClicked }) => {
+  const ref = useRef(null);
 
-  // const handleClick = () => {
-  //   console.dir(refHamberMenu.current.children);
-
-  //   refHamberMenu.current.childNodes.forEach((li, index) => {
-  //     li.classList.add(`clicked-${index}`);
-  //   });
-  // };
+  useEffect(() => {
+    if (isClicked) {
+      ref.current.childNodes.forEach((bar, index) => {
+        bar.classList.add(`clicked-${index}`);
+        bar.classList.add(`crossed-${index}`);
+      });
+    } else {
+      ref.current.childNodes.forEach((bar, index) => {
+        bar.classList.remove(`clicked-${index}`);
+      });
+    }
+  });
 
   return (
-    <HamburgerMenuStyled onClick={handleClick} ref={refHamberMenu}>
+    <HamburgerMenuStyled onClick={handleClick} ref={ref}>
       <li className="HamburgerMenu-line"></li>
       <li className="HamburgerMenu-line"></li>
       <li className="HamburgerMenu-line"></li>

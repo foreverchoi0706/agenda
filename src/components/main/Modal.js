@@ -22,21 +22,23 @@ const GraphStyled = styled.div`
   display: flex;
   flex-direction: column;
   ul {
-    height: 90%;
+    height: 200px;
     padding: 0px;
     display: flex;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: flex-end;
     border-bottom: 1px solid black;
     li {
       width: 25px;
-      border: 1px solid black;
+      transition-property: height;
+      transition-duration: 2s;
     }
   }
   div {
     display: flex;
     justify-content: space-around;
-    height: 10%;
+    align-items: center;
+    height: 50px;
     b {
       text-align: center;
       width: 33%;
@@ -48,12 +50,14 @@ const HtmlModal = () => {
   return (
     <GraphStyled>
       <ul>
-        <li></li>
-        <li></li>
+        <li style={{ backgroundColor: "red", height: "100px" }}></li>
+        <li style={{ backgroundColor: "blue", height: "150px" }}></li>
+        <li style={{ backgroundColor: "blue", height: "150px" }}></li>
       </ul>
       <div>
-        <b>semantic?</b>
-        <b>html5 tag?</b>
+        <b>semantic</b>
+        <b>html5 tag</b>
+        <b>html5 tag</b>
       </div>
     </GraphStyled>
   );
@@ -67,8 +71,8 @@ const CssModal = () => {
         <li></li>
       </ul>
       <div>
-        <b>semantic?</b>
-        <b>html5 tag?</b>
+        <b>css property</b>
+        <b>scss</b>
       </div>
     </GraphStyled>
   );
@@ -82,8 +86,8 @@ const JavascriptModal = () => {
         <li></li>
       </ul>
       <div>
-        <b>semantic?</b>
-        <b>html5 tag?</b>
+        <b>Modern JS</b>
+        <b>Typescript</b>
       </div>
     </GraphStyled>
   );
@@ -97,8 +101,8 @@ const ReactModal = () => {
         <li></li>
       </ul>
       <div>
-        <b>semantic?</b>
-        <b>html5 tag?</b>
+        <b>function component</b>
+        <b>third party lib</b>
       </div>
     </GraphStyled>
   );
@@ -112,8 +116,8 @@ const ReduxModal = () => {
         <li></li>
       </ul>
       <div>
-        <b>semantic?</b>
-        <b>html5 tag?</b>
+        <b>redux-thunk</b>
+        <b>redux-saga</b>
       </div>
     </GraphStyled>
   );
@@ -127,8 +131,8 @@ const NodeJsModal = () => {
         <li></li>
       </ul>
       <div>
-        <b>semantic?</b>
-        <b>html5 tag?</b>
+        <b>npm/yarn</b>
+        <b>express</b>
       </div>
     </GraphStyled>
   );
