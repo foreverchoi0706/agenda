@@ -25,37 +25,35 @@ const HamburgerMenuStyled = styled.ul`
   .clicked-0 {
     background-color: black;
     transform: translateY(10px);
-    transition-property: background-color, transform;
-    transition-duration: 1s;
-    transition-delay: 1s;
+    transition-duration: 0.5s;
+    transition-delay: 0.5s;
   }
 
   .clicked-1 {
     opacity: 0;
     transition-property: opacity;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
   }
 
   .clicked-2 {
     background-color: black;
     transform: translateY(-10px);
-   
-    transition-duration: 1s;
-    transition-delay: 1s;
+    transition-duration: 0.5s;
+    transition-delay:0.5s;
   }
 
   .crossed-0 {
-    transform: rotate(140deg);
-    transform-origin: right;
+    transform: rotate(35deg);
+    transform-origin: left;
     transition-property: background-color, transform;
-    transition-delay: 2s;
+    transition-delay: 1s;
   }
 
   .crossed-2 {
-    transform: rotate(-140deg);
+    transform: rotate(-35deg);
     transform-origin: left;
     transition-property: background-color, transform;
-    transition-delay: 2s;
+    transition-delay: 1s;
   }
 
   @keyframes menu-hover-anime {
@@ -80,6 +78,7 @@ const HamburgerMenu = ({ handleClick, isClicked }) => {
     } else {
       ref.current.childNodes.forEach((bar, index) => {
         bar.classList.remove(`clicked-${index}`);
+        bar.classList.remove(`crossed-${index}`);
       });
     }
   });
