@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import geppetto from "../../imgs/geppetto.png";
+
 const ProjectsStyled = styled.section`
   ul {
     color: black;
@@ -9,9 +11,12 @@ const ProjectsStyled = styled.section`
     gap: 20px;
     li {
       width: 100%;
-      height: 333px;
+
       background-color: lightgray;
       border-radius: 5px;
+      img{
+        width : 100%;
+      }
     }
   }
 `;
@@ -24,7 +29,7 @@ const Projects = () => {
         <ul>
           <li>#FreeJson</li>
           <li>#Foryou</li>
-          <li>#Geppetto</li>
+          <li><img src={geppetto} alt="geppetto"/></li>
           <li>#Hellow,Youngwon!</li>
         </ul>
       </div>
