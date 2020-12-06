@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const SlideBtnStyled = styled.div`
   position: fixed;
-  top: calc(50vh - 100px);
+  top: calc(50vh - 50px);
   width: 100px;
   height: 100px;
   background-color: rgba(154, 45, 55, 0.8);
@@ -17,6 +17,10 @@ const SlideBtnStyled = styled.div`
   align-items: center;
   svg {
     color: wheat;
+  }
+
+  @media (max-width: 1028px) {
+    display : none;
   }
 `;
 
