@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import Header from "./slides/Header";
 import Introduce from "./slides/Introduce";
+import Skills from "./slides/Skills";
 import Projects from "./slides/Projects";
 import Contact from "./slides/Contact";
-import FooterStyled from "./slides/Footer";
 
 import styled from "styled-components";
 
 const SlideContainerStyled = styled.ul`
-  width: 500vw;
+  width: 600vw;
   height: 100vh;
   display: flex;
   & > li {
-    width: 100vw; 
+    width: 100vw;
     h2 {
       text-align: center;
     }
@@ -24,7 +24,7 @@ const SlideContainerStyled = styled.ul`
   }
 `;
 
-const SlideContainer = ({ slidePosition }) => {
+const SlideContainer = ({ isShow, slidePosition }) => {
   const refSlideContainer = useRef(null);
 
   useEffect(() => {
@@ -37,11 +37,11 @@ const SlideContainer = ({ slidePosition }) => {
 
   return (
     <SlideContainerStyled ref={refSlideContainer}>
-      <Header />
+      <Header isShow={isShow} />
       <Introduce />
+      <Skills />
       <Projects />
       <Contact />
-      <FooterStyled />
     </SlideContainerStyled>
   );
 };

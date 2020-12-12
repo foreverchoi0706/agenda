@@ -29,9 +29,11 @@ const App = () => {
       setIsShow(false);
     }
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 1028) { //1028px이하면 가로모드
+      if (window.innerWidth > 1028) {
+        //1028px이하면 가로모드
         setIsShow(true);
-      } else { //1028px이하면 세로모드
+      } else {
+        //1028px이하면 세로모드
         setIsShow(false);
         setSlidePotion(0);
       }
@@ -48,7 +50,7 @@ const App = () => {
 
   return (
     <AppStyled>
-      <SlideContainerStyled slidePosition={slidePosition} />
+      <SlideContainerStyled isShow={isShow} slidePosition={slidePosition} />
       {isShow && <ShowProcessBar slidePosition={slidePosition} />}
       <SlideBtn
         clickSlideBtn={slideLeft}
