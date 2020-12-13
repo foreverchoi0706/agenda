@@ -9,20 +9,18 @@ const HeaderStyled = styled.li`
   justify-content: center;
   align-items: center;
 
-  background-image: url("https://source.unsplash.com/random/1920x1080");
-  background-size: cover;
+  
   .Header-greeting {
     margin: 0 10px 0 10px;
     text-align: center;
   }
   .Header-mouse {
     position: absolute;
-    bottom: 405vh;
+    top : 80vh;
     animation: mouse-animation 0.5s infinite linear;
   }
 
   @media (max-width: 1028px) {
-    height: 100vh;
     .Header-greeting {
       font-size: 1.5rem;
     }

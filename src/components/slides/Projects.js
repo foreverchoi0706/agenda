@@ -27,17 +27,17 @@ const ProjectsStyled = styled.li`
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
       div {
-      
       }
     }
   }
 
   @media (max-width: 768px) {
     .Projects-container {
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(6, 1fr);
+      height: auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
       div {
-        margin: 0;
+    
       }
     }
   }

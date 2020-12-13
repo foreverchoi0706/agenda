@@ -21,6 +21,9 @@ const SlideContainerStyled = styled.ul`
     width: 100vw;
     height: auto;
     flex-direction: column;
+    & > li {
+      height: 100vh;
+    }
   }
 `;
 
