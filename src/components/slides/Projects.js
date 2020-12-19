@@ -33,11 +33,15 @@ const ProjectsStyled = styled.li`
 
   @media (max-width: 768px) {
     .Projects-container {
-      height: auto;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 1fr);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       div {
-    
+        display: flex;
+        justify-content: center;
+        img {
+          width: 50%;
+        }
       }
     }
   }
