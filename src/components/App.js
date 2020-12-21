@@ -5,7 +5,7 @@ import ShowProcessBar from "./ShowProcessBar";
 import styled from "styled-components";
 
 const AppStyled = styled.main`
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   overflow-x: hidden;
   position: relative;
   & ul {

@@ -58,20 +58,64 @@ const ContactStyled = styled.li`
   }
 `;
 
+const urlList = [
+  {
+    name: "Publishing01",
+    href: "challenge_Day01.html",
+  },
+  {
+    name: "Publishing02",
+    href: "challenge_Day02.html",
+  },
+  {
+    name: "Publishing03",
+    href: "challenge_Day03.html",
+  },
+  {
+    name: "Publishing04",
+    href: "challenge_Day04.html",
+  },
+  {
+    name: "Publishing05",
+    href: "challenge_Day05.html",
+  },
+  {
+    name: "Publishing06",
+    href: "challenge_Day06.html",
+  },
+  {
+    name: "Publishing07",
+    href: "challenge_Day07.html",
+  },
+  {
+    name: "Publishing08",
+    href: "challenge_Day08.html",
+  },
+  {
+    name: "Publishing09",
+    href: "challenge_Day09.html",
+  },
+];
+
 const Contact = () => {
   return (
     <ContactStyled>
       <div className="Contact-sections">
         <section>
           <ul className="Contact-sections-publishing">
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
-            <li><a href="">publishing01</a></li>
+            {urlList.map((url) => (
+              <li>
+                <a
+                  href={
+                    "https://foreverchoi0706.github.io/publishing/challenge/" +
+                    url.href
+                  }
+                  target="_blank"
+                >
+                  {url.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
         <section>
@@ -79,13 +123,13 @@ const Contact = () => {
         </section>
         <section>
           <div className="Contact-sections-link">
-            <a href>
+            <a href="https://github.com/foreverchoi0706">
               <img src={github} alt="github" />
             </a>
-            <a href>
+            <a href="https://velog.io/@foreverchoi0706">
               <img src={blog} alt="blog" />
             </a>
-            <a href>
+            <a href="mailto:foreverchoi0706@gmail.com">
               <img src={email} alt="email" />
             </a>
           </div>
