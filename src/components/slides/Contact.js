@@ -10,6 +10,7 @@ const ContactStyled = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(-45deg, #f3f5f0 50%, #dfe8eb 50%);
 
     section {
       flex-basis: 33%;
@@ -17,13 +18,13 @@ const ContactStyled = styled.li`
       height: 100vh;
       justify-content: center;
       &:nth-child(1) {
-        align-items: flex-start;
-        .Contact-sections-publishing {
-          padding: 10px;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+        a {
+          color: black;
         }
       }
       &:nth-child(2) {
@@ -31,30 +32,42 @@ const ContactStyled = styled.li`
       }
       &:nth-child(3) {
         align-items: flex-end;
-        .Contact-sections-link {
-          padding: 10px;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          gap: 10px;
-          a {
-            img {
-              cursor: pointer;
-              width: 70px;
-            }
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        a {
+          img {
+            cursor: pointer;
+            width: 70px;
           }
         }
       }
     }
   }
-
-  background: linear-gradient(-45deg, #f3f5f0 50%, #dfe8eb 50%);
-
   @media (max-width: 1028px) {
     height: 100vh;
   }
 
   @media (max-width: 768px) {
+    .Contact-sections {
+      section {
+        &:nth-child(1) {
+          font-size: 0.8rem;
+          align-items: center;
+          justify-content: space-around;
+        }
+        &:nth-child(3) {
+          font-size: 0.4rem;
+          flex-direction: column;
+          align-items: center;
+          a {
+            img {
+              width: 50px;
+            }
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -102,37 +115,32 @@ const Contact = () => {
     <ContactStyled>
       <div className="Contact-sections">
         <section>
-          <ul className="Contact-sections-publishing">
-            {urlList.map((url) => (
-              <li>
-                <a
-                  href={
-                    "https://foreverchoi0706.github.io/publishing/challenge/" +
-                    url.href
-                  }
-                  target="_blank"
-                >
-                  {url.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {urlList.map((url, index) => (
+            <a
+              key={index}
+              href={
+                "https://foreverchoi0706.github.io/publishing/challenge/" +
+                url.href
+              }
+              target="_blank"
+            >
+              {url.name}
+            </a>
+          ))}
         </section>
         <section>
           <h2>읽어 주셔서 감사합니다 :)</h2>
         </section>
         <section>
-          <div className="Contact-sections-link">
-            <a href="https://github.com/foreverchoi0706">
-              <img src={github} alt="github" />
-            </a>
-            <a href="https://velog.io/@foreverchoi0706">
-              <img src={blog} alt="blog" />
-            </a>
-            <a href="mailto:foreverchoi0706@gmail.com">
-              <img src={email} alt="email" />
-            </a>
-          </div>
+          <a href="https://github.com/foreverchoi0706">
+            <img src={github} alt="github" />
+          </a>
+          <a href="https://velog.io/@foreverchoi0706">
+            <img src={blog} alt="blog" />
+          </a>
+          <a href="mailto:foreverchoi0706@gmail.com">
+            <img src={email} alt="email" />
+          </a>
         </section>
       </div>
     </ContactStyled>

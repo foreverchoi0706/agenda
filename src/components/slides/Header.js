@@ -9,14 +9,13 @@ const HeaderStyled = styled.li`
   justify-content: center;
   align-items: center;
 
-  
   .Header-greeting {
     margin: 0 10px 0 10px;
     text-align: center;
   }
   .Header-mouse {
     position: absolute;
-    top : 80vh;
+    top: 80vh;
     animation: mouse-animation 0.5s infinite linear;
   }
 
