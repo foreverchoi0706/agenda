@@ -5,7 +5,7 @@ import Skill from "./Skill";
 
 const SkillsStyled = styled.li`
   .Skills-sections {
-    height: calc(100vh - 67px);
+    height: calc(100vh - 68px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;

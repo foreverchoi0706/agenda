@@ -6,66 +6,36 @@ import blog from "../../imgs/blog.png";
 import email from "../../imgs/email.png";
 
 const ContactStyled = styled.li`
-  .Contact-sections {
+  .Contact-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: linear-gradient(-45deg, #f3f5f0 50%, #dfe8eb 50%);
-
-    section {
-      flex-basis: 33%;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      &:nth-child(1) {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        gap: 10px;
-        a {
-          color: black;
-        }
-      }
-      &:nth-child(2) {
-        align-items: center;
-      }
-      &:nth-child(3) {
-        align-items: flex-end;
-        display: flex;
-        justify-content: space-around;
-        gap: 10px;
-        a {
-          img {
-            cursor: pointer;
-            width: 70px;
-          }
-        }
-      }
+    height: 100vh;
+    .link-img {
+      width: 100px;
     }
   }
   @media (max-width: 1028px) {
-    height: 100vh;
+    .Contact-container {
+      .link-img {
+        width: 75px;
+      }
+    }
   }
 
   @media (max-width: 768px) {
-    .Contact-sections {
-      section {
-        &:nth-child(1) {
-          font-size: 0.8rem;
-          align-items: center;
-          justify-content: space-around;
-        }
-        &:nth-child(3) {
-          font-size: 0.4rem;
-          flex-direction: column;
-          align-items: center;
-          a {
-            img {
-              width: 50px;
-            }
-          }
-        }
+    .Contact-container {
+      .link-img {
+        width: 50px;
+      }
+    }
+  }
+  @media (max-width: 384px) {
+    .Contact-container {
+      .link-img {
+        width: 25px;
       }
     }
   }
@@ -113,35 +83,19 @@ const urlList = [
 const Contact = () => {
   return (
     <ContactStyled>
-      <div className="Contact-sections">
-        <section>
-          {urlList.map((url, index) => (
-            <a
-              key={index}
-              href={
-                "https://foreverchoi0706.github.io/publishing/challenge/" +
-                url.href
-              }
-              target="_blank"
-            >
-              {url.name}
-            </a>
-          ))}
-        </section>
-        <section>
-          <h2>읽어 주셔서 감사합니다 :)</h2>
-        </section>
-        <section>
-          <a href="https://github.com/foreverchoi0706">
-            <img src={github} alt="github" />
+      <div className="Contact-container">
+        <h2>읽어 주셔서 감사합니다 :)</h2>
+        <footer>
+          <a href="https://github.com/foreverchoi0706" target="_blank">
+            <img src={github} alt="github" className="link-img" />
           </a>
-          <a href="https://velog.io/@foreverchoi0706">
-            <img src={blog} alt="blog" />
+          <a href="https://velog.io/@foreverchoi0706" target="_blank">
+            <img src={blog} alt="blog" className="link-img" />
           </a>
-          <a href="mailto:foreverchoi0706@gmail.com">
-            <img src={email} alt="email" />
+          <a href="mailto:foreverchoi0706@gmail.com" target="_blank">
+            <img src={email} alt="email" className="link-img" />
           </a>
-        </section>
+        </footer>
       </div>
     </ContactStyled>
   );

@@ -2,27 +2,47 @@ import React from "react";
 import styled from "styled-components";
 
 const IntroduceStyled = styled.li`
-  .Introduce-sections {
-    height: calc(100vh - 67px);
+  .Introduce-container {
+    height: calc(100vh - 68px);
     padding: 0 10vw 0 10vw;
+    font-size: 1.1rem;
     display: flex;
     flex-direction: column;
-    font-size: 1.3rem;
+    justify-content: space-around;
     section {
-      flex-grow: 1;
+      border-radius: 5px;
+      border: 2px solid lightgray;
+      box-shadow: 5px 5px gray;
+      div {
+        margin: 30px;
+      }
     }
   }
 
   @media (max-width: 1028px) {
-    .Introduce-sections {
-      font-size: 1.1rem;
+    .Introduce-container {
     }
   }
 
   @media (max-width: 768px) {
-    .Introduce-sections {
-      font-size: 0.8rem;
+    .Introduce-container {
+      font-size: 0.7rem;
       padding: 0 5vw 0 5vw;
+      section {
+        div {
+          margin: 20px;
+        }
+      }
+    }
+  }
+  @media (max-width: 384px) {
+    .Introduce-container {
+      font-size: 0.4rem;
+      section {
+        div {
+          margin: 10px;
+        }
+      }
     }
   }
 `;
@@ -39,7 +59,7 @@ const App = () => {
   return (
     <IntroduceStyled>
       <h2>#Introduce</h2>
-      <div className="Introduce-sections">
+      <div className="Introduce-container">
         <section>
           <h3>Q. 자기소개</h3>
           <div>
@@ -76,23 +96,21 @@ const App = () => {
             만들었습니다.
           </div>
         </section>
-
         <section>
           <h3>Q. 어떤 개발자가 되고싶은가?</h3>
-          A.능동적인 개발을 주도하는 개발자가 되고 싶습니다. 여기서 제가
-          생각하는 능동적인 개발이란
-          <StrongI
-            text={
-              "좋은 아이디어나 더 나은 의견이 있다면 제시하고, 흥미 로운 정보가 있다면 공유하며 스스로의 부족함에 피드백을 받아 선순환을 일으키는 개발입니다."
-            }
-          />
-          일본에서 일한 1년은 즐거운 시간이었지만, 그 과정에서의 업무구조에서는
-          한계를 느꼈습니다. 위 로부터의 지시가 없다면 업무를 할 수 없는
-          구조였고 결과적으로 스스로의 발전가능성이 보이지 않았기에 스스로에게
-          [어떤 개발이 하고 싶은가?] 질문을 던졌을 때 항상 위와 같이 생각해 왔습
-          니다. 코딩을 하면서 [이런 방법보다는 더 좋은 방법이 있지 않을까?]라는
-          생각을 하곤 합니다. 또한 [이런 게 있었구나, 공유하고 싶어!]라는 생각
-          역시 하고 있습니다.
+          <div>
+            A.능동적인 개발을 주도하는 개발자가 되고 싶습니다. 여기서 제가
+            생각하는 능동적인 개발이란
+            <StrongI
+              text={
+                "좋은 아이디어나 더 나은 의견이 있다면 제시하고, 흥미 로운 정보가 있다면 공유하며 스스로의 부족함에 피드백을 받아 선순환을 일으키는 개발입니다."
+              }
+            />
+            스스로에게 '어떤 개발이 하고 싶은가?' 질문을 던졌을 때 항상 위와
+            같이 생각해 왔습 니다. 코딩을 하면서 '이런 방법보다는 더 좋은 방법이
+            있지 않을까?'라는 생각을 하곤 합니다. 또한 '이런 게 있었구나,
+            공유하고 싶어!'라는 생각 역시 하고 있습니다.
+          </div>
         </section>
       </div>
     </IntroduceStyled>

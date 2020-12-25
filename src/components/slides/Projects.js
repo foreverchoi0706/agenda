@@ -5,7 +5,7 @@ import geppetto from "../../imgs/geppetto.png";
 
 const ProjectsStyled = styled.li`
   .Projects-container {
-    height: calc(100vh - 67px);
+    height: calc(100vh - 68px);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);

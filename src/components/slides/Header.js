@@ -2,16 +2,21 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 import mouse from "../../imgs/mouse.png";
+import bg from "../../imgs/bg.jpg";
 
 const HeaderStyled = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image : url(${bg});
+  background-size : 100vw 100vh;
+  background-repeat: no-repeat;
 
   .Header-greeting {
     margin: 0 10px 0 10px;
     text-align: center;
+    color : white;
   }
   .Header-mouse {
     position: absolute;
@@ -21,13 +26,13 @@ const HeaderStyled = styled.li`
 
   @media (max-width: 1028px) {
     .Header-greeting {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
     }
   }
 
   @media (max-width: 768px) {
     .Header-greeting {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
   }
 

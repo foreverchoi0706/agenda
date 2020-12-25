@@ -3,12 +3,13 @@ import Header from "./slides/Header";
 import Introduce from "./slides/Introduce";
 import Skills from "./slides/Skills";
 import Projects from "./slides/Projects";
+import Publishing from "./slides/Publishing";
 import Contact from "./slides/Contact";
 
 import styled from "styled-components";
 
 const SlideContainerStyled = styled.ul`
-  width: 600vw;
+  width: 700vw;
   height: 100vh;
   display: flex;
   & > li {
@@ -44,6 +45,7 @@ const SlideContainer = ({ isShow, slidePosition }) => {
       <Introduce />
       <Skills />
       <Projects />
+      <Publishing/>
       <Contact />
     </SlideContainerStyled>
   );

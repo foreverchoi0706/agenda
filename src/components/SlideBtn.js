@@ -1,4 +1,4 @@
-import React,{memo} from "react";
+import React, { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -20,12 +20,15 @@ const SlideBtnStyled = styled.div`
   }
 
   @media (max-width: 1028px) {
-    display : none;
+    display: none;
   }
 `;
 
+const LEFT = "LEFT";
+const RIGHT = "RIGHT";
+
 const SlideBtn = ({ clickSlideBtn, division, slidePosition }) => {
-  if (division === "LEFT") {
+  if (division === LEFT) {
     return (
       <>
         {slidePosition !== 0 ? (
@@ -38,10 +41,10 @@ const SlideBtn = ({ clickSlideBtn, division, slidePosition }) => {
         ) : null}
       </>
     );
-  } else if (division === "RIGHT") {
+  } else if (division === RIGHT) {
     return (
       <>
-        {slidePosition !== -4 ? (
+        {slidePosition !== -5 ? (
           <SlideBtnStyled
             onClick={clickSlideBtn}
             style={{ right: "0", borderRadius: "50% 0  0 50%" }}
