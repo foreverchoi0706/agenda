@@ -45,8 +45,8 @@ const SlideContainer = ({ isShow, slidePosition }) => {
       <Introduce />
       <Skills />
       <Projects />
-      <Publishing/>
-      <Contact />
+      <Publishing />
+      <Contact isShow={isShow} />
     </SlideContainerStyled>
   );
 };

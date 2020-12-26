@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-import mouse from "../../imgs/mouse.png";
+import mouse_white from "../../imgs/mouse_white.png";
 import bg from "../../imgs/bg.jpg";
 
 const HeaderStyled = styled.li`
@@ -60,7 +60,7 @@ const App = ({ isShow }) => {
         최영원입니다.
       </h1>
       <h2 className="Header-skills" ref={refH2} />
-      {isShow || <img className="Header-mouse" src={mouse} alt="mouse" />}
+      {isShow || <img className="Header-mouse" src={mouse_white} alt="mouse" />}
     </HeaderStyled>
   );
 };

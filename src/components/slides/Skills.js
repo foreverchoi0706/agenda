@@ -13,7 +13,7 @@ const SkillsStyled = styled.li`
 
     section {
       flex-grow: 1;
-      background-color: lightgray;
+      background-color: bisque;
       border-radius: 5px;
       display: flex;
       justify-content: space-around;

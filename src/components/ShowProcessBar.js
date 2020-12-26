@@ -6,7 +6,7 @@ const ShowProgressBarStyled = styled.div`
   justify-content: center;
   width: 100vw;
   position: fixed;
-  bottom: 50px;
+  bottom: 30px;
 
   .ShowProgressBar-container {
     display: flex;

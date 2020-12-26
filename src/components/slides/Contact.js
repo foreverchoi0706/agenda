@@ -4,6 +4,7 @@ import styled from "styled-components";
 import github from "../../imgs/github2.png";
 import blog from "../../imgs/blog.png";
 import email from "../../imgs/email.png";
+import mouse_black from "../../imgs/mouse_black.png";
 
 const ContactStyled = styled.li`
   .Contact-container {
@@ -16,6 +17,12 @@ const ContactStyled = styled.li`
     .link-img {
       width: 100px;
     }
+  }
+  .Contact-mouse {
+    position: absolute;
+    bottom: 10vh;
+    animation: mouse-animation 0.5s infinite linear;
+    cursor: pointer;
   }
   @media (max-width: 1028px) {
     .Contact-container {
@@ -39,48 +46,17 @@ const ContactStyled = styled.li`
       }
     }
   }
+  @keyframes mouse-animation {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-10px);
+    }
+  }
 `;
 
-const urlList = [
-  {
-    name: "Publishing01",
-    href: "challenge_Day01.html",
-  },
-  {
-    name: "Publishing02",
-    href: "challenge_Day02.html",
-  },
-  {
-    name: "Publishing03",
-    href: "challenge_Day03.html",
-  },
-  {
-    name: "Publishing04",
-    href: "challenge_Day04.html",
-  },
-  {
-    name: "Publishing05",
-    href: "challenge_Day05.html",
-  },
-  {
-    name: "Publishing06",
-    href: "challenge_Day06.html",
-  },
-  {
-    name: "Publishing07",
-    href: "challenge_Day07.html",
-  },
-  {
-    name: "Publishing08",
-    href: "challenge_Day08.html",
-  },
-  {
-    name: "Publishing09",
-    href: "challenge_Day09.html",
-  },
-];
-
-const Contact = () => {
+const Contact = ({ isShow }) => {
   return (
     <ContactStyled>
       <div className="Contact-container">
@@ -96,6 +72,11 @@ const Contact = () => {
             <img src={email} alt="email" className="link-img" />
           </a>
         </footer>
+        {isShow || (
+          <a href="#top" className="Contact-mouse">
+            <img  src={mouse_black} alt="mouse" />
+          </a>
+        )}
       </div>
     </ContactStyled>
   );
