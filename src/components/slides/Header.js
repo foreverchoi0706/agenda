@@ -9,14 +9,17 @@ const HeaderStyled = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image : url(${bg});
-  background-size : 100vw 100vh;
+  background-image: url(${bg});
+  background-size: 100vw 100vh;
   background-repeat: no-repeat;
-
+  color: white;
   .Header-greeting {
     margin: 0 10px 0 10px;
     text-align: center;
-    color : white;
+  }
+  .Header-skills {
+    padding-right: 5px;
+    animation: blink-animation 0.5s infinite linear;
   }
   .Header-mouse {
     position: absolute;
@@ -25,14 +28,25 @@ const HeaderStyled = styled.li`
   }
 
   @media (max-width: 1028px) {
-    .Header-greeting {
+    .Header-greeting,
+    .Header-skills {
       font-size: 1.1rem;
     }
   }
 
   @media (max-width: 768px) {
-    .Header-greeting {
+    .Header-greeting,
+    .Header-skills {
       font-size: 0.8rem;
+    }
+  }
+
+  @keyframes blink-animation {
+    from {
+      border-right: 2px solid white;
+    }
+    to {
+      border-right: 2px solid black;
     }
   }
 
@@ -51,7 +65,29 @@ const skills = ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "REDUX"];
 const App = ({ isShow }) => {
   const refH2 = useRef(null);
 
-  useEffect(() => {});
+  const delay = (ms) =>
+    new Promise((resolve) => setTimeout(() => resolve(), ms));
+
+  const typing = async (tempChars) => {
+    for (let char of tempChars) {
+      refH2.current.innerHTML += char;
+      await delay(500);
+    }
+    refH2.current.innerHTML = "";
+  };
+
+  const startTyping = async () => {
+    while (true) {
+      for (let skill of skills) {
+        const tempChars = Array.from(skill);
+        await typing(tempChars);
+      }
+    }
+  };
+
+  useEffect(() => {
+    startTyping();
+  }, [refH2]);
 
   return (
     <HeaderStyled>

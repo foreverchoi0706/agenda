@@ -79,7 +79,7 @@ const Skill = ({ name }) => {
       case "javascript":
         division = javascript;
         setSkillText(
-          "바닐라JS를 통한 돔 조작부터 모던 JS문법까지 두루 파악하고 있으며 "
+          "바닐라JS를 통한 돔 조작부터 모던 JS문법까지 두루 파악하고 있으며 가장 좋아하는 언어입니다."
         );
         break;
       case "sass":
@@ -115,7 +115,7 @@ const Skill = ({ name }) => {
       case "github":
         division = github;
         setSkillText(
-          "git를 통해 항상 프로젝트를 관리하고 있으며 버전관리의 중요성을 항상 느끼고 있습니다."
+          "git를 통해 프로젝트를 관리하고 있으며 버전관리의 중요성을 항상 느끼고 있습니다."
         );
         break;
     }
@@ -123,7 +123,7 @@ const Skill = ({ name }) => {
   }, [name, refDiv]);
 
   const handleMouseOver = () => {
-    refDiv.current.style.opacity = "0.5";
+    refDiv.current.style.opacity = "0.8";
     refI.current.style.display = "block";
   };
 

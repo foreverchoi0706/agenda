@@ -10,10 +10,10 @@ const SkillsStyled = styled.li`
     flex-direction: column;
     justify-content: space-around;
     gap: 10px;
-
     section {
       flex-grow: 1;
-      background-color: bisque;
+      background-color: black;
+      color: white;
       border-radius: 5px;
       display: flex;
       justify-content: space-around;

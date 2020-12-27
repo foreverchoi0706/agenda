@@ -9,6 +9,8 @@ const PublishingStyle = styled.li`
     height: calc(100vh - 68px);
     margin : 0 auto;
     border-radius : 5px;
+   
+    
   }
 `;
 const urlList = [
