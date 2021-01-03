@@ -13,7 +13,7 @@ const AppStyled = styled.main`
     margin: 0;
     padding: 0;
     li > section {
-      //모든 섹션에 좌우패딩값
+      //모든 섹션에 좌우패딩값줌
       padding: 0px 10vw 0px 10vw;
     }
   }
