@@ -2,10 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 import geppetto from "../../imgs/geppetto.png";
+import todo_web from "../../imgs/todo_web.png";
 
 const ProjectsStyled = styled.li`
+  h2 {
+    height: 3vh;
+    margin: 2vh;
+  }
   .Projects-container {
-    height: calc(100vh - 68px);
+    height: calc(100vh - 7vh);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -56,7 +61,7 @@ const Projects = () => {
           <img src={geppetto} />
         </div>
         <div>
-          <img src={geppetto} />
+          <img src={todo_web} />
         </div>
         <div>
           <img src={geppetto} />

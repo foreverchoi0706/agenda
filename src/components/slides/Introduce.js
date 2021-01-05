@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const IntroduceStyled = styled.li`
+  h2 {
+    height: 3vh;
+    margin: 2vh;
+  }
   .Introduce-container {
-    height: calc(100vh - 68px);
+    height: calc(100vh - 7vh);
     padding: 0 10vw 0 10vw;
     font-size: 1.1rem;
     display: flex;
