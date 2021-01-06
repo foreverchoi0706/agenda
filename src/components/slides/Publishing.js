@@ -8,28 +8,27 @@ import challenge_Day04 from "../../imgs/publishing/challenge_Day04.png";
 import challenge_Day05 from "../../imgs/publishing/challenge_Day05.png";
 import challenge_Day06 from "../../imgs/publishing/challenge_Day06.png";
 import challenge_Day07 from "../../imgs/publishing/challenge_Day07.png";
-import challenge_Day08 from "../../imgs/publishing/challenge_Day08.png";
 import challenge_Day09 from "../../imgs/publishing/challenge_Day09.png";
 
 const PublishingStyle = styled.li`
-  h2 {
-    height: 3vh;
-    margin: 2vh;
-  }
   .Publishing-container {
-    height: calc(100vh - 7vh);
-    margin: 0 auto;
-    border-radius: 5px;
-
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-
+    h2 {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     a {
-      border: 1px solid black;
+      width: 33.333vw;
+      height: 33.333vh;
       img {
-        width: 100%;
-        height : 100%;
+        width: inherit;
+        height: inherit;
       }
     }
   }
@@ -71,23 +70,30 @@ const urlList = [
     src: challenge_Day07,
   },
   {
-    name: "Publishing08",
-    href: "challenge_Day08.html",
-    src: challenge_Day08,
-  },
-  {
     name: "Publishing09",
     href: "challenge_Day09.html",
     src: challenge_Day09,
   },
 ];
+
+const handleMouseEnter = (e) => {
+  e.target.style.opacity = "0.8";
+};
+
+const handleMouseOut = (e) => {
+  e.target.style.opacity = "1";
+};
+
 const Publishing = () => {
   return (
     <PublishingStyle>
-      <h2>#Publishing</h2>
       <div className="Publishing-container">
-        {urlList.map((url) => (
+        <h2>#Publishing</h2>
+        {urlList.map((url, index) => (
           <a
+            onMouseEnter={handleMouseEnter}
+            onMouseOut={handleMouseOut}
+            key={index}
             href={`https://foreverchoi0706.github.io/publishing/challenge/${url.href}`}
             target="blank"
           >

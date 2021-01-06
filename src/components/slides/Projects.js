@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import geppetto from "../../imgs/geppetto.png";
 import todo_web from "../../imgs/todo_web.png";
+import Project from "./Project";
 
 const ProjectsStyled = styled.li`
   h2 {
@@ -17,11 +19,9 @@ const ProjectsStyled = styled.li`
     gap: 5px;
     justify-items: center;
     align-items: center;
-    div {
+    img {
+      width: 100%;
       cursor: pointer;
-      img {
-        width: 100%;
-      }
       &:hover {
         width: 105%;
       }
@@ -53,29 +53,29 @@ const ProjectsStyled = styled.li`
 `;
 
 const Projects = () => {
+  const [modalState, setModalState] = useState({
+    isClicked: false,
+    division: "",
+  });
+
+  const handleClick = (division) => {
+    setModalState({
+      isClicked: !modalState.isClicked,
+      division,
+    });
+  };
+
+  const { isClicked, division } = modalState;
+
   return (
     <ProjectsStyled>
       <h2>#Projects</h2>
       <div className="Projects-container">
-        <div>
-          <img src={geppetto} />
-        </div>
-        <div>
-          <img src={todo_web} />
-        </div>
-        <div>
-          <img src={geppetto} />
-        </div>
-        <div>
-          <img src={geppetto} />
-        </div>
-        <div>
-          <img src={geppetto} />
-        </div>
-        <div>
-          <img src={geppetto} />
-        </div>
+        <img src={geppetto} onClick={() => handleClick("geppetto")} />
+        <img src={todo_web} onClick={() => handleClick("todo_web")} />
+      
       </div>
+      <Project division={division} isClicked={isClicked} />
     </ProjectsStyled>
   );
 };
