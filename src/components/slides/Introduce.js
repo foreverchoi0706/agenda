@@ -17,8 +17,11 @@ const IntroduceStyled = styled.li`
       border-radius: 5px;
       border: 2px solid lightgray;
       box-shadow: 5px 5px gray;
+      h3 {
+        margin: 10px;
+      }
       div {
-        margin: 30px;
+        margin: 20px;
       }
     }
   }
@@ -34,7 +37,7 @@ const IntroduceStyled = styled.li`
       padding: 0 5vw 0 5vw;
       section {
         div {
-          margin: 20px;
+          margin: 15px;
         }
       }
     }

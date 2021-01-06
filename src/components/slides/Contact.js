@@ -12,7 +12,7 @@ const ContactStyled = styled.li`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #f3f5f0 50%, #dfe8eb 50%);
+    background: linear-gradient(-45deg, #9A2D37 50%, wheat 50%);
     height: 100vh;
     .link-img {
       width: 100px;

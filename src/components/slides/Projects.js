@@ -31,23 +31,6 @@ const ProjectsStyled = styled.li`
     .Projects-container {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      div {
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .Projects-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      div {
-        display: flex;
-        justify-content: center;
-        img {
-          width: 50%;
-        }
-      }
     }
   }
 `;
@@ -73,9 +56,12 @@ const Projects = () => {
       <div className="Projects-container">
         <img src={geppetto} onClick={() => handleClick("geppetto")} />
         <img src={todo_web} onClick={() => handleClick("todo_web")} />
-      
+        <img src={geppetto} onClick={() => handleClick("geppetto")} />
+        <img src={todo_web} onClick={() => handleClick("todo_web")} />
+        <img src={geppetto} onClick={() => handleClick("geppetto")} />
+        <img src={todo_web} onClick={() => handleClick("todo_web")} />
       </div>
-      <Project division={division} isClicked={isClicked} />
+      {isClicked && <Project division={division} handleClick={handleClick} />}
     </ProjectsStyled>
   );
 };

@@ -32,6 +32,20 @@ const PublishingStyle = styled.li`
       }
     }
   }
+  @media (max-width: 1028px) {
+    .Publishing-container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 10% repeat(4, 22.5%);
+      h2 {
+        grid-column: 1/-1;
+        grid-row: 1/1;
+      }
+      a {
+        width: 50vw;
+        height: 100%;
+      }
+    }
+  }
 `;
 const urlList = [
   {

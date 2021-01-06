@@ -7,22 +7,23 @@ const ProjectStyled = styled.div`
   height: 80vh;
   background-color: white;
   border: 1px solid lightgray;
-  box-shadow: 5px 5px 5px lightgray;
+  border-radius: 5px;
 
   position: absolute;
-  top: 0;
-
+  top: 10vh;
+  left: 310vw;
   opacity: 1;
   transition-duration: 1s;
   transition-property: opacity;
+
+  @media (max-width: 1028px) {
+    top: 310vh;
+    left: 10vw;
+  }
 `;
 
-const Project = ({ division, isClicked }) => {
-  const handleClick = () => {
-    isClicked = false;
-  };
-
-  <ProjectStyled onClick={handleClick}></ProjectStyled>;
+const Project = ({ division, handleClick }) => {
+  return <ProjectStyled onClick={handleClick}>{division}</ProjectStyled>;
 };
 
 export default Project;

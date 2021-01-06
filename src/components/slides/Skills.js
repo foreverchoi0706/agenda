@@ -4,12 +4,8 @@ import styled from "styled-components";
 import Skill from "./Skill";
 
 const SkillsStyled = styled.li`
-  h2 {
-    height: 3vh;
-    margin: 2vh;
-  }
   .Skills-sections {
-    height: calc(100vh - 7vh);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -72,7 +68,6 @@ const SkillsStyled = styled.li`
 const Skills = () => {
   return (
     <SkillsStyled>
-      <h2>#Skills</h2>
       <div className="Skills-sections">
         <section>
           <Skill name={"html5"} />
