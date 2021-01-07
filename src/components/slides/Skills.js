@@ -18,6 +18,14 @@ const SkillsStyled = styled.li`
       display: flex;
       justify-content: space-around;
       align-items: center;
+      h2 {
+        font-size: 1rem;
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       &:nth-child(odd) {
         margin: 0 20vw 0 0;
       }
@@ -29,9 +37,6 @@ const SkillsStyled = styled.li`
   @media (max-width: 1028px) {
     .Skills-sections {
       section {
-        h2 {
-          font-size: 1rem;
-        }
         &:nth-child(odd) {
           margin: 0 10vw 0 0;
         }
@@ -80,16 +85,44 @@ const frontEndSkills = ["react", "redux"];
 const backEndSkills = ["express", "nest"];
 const etcSkills = ["node_js", "typescript", "sass", "github"];
 
-const skills = [basedSkills,frontEndSkills,backEndSkills,etcSkills];
+const allSkills = [basedSkills, frontEndSkills, backEndSkills, etcSkills];
 
 const Skills = () => {
-  const [skillText, setSkillText] = useState({});
+  const [skillsText, setSkillsText] = useState({
+    basedSkillsText: { text: "", isMouseOver: false },
+    frontEndSkillsText: { text: "", isMouseOver: false },
+    backEndSkillsText: { text: "", isMouseOver: false },
+    etcSkillsText: { text: "", isMouseOver: false },
+  });
 
-  const handleMouseOver = (skillText) => {
+  const handleMouseOver = (skillText, division) => {
+    console.log(division);
     console.log(skillText);
+    setSkillsText({
+      ...skillsText,
+      [division]: {
+        text: skillText,
+        isMouseOver: true,
+      },
+    });
   };
 
-  const handleMouseOut = () => {};
+  const handleMouseOut = (division) => {
+    setSkillsText({
+      ...skillsText,
+      [division]: {
+        text: "",
+        isMouseOver: false,
+      },
+    });
+  };
+
+  const {
+    basedSkillsText,
+    frontEndSkillsText,
+    backEndSkillsText,
+    etcSkillsText,
+  } = skillsText;
 
   return (
     <SkillsStyled>
@@ -102,10 +135,18 @@ const Skills = () => {
               handleMouseOut={handleMouseOut}
             />
           ))}
-          <h2>BASED SKILLS</h2>
+          <h2>
+            {basedSkillsText.isMouseOver
+              ? basedSkillsText.text
+              : "BASED SKILLS"}
+          </h2>
         </section>
         <section>
-          <h2>FRONT-END SKILLS</h2>
+          <h2>
+            {frontEndSkillsText.isMouseOver
+              ? frontEndSkillsText.text
+              : "FRONTEND SKILLS"}
+          </h2>
           {frontEndSkills.map((skill) => (
             <Skill
               name={skill}
@@ -122,10 +163,16 @@ const Skills = () => {
               handleMouseOut={handleMouseOut}
             />
           ))}
-          <h2>BACK-END SKILLS</h2>
+          <h2>
+            {backEndSkillsText.isMouseOver
+              ? backEndSkillsText.text
+              : "BACKEND SKILLS"}
+          </h2>
         </section>
         <section>
-          <h2>ETC SKILLS</h2>
+          <h2>
+            {etcSkillsText.isMouseOver ? etcSkillsText.text : "ETC SKILLS"}
+          </h2>
           {etcSkills.map((skill) => (
             <Skill
               name={skill}

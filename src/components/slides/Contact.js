@@ -4,7 +4,7 @@ import styled from "styled-components";
 import github from "../../imgs/github2.png";
 import blog from "../../imgs/blog.png";
 import email from "../../imgs/email.png";
-import mouse_black from "../../imgs/mouse_black.png";
+import mouse from "../../imgs/mouse.png";
 
 const ContactStyled = styled.li`
   color: white;
@@ -79,7 +79,7 @@ const Contact = ({ isShow }) => {
         </footer>
         {isShow || (
           <a href="#top" className="Contact-mouse">
-            <img src={mouse_black} alt="mouse" />
+            <img src={mouse} alt="mouse" />
           </a>
         )}
       </div>

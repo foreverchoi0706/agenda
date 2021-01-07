@@ -19,62 +19,23 @@ const ShowProgressBarStyled = styled.div`
   }
 `;
 
+const slideCounts = [0, -1, -2, -3, -4, -5];
+
 const ShowProgressBar = ({ slidePosition }) => {
   return (
     <ShowProgressBarStyled>
       <ul className="ShowProgressBar-container">
-        <li
-          className="ShowProgressBar-bar"
-          style={{
-            backgroundColor:
-              slidePosition === 0 ? "rgba(154, 45, 55, 0.8)" : "wheat",
-          }}
-        />
-        <li
-          className="ShowProgressBar-bar"
-          style={{
-            backgroundColor:
-              slidePosition === -1
-                ? "var(--first-theme-color)"
-                : "var(--second-theme-color)",
-          }}
-        />
-        <li
-          className="ShowProgressBar-bar"
-          style={{
-            backgroundColor:
-              slidePosition === -2
-                ? "var(--first-theme-color)"
-                : "var(--second-theme-color)",
-          }}
-        />
-        <li
-          className="ShowProgressBar-bar"
-          style={{
-            backgroundColor:
-              slidePosition === -3
-                ? "var(--first-theme-color)"
-                : "var(--second-theme-color)",
-          }}
-        />
-        <li
-          className="ShowProgressBar-bar"
-          style={{
-            backgroundColor:
-              slidePosition === -4
-                ? "var(--first-theme-color)"
-                : "var(--second-theme-color)",
-          }}
-        />
-        <li
-          className="ShowProgressBar-bar"
-          style={{
-            backgroundColor:
-              slidePosition === -5
-                ? "var(--first-theme-color)"
-                : "var(--second-theme-color)",
-          }}
-        />
+        {slideCounts.map((slideCounts) => (
+          <li
+            className="ShowProgressBar-bar"
+            style={{
+              backgroundColor:
+                slidePosition === slideCounts
+                  ? "var(--first-theme-color)"
+                  : "var(--second-theme-color)",
+            }}
+          />
+        ))}
       </ul>
     </ShowProgressBarStyled>
   );
