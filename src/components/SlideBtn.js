@@ -9,14 +9,14 @@ const SlideBtnStyled = styled.div`
   top: calc(50vh - 50px);
   width: 100px;
   height: 100px;
-  background-color: rgba(154, 45, 55, 0.8);
+  background-color: var(--first-theme-color);
   cursor: pointer;
 
   display: flex;
   justify-content: center;
   align-items: center;
   svg {
-    color: wheat;
+    color: var(--second-theme-color);;
   }
 
   @media (max-width: 1028px) {

@@ -4,14 +4,14 @@ import styled from "styled-components";
 import html from "../../imgs/html.png";
 import css from "../../imgs/css.png";
 import javascript from "../../imgs/javascript.png";
-
 import typescript from "../../imgs/typescript.png";
 import react from "../../imgs/react.png";
 import redux from "../../imgs/redux.png";
-
+import express from "../../imgs/express.png";
 import sass from "../../imgs/sass.png";
 import node_js from "../../imgs/node-js.png";
 import github from "../../imgs/github.png";
+import nest from "../../imgs/nest.png";
 
 const SkillStyled = styled.div`
   display: flex;
@@ -33,12 +33,19 @@ const SkillStyled = styled.div`
   }
 
   @media (max-width: 1028px) {
+    .SKill-img {
+      width: 150px;
+      height: 150px;
+      i {
+        font-size: 1rem;
+      }
+    }
   }
 
   @media (max-width: 768px) {
     .SKill-img {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       i {
         font-size: 0.7rem;
       }
@@ -46,8 +53,8 @@ const SkillStyled = styled.div`
   }
   @media (max-width: 384px) {
     .SKill-img {
-      width: 80px;
-      height: 80px;
+      width: 40px;
+      height: 40px;
       i {
         font-size: 0.4rem;
       }
@@ -55,7 +62,7 @@ const SkillStyled = styled.div`
   }
 `;
 
-const Skill = ({ name }) => {
+const Skill = ({ name, handleMouseOver, handleMouseOut }) => {
   const [skillText, setSkillText] = useState("");
 
   const refDiv = useRef(null);
@@ -118,26 +125,28 @@ const Skill = ({ name }) => {
           "git를 통해 프로젝트를 관리하고 있으며 버전관리의 중요성을 항상 느끼고 있습니다."
         );
         break;
+      case "express":
+        division = express;
+        setSkillText(
+          "node환경 대표 웹 프레임워크인 express를 통해 간단한 웹 API를 작성할 수 있습니다."
+        );
+        break;
+      case "nest":
+        division = nest;
+        setSkillText(
+          "nest의 cli기반 코딩과 데코레이션 등에 큰 흥미를 느끼고 공부 중입니다."
+        );
+        break;
     }
     refDiv.current.style.backgroundImage = `url(${division})`;
   }, [name, refDiv]);
-
-  const handleMouseOver = () => {
-    refDiv.current.style.opacity = "0.8";
-    refI.current.style.display = "block";
-  };
-
-  const handleMouseOut = () => {
-    refDiv.current.style.opacity = "1";
-    refI.current.style.display = "none";
-  };
 
   return (
     <SkillStyled>
       <div
         ref={refDiv}
         className="SKill-img"
-        onMouseOver={handleMouseOver}
+        onMouseOver={()=>handleMouseOver(skillText)}
         onMouseOut={handleMouseOut}
       >
         <i ref={refI}>{skillText}</i>

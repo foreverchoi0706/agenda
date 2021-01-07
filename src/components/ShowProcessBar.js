@@ -33,31 +33,46 @@ const ShowProgressBar = ({ slidePosition }) => {
         <li
           className="ShowProgressBar-bar"
           style={{
-            backgroundColor: slidePosition === -1 ? "#9A2D37" : "wheat",
+            backgroundColor:
+              slidePosition === -1
+                ? "var(--first-theme-color)"
+                : "var(--second-theme-color)",
           }}
         />
         <li
           className="ShowProgressBar-bar"
           style={{
-            backgroundColor: slidePosition === -2 ? "#9A2D37" : "wheat",
+            backgroundColor:
+              slidePosition === -2
+                ? "var(--first-theme-color)"
+                : "var(--second-theme-color)",
           }}
         />
         <li
           className="ShowProgressBar-bar"
           style={{
-            backgroundColor: slidePosition === -3 ? "#9A2D37" : "wheat",
+            backgroundColor:
+              slidePosition === -3
+                ? "var(--first-theme-color)"
+                : "var(--second-theme-color)",
           }}
         />
         <li
           className="ShowProgressBar-bar"
           style={{
-            backgroundColor: slidePosition === -4 ? "#9A2D37" : "wheat",
+            backgroundColor:
+              slidePosition === -4
+                ? "var(--first-theme-color)"
+                : "var(--second-theme-color)",
           }}
         />
         <li
           className="ShowProgressBar-bar"
           style={{
-            backgroundColor: slidePosition === -5 ? "#9A2D37" : "wheat",
+            backgroundColor:
+              slidePosition === -5
+                ? "var(--first-theme-color)"
+                : "var(--second-theme-color)",
           }}
         />
       </ul>

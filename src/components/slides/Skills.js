@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Skill from "./Skill";
@@ -24,18 +24,13 @@ const SkillsStyled = styled.li`
       &:nth-child(even) {
         margin: 0 0 0 20vw;
       }
-      img {
-        width: 200px;
-        height: 200px;
-      }
     }
   }
   @media (max-width: 1028px) {
     .Skills-sections {
       section {
-        img {
-          width: 150px;
-          height: 150px;
+        h2 {
+          font-size: 1rem;
         }
         &:nth-child(odd) {
           margin: 0 10vw 0 0;
@@ -50,9 +45,24 @@ const SkillsStyled = styled.li`
   @media (max-width: 768px) {
     .Skills-sections {
       section {
-        img {
-          width: 80px;
-          height: 80px;
+        h2 {
+          font-size: 0.7rem;
+        }
+        &:nth-child(odd) {
+          margin: 0 5vw 0 0;
+        }
+        &:nth-child(even) {
+          margin: 0 0 0 5vw;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 384px) {
+    .Skills-sections {
+      section {
+        h2 {
+          font-size: 0.5rem;
         }
         &:nth-child(odd) {
           margin: 0 5vw 0 0;
@@ -65,24 +75,64 @@ const SkillsStyled = styled.li`
   }
 `;
 
+const basedSkills = ["html5", "css3", "javascript"];
+const frontEndSkills = ["react", "redux"];
+const backEndSkills = ["express", "nest"];
+const etcSkills = ["node_js", "typescript", "sass", "github"];
+
+const skills = [basedSkills,frontEndSkills,backEndSkills,etcSkills];
+
 const Skills = () => {
+  const [skillText, setSkillText] = useState({});
+
+  const handleMouseOver = (skillText) => {
+    console.log(skillText);
+  };
+
+  const handleMouseOut = () => {};
+
   return (
     <SkillsStyled>
       <div className="Skills-sections">
         <section>
-          <Skill name={"html5"} />
-          <Skill name={"css3"} />
-          <Skill name={"javascript"} />
+          {basedSkills.map((skill) => (
+            <Skill
+              name={skill}
+              handleMouseOver={handleMouseOver}
+              handleMouseOut={handleMouseOut}
+            />
+          ))}
+          <h2>BASED SKILLS</h2>
         </section>
         <section>
-          <Skill name={"sass"} />
-          <Skill name={"react"} />
-          <Skill name={"redux"} />
+          <h2>FRONT-END SKILLS</h2>
+          {frontEndSkills.map((skill) => (
+            <Skill
+              name={skill}
+              handleMouseOver={handleMouseOver}
+              handleMouseOut={handleMouseOut}
+            />
+          ))}
         </section>
         <section>
-          <Skill name={"typescript"} />
-          <Skill name={"node_js"} />
-          <Skill name={"github"} />
+          {backEndSkills.map((skill) => (
+            <Skill
+              name={skill}
+              handleMouseOver={handleMouseOver}
+              handleMouseOut={handleMouseOut}
+            />
+          ))}
+          <h2>BACK-END SKILLS</h2>
+        </section>
+        <section>
+          <h2>ETC SKILLS</h2>
+          {etcSkills.map((skill) => (
+            <Skill
+              name={skill}
+              handleMouseOver={handleMouseOver}
+              handleMouseOut={handleMouseOut}
+            />
+          ))}
         </section>
       </div>
     </SkillsStyled>

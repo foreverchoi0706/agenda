@@ -7,12 +7,17 @@ import email from "../../imgs/email.png";
 import mouse_black from "../../imgs/mouse_black.png";
 
 const ContactStyled = styled.li`
+  color: white;
   .Contact-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #9A2D37 50%, wheat 50%);
+    background: linear-gradient(
+      -45deg,
+      var(--first-theme-color) 50%,
+      var(--second-theme-color) 50%
+    );
     height: 100vh;
     .link-img {
       width: 100px;
@@ -74,7 +79,7 @@ const Contact = ({ isShow }) => {
         </footer>
         {isShow || (
           <a href="#top" className="Contact-mouse">
-            <img  src={mouse_black} alt="mouse" />
+            <img src={mouse_black} alt="mouse" />
           </a>
         )}
       </div>
