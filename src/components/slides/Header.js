@@ -60,7 +60,7 @@ const HeaderStyled = styled.li`
   }
 `;
 
-const skills = ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "REDUX"];
+const skills = ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "REDUX","EXPRESS","NEST","NODE","TYPESCRIPT","SASS"];
 
 const App = ({ isShow }) => {
   const refH2 = useRef(null);

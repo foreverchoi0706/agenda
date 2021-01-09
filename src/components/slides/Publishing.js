@@ -23,13 +23,9 @@ const PublishingStyle = styled.li`
       justify-content: center;
       align-items: center;
     }
-    a {
+    img {
       width: 33.333vw;
       height: 33.333vh;
-      img {
-        width: inherit;
-        height: inherit;
-      }
     }
   }
   @media (max-width: 1028px) {
@@ -40,7 +36,7 @@ const PublishingStyle = styled.li`
         grid-column: 1/-1;
         grid-row: 1/1;
       }
-      a {
+      img {
         width: 50vw;
         height: 100%;
       }
@@ -102,17 +98,15 @@ const Publishing = () => {
   return (
     <PublishingStyle>
       <div className="Publishing-container">
-        <h2>#Publishing</h2>
+        <h2>💡Publishing💡</h2>
         {urlList.map((url, index) => (
-          <a
+          <img
             onMouseEnter={handleMouseEnter}
             onMouseOut={handleMouseOut}
             key={index}
-            href={`https://foreverchoi0706.github.io/publishing/challenge/${url.href}`}
-            target="blank"
-          >
-            <img src={url.src} alt={url.name} />
-          </a>
+            src={url.src}
+            alt={url.name}
+          />
         ))}
       </div>
     </PublishingStyle>

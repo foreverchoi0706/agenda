@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
-import geppetto from "../../imgs/geppetto.png";
-import todo_web from "../../imgs/todo_web.png";
 import Project from "./Project";
+
+import geppetto from "../../imgs/projects/geppetto.png";
+import todo_web from "../../imgs/projects/todo_web.png";
+import velog from "../../imgs/projects/velog.png";
 
 const ProjectsStyled = styled.li`
   h2 {
@@ -21,6 +23,7 @@ const ProjectsStyled = styled.li`
     align-items: center;
     img {
       width: 100%;
+      height: 250px;
       cursor: pointer;
       &:hover {
         width: 105%;
@@ -31,6 +34,9 @@ const ProjectsStyled = styled.li`
     .Projects-container {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
+      img {
+        height: 150px;
+      }
     }
   }
 `;
@@ -39,29 +45,33 @@ const Projects = () => {
   const [modalState, setModalState] = useState({
     isClicked: false,
     division: "",
+    src: "",
   });
 
-  const handleClick = (division) => {
+  const handleClick = (division, src) => {
     setModalState({
       isClicked: !modalState.isClicked,
       division,
+      src,
     });
   };
 
-  const { isClicked, division } = modalState;
+  const { isClicked, division, src } = modalState;
 
   return (
     <ProjectsStyled>
-      <h2>#Projects</h2>
+      <h2>💻Projects💻</h2>
       <div className="Projects-container">
-        <img src={geppetto} onClick={() => handleClick("geppetto")} />
-        <img src={todo_web} onClick={() => handleClick("todo_web")} />
-        <img src={geppetto} onClick={() => handleClick("geppetto")} />
-        <img src={todo_web} onClick={() => handleClick("todo_web")} />
-        <img src={geppetto} onClick={() => handleClick("geppetto")} />
-        <img src={todo_web} onClick={() => handleClick("todo_web")} />
+        <img src={geppetto} onClick={() => handleClick("geppetto", geppetto)} />
+        <img src={todo_web} onClick={() => handleClick("todo_web", todo_web)} />
+        <img src={velog} onClick={() => handleClick("velog", velog)} />
+        <img src={geppetto} onClick={() => handleClick("geppetto", geppetto)} />
+        <img src={todo_web} onClick={() => handleClick("todo_web", todo_web)} />
+        <img src={velog} onClick={() => handleClick("velog", velog)} />
       </div>
-      {isClicked && <Project division={division} handleClick={handleClick} />}
+      {isClicked && (
+        <Project src={src} division={division} handleClick={handleClick} />
+      )}
     </ProjectsStyled>
   );
 };

@@ -8,13 +8,32 @@ const ProjectStyled = styled.div`
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 5px;
-
   position: absolute;
   top: 10vh;
   left: 310vw;
-  opacity: 1;
-  transition-duration: 1s;
-  transition-property: opacity;
+  animation: project-appear 0.5s linear;
+
+  h2 {
+    height : 3%;
+    margin : 1%;
+  }
+  .Project-container {
+    height : 96%;
+    display: flex;
+    align-items: center;
+    img {
+      width: 50%;
+    }
+  }
+
+  @keyframes project-appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
   @media (max-width: 1028px) {
     top: 310vh;
@@ -22,8 +41,16 @@ const ProjectStyled = styled.div`
   }
 `;
 
-const Project = ({ division, handleClick }) => {
-  return <ProjectStyled onClick={handleClick}>{division}</ProjectStyled>;
+const Project = ({ src, division, handleClick }) => {
+  return (
+    <ProjectStyled onClick={handleClick}>
+      <h2>{division}</h2>
+      <div className="Project-container">
+        <img src={src}></img>
+        <div className="Project-description">das</div>
+      </div>
+    </ProjectStyled>
+  );
 };
 
 export default Project;

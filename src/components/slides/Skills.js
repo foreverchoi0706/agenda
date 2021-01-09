@@ -37,6 +37,11 @@ const SkillsStyled = styled.li`
   @media (max-width: 1028px) {
     .Skills-sections {
       section {
+        h2 {
+          font-size: 0.7rem;
+          width: 100px;
+          height: 100px;
+        }
         &:nth-child(odd) {
           margin: 0 10vw 0 0;
         }
@@ -52,6 +57,8 @@ const SkillsStyled = styled.li`
       section {
         h2 {
           font-size: 0.7rem;
+          width: 75px;
+          height: 75px;
         }
         &:nth-child(odd) {
           margin: 0 5vw 0 0;
@@ -68,6 +75,8 @@ const SkillsStyled = styled.li`
       section {
         h2 {
           font-size: 0.5rem;
+          width: 50px;
+          height: 50px;
         }
         &:nth-child(odd) {
           margin: 0 5vw 0 0;
@@ -83,7 +92,7 @@ const SkillsStyled = styled.li`
 const basedSkills = ["html5", "css3", "javascript"];
 const frontEndSkills = ["react", "redux"];
 const backEndSkills = ["express", "nest"];
-const etcSkills = ["node_js", "typescript", "sass", "github"];
+const etcSkills = ["node_js", "typescript", "sass"];
 
 const allSkills = [basedSkills, frontEndSkills, backEndSkills, etcSkills];
 
@@ -96,8 +105,6 @@ const Skills = () => {
   });
 
   const handleMouseOver = (skillText, division) => {
-    console.log(division);
-    console.log(skillText);
     setSkillsText({
       ...skillsText,
       [division]: {
