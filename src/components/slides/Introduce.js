@@ -14,7 +14,6 @@ const IntroduceStyled = styled.li`
     flex-direction: column;
     justify-content: space-around;
     section {
-      border-radius: 5px;
       border: 2px solid lightgray;
       box-shadow: 5px 5px gray;
       h3 {

@@ -14,7 +14,6 @@ const ShowProgressBarStyled = styled.div`
     .ShowProgressBar-bar {
       width: 50px;
       height: 10px;
-      border-radius: 5px;
     }
   }
 `;

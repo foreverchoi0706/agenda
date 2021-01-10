@@ -14,7 +14,6 @@ const SkillsStyled = styled.li`
       flex-grow: 1;
       background-color: black;
       color: white;
-      border-radius: 5px;
       display: flex;
       justify-content: space-around;
       align-items: center;

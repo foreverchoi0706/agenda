@@ -6,7 +6,7 @@ import Project from "./Project";
 
 import geppetto from "../../imgs/projects/geppetto.png";
 import todo_web from "../../imgs/projects/todo_web.png";
-import velog from "../../imgs/projects/velog.png";
+import aquarium from "../../imgs/projects/aquarium.png";
 
 const ProjectsStyled = styled.li`
   h2 {
@@ -23,7 +23,7 @@ const ProjectsStyled = styled.li`
     align-items: center;
     img {
       width: 100%;
-
+      height: 300px;
       cursor: pointer;
       &:hover {
         width: 105%;
@@ -35,11 +35,18 @@ const ProjectsStyled = styled.li`
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
       img {
-        height: 200px;
+        height: 250px;
       }
     }
   }
   @media (max-width: 768px) {
+    .Projects-container {
+      img {
+        height: 200px;
+      }
+    }
+  }
+  @media (max-width: 512px) {
     .Projects-container {
       img {
         height: 150px;
@@ -55,36 +62,78 @@ const ProjectsStyled = styled.li`
   }
 `;
 
+const projects = [
+  {
+    name: "todo_web",
+    src: todo_web,
+    skills: [
+      "html5",
+      "css3",
+      "javascript",
+      "react",
+      "redux",
+      "sass",
+      "node_js",
+    ],
+    description: `투두 리스트를 리액트로 구현하였습니다. 
+    상태관리 라이브리인 리덕스와 browser storage를 사용하여 데이터를 관리하였습니다. 
+    테마색을 정할 수 있도록 하였으며 브라우저를 닫아도 유지되게 하였습니다.`,
+  },
+  {
+    name: "geppetto",
+    src: geppetto,
+    skills: ["html5", "css3", "javascript", "react", "redux"],
+    description: "",
+  },
+
+  {
+    name: "aquarium",
+    src: aquarium,
+    skills: ["html5", "css3", "javascript"],
+    description: `바닐라 자바스크립트를 이용하여 아이들을 위한 간단한 수족간 웹사이트를 만들었습니다.
+    물고기는 난수를 생성하여 자동으로 움직이도록 하였으며, 손(마우스)을 대면 도망가도록 하였습니다.`,
+  },
+];
+
 const Projects = () => {
   const [modalState, setModalState] = useState({
     isClicked: false,
-    division: "",
+    name: "",
     src: "",
+    skills: [],
   });
 
-  const handleClick = (division, src) => {
+  const handleClick = (name, src, skills, description) => {
     setModalState({
       isClicked: !modalState.isClicked,
-      division,
+      name,
       src,
+      skills,
+      description,
     });
   };
-
-  const { isClicked, division, src } = modalState;
 
   return (
     <ProjectsStyled>
       <h2>💻Projects💻</h2>
       <div className="Projects-container">
-        <img src={geppetto} onClick={() => handleClick("geppetto", geppetto)} />
-        <img src={todo_web} onClick={() => handleClick("todo_web", todo_web)} />
-        <img src={velog} onClick={() => handleClick("velog", velog)} />
-        <img src={geppetto} onClick={() => handleClick("geppetto", geppetto)} />
-        <img src={todo_web} onClick={() => handleClick("todo_web", todo_web)} />
-        <img src={velog} onClick={() => handleClick("velog", velog)} />
+        {projects.map((project, index) => (
+          <img
+            key={index}
+            src={project.src}
+            onClick={() =>
+              handleClick(
+                project.name,
+                project.src,
+                project.skills,
+                project.description
+              )
+            }
+          />
+        ))}
       </div>
-      {isClicked && (
-        <Project src={src} division={division} handleClick={handleClick} />
+      {modalState.isClicked && (
+        <Project handleClick={handleClick} {...modalState} />
       )}
     </ProjectsStyled>
   );
