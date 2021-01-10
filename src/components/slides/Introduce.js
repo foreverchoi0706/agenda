@@ -28,6 +28,16 @@ const IntroduceStyled = styled.li`
 
   @media (max-width: 1028px) {
     .Introduce-container {
+      font-size: 0.9rem;
+      padding: 0 7vw 0 7vw;
+      section {
+        h3 {
+          margin: 7px;
+        }
+        div {
+          margin: 15px;
+        }
+      }
     }
   }
 
@@ -36,18 +46,25 @@ const IntroduceStyled = styled.li`
       font-size: 0.7rem;
       padding: 0 5vw 0 5vw;
       section {
+        h3 {
+          margin: 5px;
+        }
         div {
-          margin: 15px;
+          margin: 10px;
         }
       }
     }
   }
   @media (max-width: 384px) {
     .Introduce-container {
-      font-size: 0.4rem;
+      font-size: 0.5rem;
+      padding: 0 1vw 0 1vw;
       section {
+        h3 {
+          margin: 2.5px;
+        }
         div {
-          margin: 10px;
+          margin: 5px;
         }
       }
     }
@@ -70,12 +87,12 @@ const App = () => {
         <section>
           <h3>Q. 자기소개?😊</h3>
           <div>
-            A.개발자의 길을 결심하게 되었던 것은, 그다지 오래되지는
-            않았습니다. 예전부터 무언가를 창작하는 것을 좋아하여 초중학교 때는
-            항상 수업 시간에 만화를 그려 선생님께 혼나기도 했고, 대학교 때는
-            동영상편집에 재미를 붙여 해외여행을 다녀와 찍었던 사진으로 여행
-            영상을 만들기도 했습니다. 전역 후 복학하여 적성에 맞지 않은 과와
-            미래에 대한 불안에 방황하고 있었을 때,{" "}
+            A.개발자의 길을 결심하게 되었던 것은, 그다지 오래되지는 않았습니다.
+            예전부터 무언가를 창작하는 것을 좋아하여 초중학교 때는 항상 수업
+            시간에 만화를 그려 선생님께 혼나기도 했고, 대학교 때는 동영상편집에
+            재미를 붙여 해외여행을 다녀와 찍었던 사진으로 여행 영상을 만들기도
+            했습니다. 전역 후 복학하여 적성에 맞지 않은 과와 미래에 대한 불안에
+            방황하고 있었을 때,{" "}
             <StrongI
               text={
                 "개발자라는 직업을 만났습니다. 무언가를 고민하고, 만들고, 이바지하여 사람들의 삶에 도움을 준다는 개발자라는 직업은 큰 매력으로 다가왔습니다."

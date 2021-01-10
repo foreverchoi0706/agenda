@@ -1,17 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 
-import html from "../../imgs/html.png";
-import css from "../../imgs/css.png";
-import javascript from "../../imgs/javascript.png";
-import typescript from "../../imgs/typescript.png";
-import react from "../../imgs/react.png";
-import redux from "../../imgs/redux.png";
-import express from "../../imgs/express.png";
-import sass from "../../imgs/sass.png";
-import node_js from "../../imgs/node-js.png";
-import github from "../../imgs/github.png";
-import nest from "../../imgs/nest.png";
+import html from "../../imgs/skills/html.png";
+import css from "../../imgs/skills/css.png";
+import javascript from "../../imgs/skills/javascript.png";
+import typescript from "../../imgs/skills/typescript.png";
+import react from "../../imgs/skills/react.png";
+import redux from "../../imgs/skills/redux.png";
+import express from "../../imgs/skills/express.png";
+import sass from "../../imgs/skills/sass.png";
+import node_js from "../../imgs/skills/node-js.png";
+import nest from "../../imgs/skills/nest.png";
 
 const SkillStyled = styled.div`
   display: flex;
@@ -135,14 +134,6 @@ const Skill = ({ name, handleMouseOver, handleMouseOut }) => {
         setSkill({
           text:
             "기초적인 웹 서버 구축 및 npm,yarn,webpack,babel등 관리도구,모듈번들러,트랜스파일러의 사용이 가능합니다.",
-          division: "etcSkillsText",
-        });
-        break;
-      case "github":
-        division = github;
-        setSkill({
-          text:
-            "git를 통해 프로젝트를 관리하고 있으며 버전관리의 중요성을 항상 느끼고 있습니다.",
           division: "etcSkillsText",
         });
         break;

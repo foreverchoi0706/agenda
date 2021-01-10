@@ -23,7 +23,7 @@ const ProjectsStyled = styled.li`
     align-items: center;
     img {
       width: 100%;
-      height: 250px;
+
       cursor: pointer;
       &:hover {
         width: 105%;
@@ -35,7 +35,21 @@ const ProjectsStyled = styled.li`
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
       img {
+        height: 200px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .Projects-container {
+      img {
         height: 150px;
+      }
+    }
+  }
+  @media (max-width: 384px) {
+    .Projects-container {
+      img {
+        height: 100px;
       }
     }
   }

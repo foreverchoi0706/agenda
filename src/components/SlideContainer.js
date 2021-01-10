@@ -14,6 +14,7 @@ const SlideContainerStyled = styled.ul`
   display: flex;
   & > li {
     width: 100vw;
+    height : 100vh;
     h2 {
       text-align: center;
     }
