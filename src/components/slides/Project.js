@@ -4,13 +4,14 @@ import Skill from "./Skill";
 import styled from "styled-components";
 
 const ProjectStyled = styled.div`
-  width: 80vw;
+  font-weight: bold;
+  width: 800px;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 5px;
   position: absolute;
   top: 10vh;
-  left: 310vw;
+  left: calc(350vw - 400px);
   animation: project-appear 0.5s linear;
   background: linear-gradient(-45deg, var(--first-theme-color) 50%, white 50%);
   h2 {
@@ -20,12 +21,10 @@ const ProjectStyled = styled.div`
   .Project-container {
     height: calc(100% - 68px);
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 10px;
-    gap: 20px;
     .Project-subject {
-      height: 100%;
-      width: 50%;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -34,13 +33,7 @@ const ProjectStyled = styled.div`
           width: 100%;
           height: 50%;
         }
-        strong {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
       }
-
       nav {
         display: flex;
         justify-content: space-between;
@@ -48,17 +41,22 @@ const ProjectStyled = styled.div`
         padding: 5px;
         a {
           color: black;
-          font-weight: bold;
         }
       }
     }
     .Project-skills {
-      width: 50%;
+      width: 100%;
+      border: 1px solid black;
+      border-radius : 5px;
       display: grid;
-      justify-content: center;
-      align-content: center;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: auto;
+      justify-content: center;
+      align-content: center;
+      span {
+
+        text-align: center;
+      }
     }
 
     @keyframes project-appear {
@@ -72,8 +70,9 @@ const ProjectStyled = styled.div`
   }
 
   @media (max-width: 1028px) {
+    width: 80vw;
     font-size: 0.7rem;
-    top: 310vh;
+    top: 330vh;
     left: 10vw;
     .Project-container {
       flex-direction: column;
@@ -92,7 +91,15 @@ const ProjectStyled = styled.div`
 
 const tempEvent = () => {};
 
-const Project = ({ name, src, handleClick, skills, description }) => {
+const Project = ({
+  name,
+  src,
+  handleClick,
+  skills,
+  description,
+  link,
+  git,
+}) => {
   return (
     <ProjectStyled onClick={handleClick}>
       <h2>{name}</h2>
@@ -104,19 +111,18 @@ const Project = ({ name, src, handleClick, skills, description }) => {
             <strong>{description}</strong>
           </div>
           <nav>
-            <a href="">👉사이트 바로가기👈</a>
-            <a href="">👉Github바로가기👈</a>
+            <a href={link} target="blank">
+              👉사이트 바로가기👈
+            </a>
+            <a href={git} target="blank">
+              👉Github바로가기👈
+            </a>
           </nav>
         </div>
 
         <div className="Project-skills">
           {skills.map((skill, index) => (
-            <Skill
-              key={index}
-              name={skill}
-              handleMouseOver={tempEvent}
-              handleMouseOut={tempEvent}
-            />
+            <span>{skill}</span>
           ))}
         </div>
       </div>

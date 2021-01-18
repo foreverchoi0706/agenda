@@ -12,6 +12,7 @@ const ShowProgressBarStyled = styled.div`
     display: flex;
     gap: 25px;
     .ShowProgressBar-bar {
+      border-radius : 5px;  
       width: 50px;
       height: 10px;
     }

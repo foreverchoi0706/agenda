@@ -11,6 +11,7 @@ const SkillsStyled = styled.li`
     justify-content: space-around;
     gap: 10px;
     section {
+      border-radius: 5px;
       flex-grow: 1;
       background-color: black;
       color: white;
@@ -134,8 +135,9 @@ const Skills = () => {
     <SkillsStyled>
       <div className="Skills-sections">
         <section>
-          {basedSkills.map((skill) => (
+          {basedSkills.map((skill, index) => (
             <Skill
+              key={index}
               name={skill}
               handleMouseOver={handleMouseOver}
               handleMouseOut={handleMouseOut}

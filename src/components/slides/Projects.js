@@ -3,10 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import Project from "./Project";
-
-import geppetto from "../../imgs/projects/geppetto.png";
-import todo_web from "../../imgs/projects/todo_web.png";
-import aquarium from "../../imgs/projects/aquarium.png";
+import info from "../../info";
 
 const ProjectsStyled = styled.li`
   h2 {
@@ -23,7 +20,7 @@ const ProjectsStyled = styled.li`
     align-items: center;
     img {
       width: 100%;
-      height: 300px;
+      height: 330px;
       cursor: pointer;
       &:hover {
         width: 105%;
@@ -62,38 +59,7 @@ const ProjectsStyled = styled.li`
   }
 `;
 
-const projects = [
-  {
-    name: "todo_web",
-    src: todo_web,
-    skills: [
-      "html5",
-      "css3",
-      "javascript",
-      "react",
-      "redux",
-      "sass",
-      "node_js",
-    ],
-    description: `투두 리스트를 리액트로 구현하였습니다. 
-    상태관리 라이브리인 리덕스와 browser storage를 사용하여 데이터를 관리하였습니다. 
-    테마색을 정할 수 있도록 하였으며 브라우저를 닫아도 유지되게 하였습니다.`,
-  },
-  {
-    name: "geppetto",
-    src: geppetto,
-    skills: ["html5", "css3", "javascript", "react", "redux"],
-    description: "",
-  },
-
-  {
-    name: "aquarium",
-    src: aquarium,
-    skills: ["html5", "css3", "javascript"],
-    description: `바닐라 자바스크립트를 이용하여 아이들을 위한 간단한 수족간 웹사이트를 만들었습니다.
-    물고기는 난수를 생성하여 자동으로 움직이도록 하였으며, 손(마우스)을 대면 도망가도록 하였습니다.`,
-  },
-];
+const { projects } = info;
 
 const Projects = () => {
   const [modalState, setModalState] = useState({
@@ -101,15 +67,19 @@ const Projects = () => {
     name: "",
     src: "",
     skills: [],
+    link: "",
+    git: "",
   });
 
-  const handleClick = (name, src, skills, description) => {
+  const handleClick = (name, src, skills, description,link,git) => {
     setModalState({
       isClicked: !modalState.isClicked,
       name,
       src,
       skills,
       description,
+      link,
+      git,
     });
   };
 
@@ -126,7 +96,9 @@ const Projects = () => {
                 project.name,
                 project.src,
                 project.skills,
-                project.description
+                project.description,
+                project.link,
+                project.git
               )
             }
           />

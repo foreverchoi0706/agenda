@@ -133,7 +133,7 @@ const Skill = ({ name, handleMouseOver, handleMouseOut }) => {
         division = node_js;
         setSkill({
           text:
-            "기초적인 웹 서버 구축 및 npm,yarn,webpack,babel등 관리도구,모듈번들러,트랜스파일러의 사용이 가능합니다.",
+            "웹 서버 구축 및 NPM,YARN,WEPACK,BABEL 관리도구,모듈번들러,트랜스파일러의 사용이 가능합니다.",
           division: "etcSkillsText",
         });
         break;
@@ -141,7 +141,7 @@ const Skill = ({ name, handleMouseOver, handleMouseOut }) => {
         division = express;
         setSkill({
           text:
-            "node환경 대표 웹 프레임워크인 express를 통해 간단한 웹 API를 작성할 수 있습니다.",
+            "NODE환경 대표 웹 프레임워크인 EXPRESS를 통해 간단한 WEB APP을 작성할 수 있습니다.",
           division: "backEndSkillsText",
         });
         break;
@@ -149,7 +149,7 @@ const Skill = ({ name, handleMouseOver, handleMouseOut }) => {
         division = nest;
         setSkill({
           text:
-            "nest의 cli기반 코딩과 데코레이션 등에 큰 흥미를 느끼고 공부 중입니다.",
+            "NEST의 COMMAND 기반 코딩과 DECORATION 등에 큰 흥미를 느끼고 공부 중입니다.",
           division: "backEndSkillsText",
         });
         break;
