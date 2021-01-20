@@ -47,14 +47,13 @@ const ProjectStyled = styled.div`
     .Project-skills {
       width: 100%;
       border: 1px solid black;
-      border-radius : 5px;
+      border-radius: 5px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: auto;
       justify-content: center;
       align-content: center;
       span {
-
         text-align: center;
       }
     }
@@ -89,8 +88,6 @@ const ProjectStyled = styled.div`
   }
 `;
 
-const tempEvent = () => {};
-
 const Project = ({
   name,
   src,
@@ -114,9 +111,11 @@ const Project = ({
             <a href={link} target="blank">
               👉사이트 바로가기👈
             </a>
-            <a href={git} target="blank">
-              👉Github바로가기👈
-            </a>
+            {git && (
+              <a href={git} target="blank">
+                👉Github바로가기👈
+              </a>
+            )}
           </nav>
         </div>
 

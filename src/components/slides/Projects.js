@@ -20,7 +20,7 @@ const ProjectsStyled = styled.li`
     align-items: center;
     img {
       width: 100%;
-      height: 330px;
+      height: 350px;
       cursor: pointer;
       &:hover {
         width: 105%;
@@ -32,28 +32,28 @@ const ProjectsStyled = styled.li`
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
       img {
-        height: 250px;
+        height: 275px;
       }
     }
   }
   @media (max-width: 768px) {
     .Projects-container {
       img {
-        height: 200px;
+        height: 225px;
       }
     }
   }
   @media (max-width: 512px) {
     .Projects-container {
       img {
-        height: 150px;
+        height: 175px;
       }
     }
   }
   @media (max-width: 384px) {
     .Projects-container {
       img {
-        height: 100px;
+        height: 125px;
       }
     }
   }
@@ -71,7 +71,7 @@ const Projects = () => {
     git: "",
   });
 
-  const handleClick = (name, src, skills, description,link,git) => {
+  const handleClick = (name, src, skills, description, link, git) => {
     setModalState({
       isClicked: !modalState.isClicked,
       name,

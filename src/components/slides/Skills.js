@@ -90,11 +90,9 @@ const SkillsStyled = styled.li`
 `;
 
 const basedSkills = ["html5", "css3", "javascript"];
-const frontEndSkills = ["react", "redux"];
-const backEndSkills = ["express", "nest"];
-const etcSkills = ["node_js", "typescript", "sass"];
-
-const allSkills = [basedSkills, frontEndSkills, backEndSkills, etcSkills];
+const frontEndSkills = ["react", "redux", "sass"];
+const backEndSkills = ["express"];
+const etcSkills = ["node_js", "typescript"];
 
 const Skills = () => {
   const [skillsText, setSkillsText] = useState({
