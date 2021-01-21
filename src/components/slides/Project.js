@@ -108,9 +108,16 @@ const Project = ({
             <strong>{description}</strong>
           </div>
           <nav>
-            <a href={link} target="blank">
-              👉사이트 바로가기👈
-            </a>
+            {name !== "For you" ? (
+              <a href={link} target="blank">
+                👉사이트 바로가기👈
+              </a>
+            ) : (
+              <a href={link} target="blank">
+                👉소개영상 바로가기👈
+              </a>
+            )}
+
             {git && (
               <a href={git} target="blank">
                 👉Github바로가기👈
@@ -121,7 +128,7 @@ const Project = ({
 
         <div className="Project-skills">
           {skills.map((skill, index) => (
-            <span>{skill}</span>
+            <span key={index}>{skill}</span>
           ))}
         </div>
       </div>

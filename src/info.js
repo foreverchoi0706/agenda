@@ -92,11 +92,14 @@ const info = {
         "JAVA",
         "CSS3",
         "JAVASCRIPT",
+        "JQUERY",
         "SPRING LEGACY",
         "ORACLE",
         "TOMCAT",
       ],
       description: `
+        E-BOOK 대여 사이트를 팀 프로젝트로 구현하였습니다. SPRING의 MVC패턴을 이용하였으며 ORACLE DB를 사용하였습니다.
+        저는 이 프로젝트에서 디자인 및 백엔드 로직 전반을 담당하였습니다. 
       `,
       link: "https://www.youtube.com/watch?v=OIqNYLeudTQ",
       git: "",

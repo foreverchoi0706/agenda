@@ -102,7 +102,7 @@ const Skill = ({ name, handleMouseOver, handleMouseOut }) => {
         setSkill({
           text:
             "css 전처리기인 sass에 지식이 있습니다. sass 특유의 nesting에 큰 매력을 느끼고 있습니다.",
-          division: "etcSkillsText",
+          division: "frontEndSkillsText",
         });
         break;
       case "react":

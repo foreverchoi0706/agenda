@@ -38,7 +38,7 @@ const SkillsStyled = styled.li`
     .Skills-sections {
       section {
         h2 {
-          font-size: 0.7rem;
+          font-size: 0.8rem;
           width: 100px;
           height: 100px;
         }
@@ -52,23 +52,6 @@ const SkillsStyled = styled.li`
     }
   }
 
-  @media (max-width: 768px) {
-    .Skills-sections {
-      section {
-        h2 {
-          font-size: 0.7rem;
-          width: 75px;
-          height: 75px;
-        }
-        &:nth-child(odd) {
-          margin: 0 5vw 0 0;
-        }
-        &:nth-child(even) {
-          margin: 0 0 0 5vw;
-        }
-      }
-    }
-  }
 
   @media (max-width: 384px) {
     .Skills-sections {
