@@ -9,7 +9,7 @@ const IntroduceStyled = styled.li`
   .Introduce-container {
     height: calc(100vh - 7vh);
     padding: 0 10vw 0 10vw;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

@@ -10,6 +10,9 @@ import challenge_Day06 from "../../imgs/publishing/challenge_Day06.png";
 import challenge_Day07 from "../../imgs/publishing/challenge_Day07.png";
 import challenge_Day09 from "../../imgs/publishing/challenge_Day09.png";
 
+import horror from "../../imgs/publishing/horror.png";
+import paintBox from "../../imgs/publishing/paintBox.png";
+
 const PublishingStyle = styled.li`
   .Publishing-container {
     height: 100vh;
@@ -47,12 +50,12 @@ const urlList = [
   {
     name: "Publishing01",
     href: "challenge_Day01",
-    src: challenge_Day01,
+    src: horror,
   },
   {
     name: "Publishing02",
     href: "challenge_Day02.html",
-    src: challenge_Day02,
+    src: paintBox,
   },
   {
     name: "Publishing03",
@@ -86,27 +89,13 @@ const urlList = [
   },
 ];
 
-const handleMouseEnter = (e) => {
-  e.target.style.opacity = "0.8";
-};
-
-const handleMouseOut = (e) => {
-  e.target.style.opacity = "1";
-};
-
 const Publishing = () => {
   return (
     <PublishingStyle>
       <div className="Publishing-container">
         <h2>💡Publishing💡</h2>
         {urlList.map((url, index) => (
-          <img
-            onMouseEnter={handleMouseEnter}
-            onMouseOut={handleMouseOut}
-            key={index}
-            src={url.src}
-            alt={url.name}
-          />
+          <img key={index} src={url.src} alt={url.name} />
         ))}
       </div>
     </PublishingStyle>

@@ -23,7 +23,7 @@ const ProjectsStyled = styled.li`
       height: 350px;
       cursor: pointer;
       &:hover {
-        width: 105%;
+        opacity: 0.8;
       }
     }
   }

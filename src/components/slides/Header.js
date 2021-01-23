@@ -92,7 +92,7 @@ const App = ({ isShow }) => {
   return (
     <HeaderStyled>
       <h1 className="Header-greeting">
-        전문성있는 프론트엔드 개발자를 꿈꿉니다. 향삼심을 가진 지원자
+        전문성있는 개발자를 꿈꿉니다. 향삼심을 가진 지원자
         최영원입니다.
       </h1>
       <h2 className="Header-skills" ref={refH2} />
