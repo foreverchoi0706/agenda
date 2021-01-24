@@ -16,9 +16,12 @@ const Porjects = () => {
         {projectsInfo.projects.map((project, index) => (
           <Project
             key={index}
-            title={project.name}
+            name={project.name}
             src={project.src}
             skills={project.skills}
+            description={project.description}
+            link={project.link}
+            git={project.git}
           />
         ))}
       </div>

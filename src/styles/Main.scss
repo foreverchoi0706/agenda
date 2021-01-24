@@ -1,5 +1,7 @@
 .Main {
   padding-left: 20vw;
+  box-sizing: border-box;
+  border-right: 2px dotted white;
   .Main-contents {
     display: flex;
     flex-direction: column;

@@ -1,7 +1,6 @@
 .Modal {
   width: 100vw;
   height: 100vh;
-  
   position: fixed;
   top: 0;
   left: 0;
@@ -10,9 +9,93 @@
   justify-content: center;
   align-items: center;
   .Modal-contents {
-    width: 700px;
-    height: 400px;
+    font-weight: bold;
+    width: 800px;
     background-color: white;
+    border: 1px solid lightgray;
     border-radius: 5px;
+    position: absolute;
+    animation: Modal-animation 0.5s linear;
+    h2 {
+      height: 30px;
+      margin: 10px;
+    }
+    .Modal-container {
+      height: calc(100% - 68px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      .Modal-subject {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .Modal-detail {
+          text-align: center;
+          img {
+            width: 100%;
+            height: 50%;
+          }
+        }
+        nav {
+          display: flex;
+          justify-content: space-between;
+          border-top: 1px solid gray;
+          padding: 5px;
+          a {
+            color: black;
+          }
+        }
+      }
+      .Modal-skills {
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+        justify-content: center;
+        align-content: center;
+        span {
+          text-align: center;
+        }
+      }
+      @keyframes Modal-animation {
+        from {
+          transform: rotateY(-10px);
+          opacity: 0;
+        }
+        to {
+          transform: rotateY(0px);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .Modal {
+    .Modal-contents {
+      width: 90vw;
+      h2 {
+      }
+      .Modal-container {
+        .Modal-subject {
+          .Modal-detail {
+            img {
+            }
+          }
+          nav {
+            a {
+            }
+          }
+        }
+        .Modal-skills {
+          span {
+          }
+        }
+      }
+    }
   }
 }
