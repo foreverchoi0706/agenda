@@ -1,12 +1,32 @@
 import React from "react";
 import { memo } from "react";
 
+import Top from "./Top";
+import Intro from "./Intro";
+import Projects from "./Projects/Projects";
+import Skills from "./Skills/Skills";
+
 import "../styles/Main.scss";
 
 const Main = () => {
-    return <main className="Main">
-        this is Main
+  return (
+    <main className="Main">
+      <div className="Main-contents">
+        <section>
+          <Top />
+        </section>
+        <section>
+          <Intro />
+        </section>
+        <section>
+          <Projects />
+        </section>
+        <section>
+          <Skills />
+        </section>
+      </div>
     </main>
-}
+  );
+};
 
 export default memo(Main);

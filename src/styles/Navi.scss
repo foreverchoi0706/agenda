@@ -1,6 +1,51 @@
-.Navi{
-    width: 20vw;
-    height: 100vh;
-    background-color: skyblue;
-    position: fixed;    
+.Navi {
+  width: 20vw;
+  height: 100vh;
+  background-color: skyblue;
+  color: white;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  .Navi-title {
+    text-align: center;
+  }
+  .Navi-contents {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    ul {
+      list-style: decimal-leading-zero;
+      li {
+        border-bottom: 1px solid white;
+        padding-bottom: 20px;
+        margin-top: 20px;
+        a {
+          text-decoration: none;
+          font-style: italic;
+          color: white;
+        }
+      }
+    }
+    .Navi-link {
+      padding: 10px;
+
+      display: flex;
+      justify-content: space-around;
+      img {
+        width: 50px;
+        &:hover {
+          animation: hover-animation 0.5s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes hover-animation {
+  to {
+    transform: translateY(-5px);
+  }
 }

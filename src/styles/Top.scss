@@ -1,0 +1,33 @@
+.Top {
+  position: relative;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  height: 500px;
+
+  .Top-comment {
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 200px;
+  }
+  .Top-typing {
+    padding-right: 5px;
+    animation: typing-animation 0.5s linear infinite;
+  }
+  .Top-img {
+    position: absolute;
+    width: 100px;
+    border-radius: 50%;
+    left: calc(50% - 50px);
+    bottom: 50px;
+  }
+}
+
+@keyframes typing-animation {
+  fron {
+    border-right: none;
+  }
+  to {
+    border-right: 1px solid white;
+  }
+}

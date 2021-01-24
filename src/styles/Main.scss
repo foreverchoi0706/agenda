@@ -1,4 +1,7 @@
-.Main{
-    border: 1px solid lightgray;
-    height: 200vh;
+.Main {
+  padding-left: 20vw;
+  .Main-contents {
+    display: flex;
+    flex-direction: column;
+  }
 }
