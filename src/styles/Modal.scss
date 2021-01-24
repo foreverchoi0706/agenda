@@ -76,26 +76,14 @@
 
 @media (max-width: 900px) {
   .Modal {
+    font-size: 0.8rem;
     .Modal-contents {
       width: 90vw;
-      h2 {
-      }
-      .Modal-container {
-        .Modal-subject {
-          .Modal-detail {
-            img {
-            }
-          }
-          nav {
-            a {
-            }
-          }
-        }
-        .Modal-skills {
-          span {
-          }
-        }
-      }
     }
+  }
+}
+@media (max-width: 540px) {
+  .Modal {
+    font-size: 0.6rem;
   }
 }

@@ -36,12 +36,16 @@
 
 @media (max-width: 900px) {
   .Top {
-    font-size: 0.8rem;
+    .Top-comment {
+      font-size: 0.8rem;
+    }
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 540px) {
   .Top {
-    font-size: 0.8rem;
+    .Top-comment {
+      font-size: 0.6rem;
+    }
   }
 }

@@ -7,6 +7,28 @@
     height: 3px;
   }
   img {
-    transform: rotate(45deg);
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .RocketLine {
+    div {
+      height: 2px;
+    }
+    img {
+      width: 50px;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .RocketLine {
+    div {
+      height: 1px;
+    }
+    img {
+      width: 30px;
+    }
   }
 }

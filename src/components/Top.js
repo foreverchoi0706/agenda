@@ -3,6 +3,7 @@ import React, { memo, useRef, useEffect } from "react";
 import me from "../assets/me.jpg";
 
 import "../styles/Top.scss";
+
 const skills = [
   "HTML5",
   "CSS3",

@@ -7,7 +7,6 @@
   box-sizing: border-box;
   border-left: 2px dotted white;
 
-
   display: flex;
   flex-direction: column;
   .Navi-title {
@@ -53,8 +52,37 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .Navi {
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 900px) {
   .Navi {
-    display: none;
+    padding: 0 10px 0 10px;
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    align-items: center;
+    border-left: none;
+    z-index: 999;
+    .Navi-contents {
+      flex-direction: row;
+      ul {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        li {
+          border-bottom: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+    .Navi-link {
+      align-items: center;
+    }
   }
 }
