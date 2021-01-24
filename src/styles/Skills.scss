@@ -2,10 +2,11 @@
   padding: 10px;
   .Skills-contents {
     display: grid;
-    grid-template-columns: repeat(5, 120px);
+    grid-template-columns: repeat(5, 10vw);
     justify-content: space-around;
+    justify-items: center;
     .Skill {
-      height: 120px;
+      height: 10vw;
       display: flex;
       text-align: center;
       justify-content: center;

@@ -50,6 +50,7 @@ const Top = () => {
         </h1>
         <strong className="Top-typing" ref={refH2}></strong>
       </div>
+
       <img className="Top-img" src={me} />
     </div>
   );

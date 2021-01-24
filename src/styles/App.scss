@@ -1,5 +1,10 @@
-.App{
-    margin: 0 200px 0 200px;
-  
-    position: relative;
+.App {
+  margin: 0 10vw 0 10vw;
+  position: relative;
+}
+
+@media (max-width: 1150px) {
+  .App {
+    margin: 0;
+  }
 }

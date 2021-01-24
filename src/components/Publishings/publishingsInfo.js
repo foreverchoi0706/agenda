@@ -36,11 +36,6 @@ const publishingInfo = {
       src: challenge_Day05,
     },
     {
-      name: "Publishing06",
-      href: "challenge_Day06.html",
-      src: challenge_Day06,
-    },
-    {
       name: "Publishing07",
       href: "challenge_Day07.html",
       src: challenge_Day07,

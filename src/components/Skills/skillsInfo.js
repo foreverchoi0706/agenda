@@ -36,11 +36,7 @@ const skillsInfo = {
       src: react,
       description: `여러 서드파티 라이브러리와 함께 사용하고 있으며 클래스 및 함수형 컴포넌트 두루 활용이 가능합니다.`,
     },
-    {
-      name: "React-Native",
-      src: reactNative,
-      description: ``,
-    },
+
     {
       name: "Redux",
       src: redux,

@@ -1,17 +1,16 @@
-import React, { memo } from "react";
-import {
-  CardActionArea,
-  CardMedia,
-  CardActions,
-  CardContent,
-  Card,
-  Button,
-} from "@material-ui/core";
+import React, { memo, useState } from "react";
+import { CardActionArea, CardContent, Card } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
+import Modal from "../Modal";
+
 const Project = ({ title, src }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => setIsClicked(!isClicked);
+
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -20,6 +19,7 @@ const Project = ({ title, src }) => {
         </CardContent>
         <img src={src} />
       </CardActionArea>
+      {isClicked && <Modal />}
     </Card>
   );
 };

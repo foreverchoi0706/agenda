@@ -10,12 +10,9 @@ import email from "../assets/email.png";
 const Navi = () => {
   return (
     <nav className="Navi">
-      <h1 className="Navi-title">Navigation</h1>
+      <h1 className="Navi-title">#ForeverChoi</h1>
       <div className="Navi-contents">
         <ul>
-          <li>
-            <a href="#">Top</a>
-          </li>
           <li>
             <a href="#Intro">인트로</a>
           </li>

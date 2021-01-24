@@ -1,5 +1,12 @@
 .Intro {
   padding: 10px;
   .Intro-contents {
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 900px) {
+  .Intro {
+    font-size: 0.8rem;
   }
 }

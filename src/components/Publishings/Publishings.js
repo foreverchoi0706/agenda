@@ -10,7 +10,7 @@ const Publishings = () => {
   return (
     <div id="Publishings" className="Publishings">
       <h2>
-        퍼블리싱 <Code />
+        04. 퍼블리싱 <Code />
       </h2>
       <div className="Publishing-contents">
         {publishingsInfo.publishings.map((url, index) => (

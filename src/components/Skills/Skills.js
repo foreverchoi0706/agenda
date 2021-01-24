@@ -10,11 +10,12 @@ const Skills = () => {
   return (
     <div id="Skills" className="Skills">
       <h2>
-        기술 스택 <ViewModule />
+        02. 기술 스택 <ViewModule />
       </h2>
       <div className="Skills-contents">
-        {skillsInfo.skills.map((skill) => (
+        {skillsInfo.skills.map((skill, index) => (
           <Skill
+            key={index}
             name={skill.name}
             src={skill.src}
             description={skill.description}

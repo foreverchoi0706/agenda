@@ -2,16 +2,7 @@ import React, { memo, useState } from "react";
 import { Paper, Typography } from "@material-ui/core";
 
 const Skill = ({ name, src, description }) => {
-  return (
-    <Paper
-      className="Skill"
-      elevation={0}
-      style={{
-        backgroundImage: `url(${src})`,
-        backgroundSize: "cover",
-      }}
-    ></Paper>
-  );
+  return <img className="Skill" src={src} alt={name} />;
 };
 
 export default memo(Skill);

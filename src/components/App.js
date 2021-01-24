@@ -4,6 +4,7 @@ import Main from "./Main";
 import Navi from "./Navi";
 import "../styles/App.scss";
 
+
 const initialState = {};
 
 const context = createContext();
@@ -23,6 +24,7 @@ const App = () => {
       <context.Provider value={{ state, dispatch }}>
         <Navi />
         <Main />
+      
       </context.Provider>
     </div>
   );

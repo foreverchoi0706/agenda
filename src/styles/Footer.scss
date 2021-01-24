@@ -1,0 +1,16 @@
+.Footer {
+  background-color: indigo;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 33vh;
+}
+
+@media (max-width: 900px) {
+  .Footer {
+    font-size: 0.8rem;
+  }
+}

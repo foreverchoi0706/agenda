@@ -5,10 +5,12 @@
   height: 500px;
 
   .Top-comment {
+    width: 100%;
     text-align: center;
     color: white;
     position: absolute;
-    bottom: 200px;
+    text-align: center;
+    bottom: 50%;
   }
   .Top-typing {
     padding-right: 5px;
@@ -24,10 +26,22 @@
 }
 
 @keyframes typing-animation {
-  fron {
-    border-right: none;
+  from {
+    border-right: 1px solid black;
   }
   to {
     border-right: 1px solid white;
+  }
+}
+
+@media (max-width: 900px) {
+  .Top {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .Top {
+    font-size: 0.8rem;
   }
 }

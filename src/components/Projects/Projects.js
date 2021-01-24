@@ -9,10 +9,13 @@ import "../../styles/Projects.scss";
 const Porjects = () => {
   return (
     <div id="Projects" className="Projects">
-      <h2>프로젝트 <ImportantDevices/></h2>
+      <h2>
+        03. 프로젝트 <ImportantDevices />
+      </h2>
       <div className="Projects-container">
-        {projectsInfo.projects.map((project) => (
+        {projectsInfo.projects.map((project, index) => (
           <Project
+            key={index}
             title={project.name}
             src={project.src}
             skills={project.skills}
