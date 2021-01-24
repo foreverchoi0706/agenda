@@ -3,8 +3,7 @@
   align-items: center;
   div {
     flex-grow: 1;
-    background-color: rgb(20, 26, 60);
-    height: 3px;
+    border-bottom: 3px dashed black;
   }
   img {
     transform: rotate(90deg);
@@ -14,7 +13,7 @@
 @media (max-width: 900px) {
   .RocketLine {
     div {
-      height: 2px;
+      border-bottom: 2px dashed black;
     }
     img {
       width: 50px;
@@ -25,7 +24,7 @@
 @media (max-width: 540px) {
   .RocketLine {
     div {
-      height: 1px;
+      border-bottom: 1px dashed black;
     }
     img {
       width: 30px;

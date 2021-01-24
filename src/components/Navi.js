@@ -1,11 +1,9 @@
 import React from "react";
 import { memo } from "react";
 
-import "../styles/Navi.scss";
+import Links from "./Links";
 
-import blog from "../assets/blog.png";
-import git from "../assets/git.png";
-import email from "../assets/email.png";
+import "../styles/Navi.scss";
 
 const Navi = () => {
   return (
@@ -26,16 +24,8 @@ const Navi = () => {
             <a href="#Publishings">퍼블리싱</a>
           </li>
         </ul>
-        <div className="Navi-link">
-          <a href="mailto:foreverchoi0706@gmail.com" target="blank">
-            <img src={blog} alt="blog" />
-          </a>
-          <a href="https://github.com/foreverchoi0706" target="blank">
-            <img src={git} alt="git" />
-          </a>
-          <a href="https://velog.io/@foreverchoi0706" target="blank">
-            <img src={email} alt="email" />
-          </a>
+        <div className="Navi-links">
+          <Links />
         </div>
       </div>
     </nav>

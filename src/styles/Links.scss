@@ -1,0 +1,16 @@
+.Links {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  img {
+    width: 50px;
+    &:hover {
+      animation: hover-animation 0.5s linear infinite;
+    }
+  }
+}
+@keyframes hover-animation {
+  to {
+    transform: translateY(-5px);
+  }
+}

@@ -6,11 +6,19 @@
   justify-content: center;
   align-items: center;
   height: 33vh;
+  box-sizing: border-box;
+  border-right: 2px dashed white;
+  .Footer-links {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
   .Footer {
     font-size: 0.8rem;
+    .Footer-links {
+      display: block;
+    }
   }
 }
 @media (max-width: 540px) {
@@ -18,4 +26,3 @@
     font-size: 0.6rem;
   }
 }
-
