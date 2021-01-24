@@ -3,8 +3,10 @@ import { memo } from "react";
 
 import Top from "./Top";
 import Intro from "./Intro";
-import Projects from "./Projects/Projects";
 import Skills from "./Skills/Skills";
+import Projects from "./Projects/Projects";
+import Publishings from "./Publishings/Publishings";
+import Footer from "./Footer";
 
 import "../styles/Main.scss";
 
@@ -19,10 +21,16 @@ const Main = () => {
           <Intro />
         </section>
         <section>
+          <Skills />
+        </section>
+        <section>
           <Projects />
         </section>
         <section>
-          <Skills />
+          <Publishings />
+        </section>
+        <section>
+          <Footer />
         </section>
       </div>
     </main>

@@ -1,0 +1,14 @@
+.Projects {
+  padding: 10px;
+  .Projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,250px);
+    justify-content: center;
+    gap: 10px;
+
+    img{
+      width: inherit;
+      height: 175px;
+    }
+  }
+}

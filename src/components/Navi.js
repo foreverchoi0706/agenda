@@ -17,16 +17,16 @@ const Navi = () => {
             <a href="#">Top</a>
           </li>
           <li>
-            <a href="#Intro">Intro</a>
+            <a href="#Intro">인트로</a>
           </li>
           <li>
-            <a href="">Skills</a>
+            <a href="#Skills">기술 스택</a>
           </li>
           <li>
-            <a href="">Projects</a>
+            <a href="#Projects">프로젝트</a>
           </li>
           <li>
-            <a href="">Publishings</a>
+            <a href="#Publishings">퍼블리싱</a>
           </li>
         </ul>
         <div className="Navi-link">

@@ -1,0 +1,16 @@
+.Skills {
+  padding: 10px;
+  .Skills-contents {
+    display: grid;
+    grid-template-columns: repeat(5, 120px);
+    justify-content: space-around;
+    .Skill {
+      height: 120px;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
