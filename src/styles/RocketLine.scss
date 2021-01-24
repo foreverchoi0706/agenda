@@ -1,0 +1,12 @@
+.RocketLine {
+  display: flex;
+  align-items: center;
+  div {
+    flex-grow: 1;
+    background-color: rgb(20, 26, 60);
+    height: 3px;
+  }
+  img {
+    transform: rotate(45deg);
+  }
+}

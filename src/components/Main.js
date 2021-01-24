@@ -8,6 +8,8 @@ import Projects from "./Projects/Projects";
 import Publishings from "./Publishings/Publishings";
 import Footer from "./Footer";
 
+import RocketLine from "./RocketLine";
+
 import "../styles/Main.scss";
 
 const Main = () => {
@@ -20,12 +22,15 @@ const Main = () => {
         <section>
           <Intro />
         </section>
+        <RocketLine />
         <section>
           <Skills />
         </section>
+        <RocketLine />
         <section>
           <Projects />
         </section>
+        <RocketLine />
         <section>
           <Publishings />
         </section>
