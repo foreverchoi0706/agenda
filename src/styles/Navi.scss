@@ -2,7 +2,6 @@
   width: 20vw;
   height: 100vh;
   background-image: url(../assets//bg.jpg);
-  color: white;
   position: fixed;
   box-sizing: border-box;
   border-left: 2px dashed white;
@@ -11,6 +10,10 @@
   flex-direction: column;
   .Navi-title {
     text-align: center;
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
   .Navi-contents {
     flex-grow: 1;
@@ -21,6 +24,7 @@
     ul {
       list-style: decimal-leading-zero;
       li {
+        color: white;
         border-bottom: 2px dashed white;
         padding-bottom: 25px;
         margin-top: 25px;

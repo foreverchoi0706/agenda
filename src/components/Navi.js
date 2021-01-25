@@ -8,7 +8,9 @@ import "../styles/Navi.scss";
 const Navi = () => {
   return (
     <nav className="Navi">
-      <h1 className="Navi-title">#ForeverChoi</h1>
+      <h1 className="Navi-title">
+        <a href="#Top">#ForeverChoi</a>
+      </h1>
       <div className="Navi-contents">
         <ul>
           <li>
