@@ -46,7 +46,7 @@ const projectsInfo = {
       ],
       description: `영화 검색 웹 사이트 WATCHER를 구현하였습니다.
           상태관리 라이브러리인 REDUX를 사용하였고 AXIOS를 통해 API와 통신하였습니다. 
-          REACT-ROUTER-DOM으로 라우팅하였으며 사이트이펙트는 REDUX-THUNK를 사용하여 핸들링하였습니다.
+          REACT-ROUTER-DOM으로 라우팅하였으며 사이드이펙트는 REDUX-THUNK를 사용하여 핸들링하였습니다.
           스타일은 CSS 전처리기인 SASS를 사용하였습니다.`,
       link: "https://foreverchoi0706.github.io/watcher/",
       git: "https://github.com/foreverchoi0706/watcher",
@@ -79,8 +79,8 @@ const projectsInfo = {
         "RIOT-API",
       ],
       description: `유명 게임의 전적 검색 사이트를 구현하였습니다. UI는 REACT, 상태관리는 REDUX를 사용하였으며 백엔드는 EXPRESS를 사용, HEROKU로 배포하였습니다.
-      백엔드로부터 서버 상태와 게임 정보를 받아올 수 있으며  REDUX-SAGA를 통해 사이트 이펙트를 관리하였습니다.
-      `,
+      REDUX-SAGA를 통해 사이드이펙트를 관리하였고 AXIOS를 통해 백엔드로부터 서버 상태와 게임 정보 및 유저 전적 등을 받아올 수 있게 하였습니다.
+      스타일은 REACT 라이브러리인 STYLED-COMPONENTS를 사용하였습니다.`,
       link: "https://foreverchoi0706.github.io/log-of-legend/",
       git: "https://github.com/foreverchoi0706/log-of-legend",
     },
@@ -98,9 +98,8 @@ const projectsInfo = {
         "TOMCAT",
       ],
       description: `
-        E-BOOK 대여 사이트를 팀 프로젝트로 구현하였습니다. SPRING의 MVC패턴을 이용하였으며 ORACLE DB를 사용하였습니다.
-        저는 이 프로젝트에서 디자인 및 백엔드 로직 전반을 담당하였습니다. 
-      `,
+        E-BOOK 대여 사이트를 팀 프로젝트로 구현하였습니다. MVC패턴을 이용하였으며 언어는 JAVA 프레임워크는 SPRING, DB는 ORACLE를 사용하였습니다.
+        유저간의 상호작용은 JQUERY를 통해 구현하였으며 CSS로 스타일하였습니다. 저는 이 프로젝트에서 디자인 및 백엔드 로직 전반을 담당하였습니다.`,
       link: "https://www.youtube.com/watch?v=OIqNYLeudTQ",
       git: "",
     },
