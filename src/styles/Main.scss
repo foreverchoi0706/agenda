@@ -1,5 +1,7 @@
 .Main {
   padding-left: 20vw;
+  box-sizing: border-box;
+  border-right: 3px dashed var(--theme-color);
   .Main-contents {
     display: flex;
     flex-direction: column;
@@ -10,5 +12,6 @@
   .Main {
     padding-top: 80px;
     padding-left: 0;
+    border-right: none;
   }
 }

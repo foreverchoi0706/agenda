@@ -1,5 +1,4 @@
-import React, { memo, useState } from "react";
-import { Paper, Typography } from "@material-ui/core";
+import React, { memo } from "react";
 
 const Skill = ({ name, src, description }) => {
   return <img className="Skill" src={src} alt={name} />;

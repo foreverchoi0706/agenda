@@ -3,7 +3,7 @@
   align-items: center;
   div {
     flex-grow: 1;
-    border-bottom: 3px dashed black;
+    border-bottom: 3px dashed var(--theme-color);
   }
   img {
     transform: rotate(90deg);
@@ -13,7 +13,7 @@
 @media (max-width: 900px) {
   .RocketLine {
     div {
-      border-bottom: 2px dashed black;
+      border-bottom: 2px dashed var(--theme-color);
     }
     img {
       width: 50px;
@@ -24,7 +24,7 @@
 @media (max-width: 540px) {
   .RocketLine {
     div {
-      border-bottom: 1px dashed black;
+      border-bottom: 1px dashed var(--theme-color);
     }
     img {
       width: 30px;

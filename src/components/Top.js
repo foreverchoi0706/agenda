@@ -41,7 +41,8 @@ const Top = () => {
 
   useEffect(() => {
     startTyping();
-  }, [refH2]);
+    return () => startTyping;
+  }, [startTyping]);
 
   return (
     <div id="Top" className="Top">
@@ -53,7 +54,7 @@ const Top = () => {
         <strong className="Top-typing" ref={refH2}></strong>
       </div>
 
-      <img className="Top-img" src={me} />
+      <img className="Top-img" src={me} alt="me" />
     </div>
   );
 };

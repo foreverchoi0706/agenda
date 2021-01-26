@@ -17,7 +17,7 @@ const Project = ({ name, src, description, skills, link, git }) => {
             {name}
           </Typography>
         </CardContent>
-        <img src={src} />
+        <img src={src} alt={name} />
       </CardActionArea>
       {isClicked && (
         <Modal

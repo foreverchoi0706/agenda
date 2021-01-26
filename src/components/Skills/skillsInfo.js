@@ -4,7 +4,6 @@ import javascript from "../../assets/skills/javascript.png";
 import typescript from "../../assets/skills/typescript.png";
 import express from "../../assets/skills/express.png";
 import react from "../../assets/skills/react.png";
-import reactNative from "../../assets/skills/reactNative.png";
 import redux from "../../assets/skills/redux.png";
 import sass from "../../assets/skills/sass.png";
 import nodeJs from "../../assets/skills/nodeJs.png";

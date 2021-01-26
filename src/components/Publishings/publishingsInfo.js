@@ -1,7 +1,6 @@
 import challenge_Day03 from "../../assets/publishing/challenge_Day03.png";
 import challenge_Day04 from "../../assets/publishing/challenge_Day04.png";
 import challenge_Day05 from "../../assets/publishing/challenge_Day05.png";
-import challenge_Day06 from "../../assets/publishing/challenge_Day06.png";
 import challenge_Day07 from "../../assets/publishing/challenge_Day07.png";
 import challenge_Day09 from "../../assets/publishing/challenge_Day09.png";
 
