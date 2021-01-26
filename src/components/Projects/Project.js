@@ -13,7 +13,15 @@ const Project = ({ name, src, description, skills, link, git }) => {
     <Card onClick={handleClick}>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            style={{
+              fontFamily: "Courier New, Courier, monospace",
+              fontWeight: "bold",
+            }}
+          >
             {name}
           </Typography>
         </CardContent>
