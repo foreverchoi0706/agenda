@@ -47,7 +47,8 @@ const Top = () => {
     <div id="Top" className="Top">
       <div className="Top-comment">
         <h1>
-          전문성 있는 개발자를 꿈꿉니다. 향상심을 가진 지원자 최영원입니다.
+          전문성 있는 개발자를 꿈꿉니다. <br />
+          향상심을 가진 지원자 최영원입니다.
         </h1>
         <strong className="Top-typing" ref={refH2}></strong>
       </div>
