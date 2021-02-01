@@ -1,7 +1,8 @@
 import React, { memo } from "react";
-import Project from "./Project";
+import { Typography } from "@material-ui/core";
 import { ImportantDevices } from "@material-ui/icons";
 
+import Project from "./Project";
 import projectsInfo from "./projectsInfo";
 
 import "../../styles/Projects.scss";
@@ -9,9 +10,9 @@ import "../../styles/Projects.scss";
 const Porjects = () => {
   return (
     <div id="Projects" className="Projects">
-      <h2>
+      <Typography variant="h5" gutterBottom>
         03. 프로젝트 <ImportantDevices />
-      </h2>
+      </Typography>
       <div className="Projects-container">
         {projectsInfo.projects.map((project, index) => (
           <Project

@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 import blog from "../assets/blog.png";
-import git from "../assets/git.png";
+import github from "../assets/github.png";
 import email from "../assets/email.png";
 
 import "../styles/Links.scss";
@@ -13,7 +13,7 @@ const Links = () => {
         <img src={blog} alt="blog" />
       </a>
       <a href="https://github.com/foreverchoi0706" target="blank">
-        <img src={git} alt="git" />
+        <img src={github} alt="github" />
       </a>
       <a href="https://velog.io/@foreverchoi0706" target="blank">
         <img src={email} alt="email" />

@@ -1,5 +1,5 @@
 import React, { memo, useRef, useEffect } from "react";
-
+import { Typography } from "@material-ui/core";
 import me from "../assets/me.jpg";
 
 import "../styles/Top.scss";
@@ -47,13 +47,12 @@ const Top = () => {
   return (
     <div id="Top" className="Top">
       <div className="Top-comment">
-        <h1>
+        <Typography variant="h5">
           전문성 있는 개발자를 꿈꿉니다. <br />
           향상심을 가진 지원자 최영원입니다.
-        </h1>
-        <strong className="Top-typing" ref={refH2}></strong>
+        </Typography>
+        <Typography className="Top-typing" ref={refH2} variant="overline" />
       </div>
-
       <img className="Top-img" src={me} alt="me" />
     </div>
   );

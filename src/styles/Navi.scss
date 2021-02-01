@@ -38,14 +38,7 @@
 }
 
 @media (max-width: 1200px) {
-  .Navi {
-    .Navi-title {
-    }
-    .Navi-contents {
-      ul {
-      }
-    }
-  }
+
 }
 @media (max-width: 900px) {
   .Navi {
@@ -87,7 +80,10 @@
     }
     .Navi-contents {
       ul {
-        font-size: 0.6rem;
+        padding-left: 20px;
+        .Navi-menu {
+          font-size: 0.6rem;
+        }
       }
     }
   }
