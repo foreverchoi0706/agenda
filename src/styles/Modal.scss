@@ -31,8 +31,7 @@
       padding: 10px;
       .Modal-subject {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column;  
         .Modal-detail {
           text-align: center;
           .Modal-img {
@@ -52,7 +51,7 @@
       }
       .Modal-skills {
         width: 100%;
-        border: 1px solid black;
+        border: 2px dashed white;
         border-radius: 5px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
