@@ -10,7 +10,7 @@ const Project = ({ name, src, description, skills, link, git }) => {
   const handleClick = () => setIsClicked(!isClicked);
 
   return (
-    <Card onClick={handleClick}>
+    <Card className="Project" onClick={handleClick}>
       <CardActionArea>
         <CardContent>
           <Typography
@@ -25,7 +25,7 @@ const Project = ({ name, src, description, skills, link, git }) => {
             {name}
           </Typography>
         </CardContent>
-        <img src={src} alt={name} />
+        <img className="Project-img" src={src} alt={name} />
       </CardActionArea>
       {isClicked && (
         <Modal

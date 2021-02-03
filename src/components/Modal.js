@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-
+import RocketLine from "./RocketLine";
 import "../styles/Modal.scss";
 
 const Modal = ({ src, name, description, link, git, skills }) => {
@@ -7,11 +7,10 @@ const Modal = ({ src, name, description, link, git, skills }) => {
     <div className="Modal">
       <div className="Modal-contents">
         <h2>{name}</h2>
-        <hr />
         <div className="Modal-container">
           <div className="Modal-subject">
             <div className="Modal-detail">
-              <img src={src} alt={name} />
+              <img className="Modal-img" src={src} alt={name} />
               <strong>{description}</strong>
             </div>
             <nav>

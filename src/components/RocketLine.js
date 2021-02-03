@@ -6,8 +6,8 @@ import "../styles/RocketLine.scss";
 const RocketLine = () => {
   return (
     <div className="RocketLine">
-      <div/>
-      <img src={rocket} alt="rocket" />
+      <div />
+      <img className="RocketLine-img" src={rocket} alt="rocket" />
     </div>
   );
 };
