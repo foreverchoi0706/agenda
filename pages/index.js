@@ -1,10 +1,17 @@
-import Head from 'next/head'
-import Link from "next/link";
+import Head from "next/head";
+
+//component
+import App from "./components/App";
 
 export default function Home() {
   return (
-    <div>
-      <Link href="./views/Count" >sad</Link>
-    </div>
-  )
+    <>
+      <Head>
+        <meta lang="ko" />
+        <title>foreverChoi</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <App />
+    </>
+  );
 }
