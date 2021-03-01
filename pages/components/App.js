@@ -1,12 +1,20 @@
 //component
 import Header from "./Header";
-import Home from "./Home";
+import Intro from "./Intro";
+import History from "./History";
+import Contact from "./Contact";
+import Footer from "./Footer";
+//style
+import styles from "../../styles/App.module.css";
 
 const App = () => {
   return (
-    <div>
+    <div className={styles.App}>
       <Header />
-  
+      <Intro />
+      <History />
+      <Contact />
+      <Footer />
     </div>
   );
 };

@@ -1,0 +1,53 @@
+.Menu {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.left_arrow,
+.right_arrow {
+  display: flex;
+  flex-direction: column;
+}
+
+.left_arrow > li {
+  background-color: black;
+  width: 35px;
+  height: 4px;
+}
+
+.left_arrow > li:nth-child(1) {
+  transform-origin: left;
+  transform: rotate(35deg);
+  border-radius: 5px;
+}
+
+.left_arrow > li:nth-child(2) {
+  transform-origin: left;
+  transform: rotate(-35deg);
+  border-radius: 5px;
+}
+
+.right_arrow > li {
+  background-color: black;
+  width: 35px;
+  height: 4px;
+}
+
+.right_arrow > li:nth-child(1) {
+  transform-origin: right;
+  transform: rotate(-35deg);
+  border-radius: 5px;
+}
+
+.right_arrow > li:nth-child(2) {
+  transform-origin: right;
+  transform: rotate(35deg);
+  border-radius: 5px;
+}
+
+.test1,
+.test2 {
+  font-size: 5rem;
+  font-weight: bold;
+}
