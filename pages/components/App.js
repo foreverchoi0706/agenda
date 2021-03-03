@@ -1,13 +1,13 @@
-//component
+//comp
 import Header from "./Header";
-import Home from "./Home";
+import Main from "./Main";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-  
-    </div>
+      <Main />
+    </>
   );
 };
 

@@ -1,26 +1,12 @@
 import Link from "next/link";
+//style
+import styles from "../../styles/Header.module.css";
 
 const Header = () => {
   return (
-    <header>
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-        }}
-      >
-        <Link href="./components/Home" as="/home">
-          Home
-        </Link>
-        <Link href="/">TEST</Link>
-        <Link href="/">TEST</Link>
-        <Link href="/">TEST</Link>
-        <Link href="/">TEST</Link>
-        <Link href="/">TEST</Link>
-        <Link href="./Config" as="/config">
-          Config
-        </Link>
+    <header className={styles.Header}>
+      <h1>최영원의 포토폴리오2</h1>
+      <nav className={styles.nav}>
       </nav>
     </header>
   );
