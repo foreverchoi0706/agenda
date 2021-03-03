@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .header {
   border-bottom: 1px solid lightgray;
 }
@@ -20,3 +21,13 @@
 .links > a:hover {
   text-decoration: underline;
 }
+=======
+.Header {
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+>>>>>>> re

@@ -1,5 +1,6 @@
-//component
+//comp
 import Header from "./Header";
+<<<<<<< HEAD
 import Intro from "./Intro";
 import History from "./History";
 import Contact from "./Contact";
@@ -16,6 +17,16 @@ const App = () => {
       <Contact />
       <Footer />
     </div>
+=======
+import Main from "./Main";
+
+const App = () => {
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+>>>>>>> re
   );
 };
 

@@ -1,4 +1,6 @@
 import Link from "next/link";
+//style
+import styles from "../../styles/Header.module.css";
 
 //component
 import Menu from "./Menu";
@@ -7,6 +9,7 @@ import styles from "../../styles/Header.module.css";
 
 const Header = () => {
   return (
+<<<<<<< HEAD
     <header id="Header" className={styles.header}>
       <nav className={styles.nav}>
         <Menu />
@@ -17,6 +20,11 @@ const Header = () => {
             COTACT
           </Link>
         </div>
+=======
+    <header className={styles.Header}>
+      <h1>최영원의 포토폴리오2</h1>
+      <nav className={styles.nav}>
+>>>>>>> re
       </nav>
     </header>
   );
