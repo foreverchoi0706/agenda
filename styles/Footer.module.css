@@ -1,4 +1,7 @@
 .Footer {
-  border-top: 1px solid lightgray;
-  padding: 20px 0 20px 0;
+  display: flex;
+  justify-content: center;
+  border-top: 1px dashed black;
+  padding: 10px;
+  font-weight: bold;
 }
