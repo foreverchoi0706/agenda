@@ -1,12 +1,12 @@
 //style
-import styles from "../../styles/components/Header.module.css";
+import styles from "../../styles/components/Header.module.scss";
 
 const Header = () => {
   return (
     <header className={styles.Header}>
       <h1>최영원의 포토폴리오</h1>
       <nav className={styles.nav}>
-        <a href="#">#Intro</a> <a href="#">#History</a> <a href="#">#Portfolio</a>
+        <a href="#Intro">#Intro</a> <a href="#History">#History</a> <a href="#Portfolio">#Portfolio</a>
       </nav>
     </header>
   );

@@ -1,0 +1,15 @@
+.Article {
+  opacity: 0;
+  animation: appear-anime 0.5s 3s linear forwards;
+  h2 {
+    margin: 50px 0 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+@keyframes appear-anime {
+  to {
+    opacity: 1;
+  }
+}
