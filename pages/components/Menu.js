@@ -1,5 +1,5 @@
 //style
-import styles from "../../styles/Menu.module.css";
+import styles from "../../styles/components/Menu.module.css";
 
 const Menu = () => {
   return (
@@ -13,7 +13,7 @@ const Menu = () => {
         <li />
       </ul> */}
       <div className={styles.test1}>‹</div>
-      <div  className={styles.test2}>›</div>
+      <div className={styles.test2}>›</div>
     </div>
   );
 };
