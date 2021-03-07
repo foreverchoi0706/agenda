@@ -17,9 +17,10 @@
 }
 
 .nav {
-  width: 50%;
+  font-size: 1.5rem;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .nav a:nth-child(1) {
   animation: appear-anime 0.5s 1s linear forwards;
@@ -37,21 +38,18 @@
   color: black;
   font-weight: bold;
   text-decoration: none;
-  border-bottom: 3px solid white;
+  border-bottom: 1px solid white;
 }
 
 .nav a:hover {
-  animation: appear-underline 0.5s 2s linear forwards;
+  border-bottom: 1px dashed black;
+  transition-property: border-bottom;
+  transition-duration: 0.5s;
 }
 
 @keyframes appear-anime {
   to {
     opacity: 1;
     transform: translateY(0px);
-  }
-}
-@keyframes appear-underline {
-  to {
-    border-bottom: 3px solid black;
   }
 }

@@ -1,14 +1,16 @@
 //component
 import Intro from "./Intro";
 import History from "./History";
-import Contact from "./Contact";
+import Portfolio from "./Portfolio";
+//style
+import styles from "../../styles/components/Main.module.css";
 
 const Main = () => {
   return (
-    <main>
+    <main className={styles.Main}>
       <Intro />
       <History />
-      <Contact />
+      <Portfolio />
     </main>
   );
 };
