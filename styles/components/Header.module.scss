@@ -1,9 +1,11 @@
+@import "./App.scss";
+
 .Header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 10px;
+  padding: 20px 0 20px 0;
   border-bottom: 1px dashed black;
 }
 
@@ -11,25 +13,28 @@
   padding: 15px;
   font-size: 2rem;
   font-weight: bold;
-  animation: appear-anime 1s linear forwards;
+  @include appear(0.5s, 0.5s);
   opacity: 0;
   transform: translateY(10px);
 }
 
 .nav {
-  font-size: 1.5rem;
+  font-size: 1rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 .nav a:nth-child(1) {
-  animation: appear-anime 0.5s 1s linear forwards;
+  @include appear(0.5s, 0.5s);
 }
 .nav a:nth-child(2) {
-  animation: appear-anime 0.5s 1.5s linear forwards;
+  @include appear(1s, 0.5s);
 }
 .nav a:nth-child(3) {
-  animation: appear-anime 0.5s 2s linear forwards;
+  @include appear(1.5s, 0.5s);
+}
+.nav a:nth-child(4) {
+  @include appear(2s, 0.5s);
 }
 
 .nav a {
@@ -45,11 +50,4 @@
   border-bottom: 1px dashed black;
   transition-property: border-bottom;
   transition-duration: 0.5s;
-}
-
-@keyframes appear-anime {
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 }

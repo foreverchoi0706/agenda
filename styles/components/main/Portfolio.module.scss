@@ -1,0 +1,14 @@
+@import "../MainTemplate.module.scss";
+
+.Portfolios {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, 300px);
+
+  div {
+    width: 100%;
+    border: 1px solid black;
+  }
+}

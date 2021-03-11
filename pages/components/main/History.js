@@ -1,10 +1,12 @@
 //style
-import styles from "../../../styles/components/History.module.scss";
+import styles from "../../../styles/components/main/History.module.scss";
 
 const History = () => {
   return (
     <article id="History" className={styles.Article}>
-      <h2>#History</h2>
+      <h2>
+        {"<"}History{"/>"}
+      </h2>
       <section>
         <ul className={styles.Career}>
           <li>
@@ -18,7 +20,7 @@ const History = () => {
             </ul>
           </li>
           <li>
-            <h3>2021/02 ~ 현재 FATOS 플랫폼팀</h3>
+            <h3>2021/02 ~ 2021/04</h3>
             <ul>
               <li>JAVA/ORA</li>
               <li>asda</li>

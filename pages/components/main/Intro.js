@@ -1,11 +1,13 @@
 import Image from "next/image";
 //style
-import styles from "../../../styles/components/Intro.module.scss";
+import styles from "../../../styles/components/main/Intro.module.scss";
 
 const Intro = () => {
   return (
     <article id="Intro" className={styles.Article}>
-      <h2>#Intro</h2>
+      <h2>
+        {"<"}Intro{"/>"}
+      </h2>
       <p>
         좋은 아이디어나 더 나은 의견이 있다면 제시하고, 흥미로운 정보가 있다면
         공유하며 스스로 부족함에 피드백을 받아 선 순환을 일으키는 능동적인

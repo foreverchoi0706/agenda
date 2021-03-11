@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0 20vw 0 20vw;
-
   line-height: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @media (max-width: 1024px) {
