@@ -17,7 +17,7 @@ const Tag = ({ arg }) => {
 const Tags = ({ args }) => {
   return (
     <div className={styles.Tags}>
-      {args.map((arg) => (
+      {args && args.map((arg) => (
         <Tag arg={arg} />
       ))}
     </div>
