@@ -1,14 +1,25 @@
+//components
+import Tags from "../Tags";
 //style
 import styles from "../../../styles/components/main/Skill.module.scss";
 
 const Skill = () => {
   return (
     <article id="Skill" className={styles.Article}>
-      <h2>
-        {"<"}Skill{"/>"}
-      </h2>
+      <h2>Skill</h2>
       <div>
-        <span>asds</span> <span>asds</span> <span>asds</span> <span>asds</span>
+        <Tags
+          args={[
+            "Javascript",
+            "Typescript",
+            "Sass",
+            "React.js",
+            "Next.js",
+            "Redux",
+            "Node.js",
+            "Express.js",
+          ]}
+        />
       </div>
     </article>
   );

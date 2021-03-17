@@ -1,32 +1,34 @@
+//components
+import Tags from "../Tags";
 //style
 import styles from "../../../styles/components/main/History.module.scss";
 
 const History = () => {
   return (
     <article id="History" className={styles.Article}>
-      <h2>
-        {"<"}History{"/>"}
-      </h2>
+      <h2>History</h2>
       <section>
         <ul className={styles.Career}>
           <li>
-            <h3>2020/01 ~ 2021/01 CAL 주식회사 개발팀 인턴</h3>
+            <h3>CAL 株式会社 🇯🇵</h3>
             <ul>
-              <li>Java/JS/Oracle/Linux</li>
-              <li>asda</li>
-              <li>asda</li>
-              <li>asda</li>
-              <li>asda</li>
+              <li>
+                <Tags args={["Java", "Oracle", "Linux"]} />
+              </li>
+              <li>2020/01 ~ 2021/01</li>
+              <li>금융계 코어 시스템 개발 및 유지보수</li>
             </ul>
           </li>
           <li>
-            <h3>2021/02 ~ 2021/04</h3>
+            <h3>Fatos.Co.Ltd 🇰🇷</h3>
             <ul>
-              <li>JAVA/ORA</li>
-              <li>asda</li>
-              <li>asda</li>
-              <li>asda</li>
-              <li>asda</li>
+              <li>
+                <Tags
+                  args={["React.js", "Redux", "Sass", "Docker", "Jenkins"]}
+                />
+              </li>
+              <li>2021/02 ~ 2021/05</li>
+              <li>React.js기반 ERP 플랫폼 서비스 개발</li>
             </ul>
           </li>
         </ul>

@@ -3,6 +3,7 @@ import Intro from "./main/Intro";
 import History from "./main/History";
 import Skill from "./main/Skill";
 import Portfolio from "./main/Portfolio";
+import Contact from "./main/Contact";
 //style
 import styles from "../../styles/components/Main.module.scss";
 
@@ -13,6 +14,7 @@ const Main = () => {
       <History />
       <Skill/>
       <Portfolio />
+      <Contact/>
     </main>
   );
 };

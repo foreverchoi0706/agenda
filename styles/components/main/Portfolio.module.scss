@@ -1,14 +1,18 @@
-@import "../MainTemplate.module.scss";
+@import "./MainTemplate.module.scss";
 
 .Portfolios {
-  display: grid;
-  justify-items: center;
-  justify-content: center;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, 300px);
+  width: inherit;
+  overflow-x: scroll;
+  display: flex;
 
-  div {
+  & > div {
     width: 100%;
-    border: 1px solid black;
+    flex-shrink: 0;
+  }
+  & > div:nth-child(even) {
+    background-color: blue;
+  }
+  & > div:nth-child(odd) {
+    background-color: red;
   }
 }

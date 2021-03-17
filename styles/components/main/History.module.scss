@@ -1,13 +1,18 @@
-@import "../MainTemplate.module.scss";
+@import "./MainTemplate.module.scss";
 
 .Career {
-
-  h3{
-    font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  h3 {
+    font-size: 1rem;
   }
-
   ul {
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px lightgray;
+    li{
+      padding: 10px;
+    }
   }
 }

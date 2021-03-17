@@ -1,0 +1,9 @@
+.Tags {
+  display: flex;
+  gap: 10px;
+  .Tag {
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    color: white;
+  }
+}
