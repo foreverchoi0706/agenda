@@ -7,7 +7,7 @@ const Skill = () => {
   return (
     <article id="Skill" className={styles.Article}>
       <h2>Skill</h2>
-      <div>
+      <div className={styles.Skill_container}>
         <Tags
           args={[
             "Javascript",
@@ -16,8 +16,13 @@ const Skill = () => {
             "React.js",
             "Next.js",
             "Redux",
+            "Redux-toolkit",
+            "Redux-thunk",
+            "Redux-saga",
             "Node.js",
             "Express.js",
+            "Aws",
+            "Linux",
           ]}
         />
       </div>

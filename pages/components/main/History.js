@@ -24,7 +24,14 @@ const History = () => {
             <ul>
               <li>
                 <Tags
-                  args={["React.js", "Redux", "Sass", "Docker", "Jenkins"]}
+                  args={[
+                    "React.js",
+                    "Redux",
+                    "Redux-toolkit",
+                    "Sass",
+                    "Docker",
+                    "Jenkins",
+                  ]}
                 />
               </li>
               <li>2021/02 ~ 2021/05</li>
