@@ -10,7 +10,7 @@
 }
 
 .Header h1 {
-  padding: 15px;
+  padding: 30px;
   font-size: 2rem;
   font-weight: bold;
   @include appear(0.5s, 0.5s);
@@ -25,16 +25,16 @@
   justify-content: space-between;
 }
 .nav a:nth-child(1) {
-  @include appear(0.5s, 0.5s);
-}
-.nav a:nth-child(2) {
   @include appear(1s, 1s);
 }
-.nav a:nth-child(3) {
+.nav a:nth-child(2) {
   @include appear(1s, 1.5s);
 }
-.nav a:nth-child(4) {
+.nav a:nth-child(3) {
   @include appear(1s, 2s);
+}
+.nav a:nth-child(4) {
+  @include appear(1s, 2.5s);
 }
 
 .nav a {

@@ -11,20 +11,16 @@ const Skill = () => {
         <Tags
           args={[
             "Javascript",
-            "Typescript",
             "Sass",
             "React.js",
-            "Next.js",
             "Redux",
             "Redux-toolkit",
             "Redux-thunk",
             "Redux-saga",
             "Node.js",
-            "Express.js",
-            "Aws",
-            "Linux",
           ]}
         />
+        <Tags args={["Typescript", "Next.js", "Express.js", "Aws", "Linux"]} />
       </div>
     </article>
   );

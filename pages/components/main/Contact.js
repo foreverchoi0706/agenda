@@ -8,9 +8,13 @@ const Contact = () => {
     <article id="Contact" className={styles.Article}>
       <h2>Contact</h2>
       <div className={styles.Contact_container}>
-        <strong>sadsa</strong>
-        <strong>sadsa</strong>
-        <strong>sadsa</strong>
+        <a href="https://velog.io/@foreverchoi0706" target="blink">
+          BLOG
+        </a>
+        <a href="https://github.com/foreverchoi0706" target="blink">
+          GIT
+        </a>
+        <a href="mailto:foreverchoi0706@gmail.com">E-MAIL</a>
       </div>
     </article>
   );

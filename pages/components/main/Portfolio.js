@@ -8,6 +8,8 @@ const Portfolio = () => {
       <div className={styles.Portfolios}>
         <div>TEST</div> <div>TEST</div> <div>TEST</div> <div>TEST</div>{" "}
         <div>TEST</div>
+        <button className={styles.left_btn}>◀︎</button>
+        <button className={styles.right_btn}>▶︎</button>
       </div>
     </article>
   );

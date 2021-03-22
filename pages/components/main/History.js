@@ -13,7 +13,7 @@ const History = () => {
             <h3>CAL 株式会社 🇯🇵</h3>
             <ul>
               <li>
-                <Tags args={["Java", "Oracle", "Linux"]} />
+                <Tags args={["Java", "Oracle", "Linux","React.js","Javascript","css"]} />
               </li>
               <li>2020/01 ~ 2021/01</li>
               <li>금융계 코어 시스템 개발 및 유지보수</li>
@@ -34,7 +34,7 @@ const History = () => {
                   ]}
                 />
               </li>
-              <li>2021/02 ~ 2021/05</li>
+              <li>2021/02 ~ 현재</li>
               <li>React.js기반 ERP 플랫폼 서비스 개발</li>
             </ul>
           </li>
