@@ -23,7 +23,7 @@
     {
       "name": "Javascript",
       "bg_color": "#f0db4f",
-      "color": "white"
+      "color": "black"
     },
     {
       "name": "React.js",
@@ -38,7 +38,7 @@
     {
       "name": "Node.js",
       "bg_color": "#68a063",
-      "color": "white"
+      "color": "black"
     }
   ],
   "sub_stack": [

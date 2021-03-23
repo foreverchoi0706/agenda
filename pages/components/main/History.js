@@ -16,8 +16,9 @@ const History = () => {
             <ul>
               <li>
                 <section>
-                  {histories.cal.map((skill) => (
+                  {histories.cal.map((skill, index) => (
                     <Tag
+                      key={index}
                       name={skill.name}
                       bg_color={skill.bg_color}
                       color={skill.color}
@@ -35,8 +36,9 @@ const History = () => {
             <ul>
               <li>
                 <section>
-                  {histories.fatos.map((skill) => (
+                  {histories.fatos.map((skill, index) => (
                     <Tag
+                      key={index}
                       name={skill.name}
                       bg_color={skill.bg_color}
                       color={skill.color}

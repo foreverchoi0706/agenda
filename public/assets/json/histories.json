@@ -2,12 +2,12 @@
   "cal": [
     {
       "name": "Java",
-      "bg_color": "#FF5733",
+      "bg_color": "#f89820",
       "color": "white"
     },
     {
       "name": "Oracle",
-      "bg_color": "#264de4",
+      "bg_color": "#f80000",
       "color": "white"
     },
     {
@@ -23,7 +23,7 @@
     {
       "name": "Javascript",
       "bg_color": "#f0db4f",
-      "color": "white"
+      "color": "black"
     },
     {
       "name": "Css3",

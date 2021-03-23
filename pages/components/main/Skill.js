@@ -14,8 +14,9 @@ const Skill = () => {
           <li>
             <h3>Main Stack(Now Developing)</h3>
             <section>
-              {skills.main_stack.map((skill) => (
+              {skills.main_stack.map((skill, index) => (
                 <Tag
+                  key={index}
                   name={skill.name}
                   bg_color={skill.bg_color}
                   color={skill.color}
@@ -26,8 +27,9 @@ const Skill = () => {
           <li>
             <h3>Sub Stack(Now Studing)</h3>
             <section>
-              {skills.sub_stack.map((skill) => (
+              {skills.sub_stack.map((skill, index) => (
                 <Tag
+                  key={index}
                   name={skill.name}
                   bg_color={skill.bg_color}
                   color={skill.color}
@@ -38,8 +40,9 @@ const Skill = () => {
           <li>
             <h3>Next Stack(Will Studing)</h3>
             <section>
-              {skills.next_stack.map((skill) => (
+              {skills.next_stack.map((skill, index) => (
                 <Tag
+                  key={index}
                   name={skill.name}
                   bg_color={skill.bg_color}
                   color={skill.color}

@@ -7,6 +7,7 @@ export const Tag = ({ name, bg_color, color }) => {
       style={{
         backgroundColor: bg_color,
         color,
+        border: "1px solid lightgray",
       }}
     >
       {name}
