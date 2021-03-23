@@ -29,6 +29,12 @@ const Portfolio = () => {
           width={"inhert"}
           height={"inhert"}
         />
+        <Image
+          src="/assets/img/todo_web.png"
+          alt="watcher"
+          width={"inhert"}
+          height={"inhert"}
+        />
       </div>
     </article>
   );
