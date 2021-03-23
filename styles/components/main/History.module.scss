@@ -17,6 +17,12 @@
     box-shadow: 5px 5px 5px lightgray;
     li {
       padding: 10px;
+      section{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100px);
+        justify-content: space-between;
+        gap: 10px;
+      }
     }
   }
 }

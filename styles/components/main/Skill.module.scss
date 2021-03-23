@@ -16,6 +16,12 @@
       border-left: 1px dashed lightgray;
       border-radius: 5px;
       box-shadow: 5px 5px 5px lightgray;
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100px);
+        justify-content: space-between;
+        gap: 10px;
+      }
     }
   }
 }

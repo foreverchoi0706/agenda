@@ -12,19 +12,19 @@ const Portfolio = () => {
       <h2>Portfolio</h2>
       <div className={styles.Portfolio_container} ref={refArticle}>
         <Image
-          src="/assets/log_of_legend.png"
+          src="/assets/img/log_of_legend.png"
           alt="log_of_legend"
           width={"inhert"}
           height={"inhert"}
         />
         <Image
-          src="/assets/for_you.png"
+          src="/assets/img/for_you.png"
           alt="for_you"
           width={"inhert"}
           height={"inhert"}
         />
         <Image
-          src="/assets/watcher.png"
+          src="/assets/img/watcher.png"
           alt="watcher"
           width={"inhert"}
           height={"inhert"}

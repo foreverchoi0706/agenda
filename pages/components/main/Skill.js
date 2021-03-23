@@ -1,7 +1,9 @@
 //components
-import Tags from "../Tags";
+import Tag from "../Tag";
 //style
 import styles from "../../../styles/components/main/Skill.module.scss";
+//aseets
+import skills from "../../../public/assets/json/skills.json";
 
 const Skill = () => {
   return (
@@ -10,35 +12,40 @@ const Skill = () => {
       <div className={styles.Skill_container}>
         <ul className={styles.Career}>
           <li>
-            <h3>Main Stack - -Now Developing</h3>
-            <Tags
-              args={[
-                "Html5",
-                "Css3",
-                "Sass",
-                "Css Module",
-                "Javascript",
-                "React.js",
-                "Redux",
-                "Node.js",
-              ]}
-            />
+            <h3>Main Stack(Now Developing)</h3>
+            <section>
+              {skills.main_stack.map((skill) => (
+                <Tag
+                  name={skill.name}
+                  bg_color={skill.bg_color}
+                  color={skill.color}
+                />
+              ))}
+            </section>
           </li>
           <li>
-            <h3>Sub Stack - -Now Studing</h3>
-            <Tags
-              args={[
-                "Typescript",
-                "Next.js",
-                "Express.js",
-                "Linux",
-                "ReactNative",
-              ]}
-            />
+            <h3>Sub Stack(Now Studing)</h3>
+            <section>
+              {skills.sub_stack.map((skill) => (
+                <Tag
+                  name={skill.name}
+                  bg_color={skill.bg_color}
+                  color={skill.color}
+                />
+              ))}
+            </section>
           </li>
           <li>
-            <h3>Will Studing</h3>
-            <Tags args={["Cloud", "Docker", "Jenkins", "Etc..."]} />
+            <h3>Next Stack(Will Studing)</h3>
+            <section>
+              {skills.next_stack.map((skill) => (
+                <Tag
+                  name={skill.name}
+                  bg_color={skill.bg_color}
+                  color={skill.color}
+                />
+              ))}
+            </section>
           </li>
         </ul>
       </div>

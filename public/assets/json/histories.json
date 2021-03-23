@@ -1,0 +1,71 @@
+{
+  "cal": [
+    {
+      "name": "Java",
+      "bg_color": "#FF5733",
+      "color": "white"
+    },
+    {
+      "name": "Oracle",
+      "bg_color": "#264de4",
+      "color": "white"
+    },
+    {
+      "name": "Linux",
+      "bg_color": "#e95420",
+      "color": "white"
+    },
+    {
+      "name": "React.js",
+      "bg_color": "#61DBFB",
+      "color": "white"
+    },
+    {
+      "name": "Javascript",
+      "bg_color": "#f0db4f",
+      "color": "white"
+    },
+    {
+      "name": "Css3",
+      "bg_color": "#264de4",
+      "color": "white"
+    }
+  ],
+  "fatos": [
+    {
+      "name": "React.js",
+      "bg_color": "#61DBFB",
+      "color": "white"
+    },
+    {
+      "name": "Redux",
+      "bg_color": "#764abc",
+      "color": "white"
+    },
+    {
+      "name": "ReduxToolkit",
+      "bg_color": "#764abc",
+      "color": "white"
+    },
+    {
+      "name": "Sass",
+      "bg_color": "#cc6699",
+      "color": "white"
+    },
+    {
+      "name": "Css Module",
+      "bg_color": "#264de4",
+      "color": "white"
+    },
+    {
+      "name": "Docker",
+      "bg_color": "#0db7ed",
+      "color": "white"
+    },
+    {
+      "name": "Jenkins",
+      "bg_color": "#bcaca4",
+      "color": "white"
+    }
+  ]
+}

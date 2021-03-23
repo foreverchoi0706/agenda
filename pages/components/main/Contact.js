@@ -1,5 +1,3 @@
-//components
-import Tags from "../Tags";
 //style
 import styles from "../../../styles/components/main/Contact.module.scss";
 
