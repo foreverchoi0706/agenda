@@ -29,6 +29,11 @@
       "name": "Css3",
       "bg_color": "#264de4",
       "color": "white"
+    },
+    {
+      "name": "JQuery",
+      "bg_color": "white",
+      "color": "black"
     }
   ],
   "fatos": [
