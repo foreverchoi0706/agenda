@@ -2,8 +2,8 @@
 
 .Article {
   font-size: 0.9rem;
-  opacity: 0;
-  @include appear(1s, 3s);
+  // opacity: 0;
+  // @include appear(1s, 3s);
   h2 {
     margin: 30px 0 30px;
     font-size: 1.2rem;

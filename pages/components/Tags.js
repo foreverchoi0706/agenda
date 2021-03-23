@@ -1,12 +1,16 @@
 import styles from "../../styles/components/Tags.module.scss";
 
+function random_rgba() {
+  var o = Math.round, r = Math.random, s = 255;
+  return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
 const Tag = ({ arg }) => {
   return (
     <strong
       className={styles.Tag}
       style={{
-        backgroundColor: `#${(0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)}`,
-        opacity: 0.8,
+        backgroundColor: random_rgba(),
       }}
     >
       {arg}

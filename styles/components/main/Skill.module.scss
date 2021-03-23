@@ -1,5 +1,21 @@
 @import "./MainTemplate.module.scss";
 
 .Skill_container {
- 
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    li {
+      padding: 10px;
+      box-sizing: border-box;
+      border-top: 1px dashed lightgray;
+      border-left: 1px dashed lightgray;
+      border-radius: 5px;
+      box-shadow: 5px 5px 5px lightgray;
+    }
+  }
 }

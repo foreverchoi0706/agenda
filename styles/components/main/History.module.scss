@@ -1,17 +1,21 @@
 @import "./MainTemplate.module.scss";
 
-.Career {
+.History_container {
   display: flex;
   flex-direction: column;
   gap: 30px;
   h3 {
     font-size: 1rem;
+    margin-bottom: 10px;
   }
   ul {
     padding: 10px;
+    box-sizing: border-box;
+    border-top: 1px dashed lightgray;
+    border-left: 1px dashed lightgray;
     border-radius: 5px;
     box-shadow: 5px 5px 5px lightgray;
-    li{
+    li {
       padding: 10px;
     }
   }

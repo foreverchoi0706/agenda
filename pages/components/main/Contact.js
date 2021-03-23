@@ -12,7 +12,7 @@ const Contact = () => {
           BLOG
         </a>
         <a href="https://github.com/foreverchoi0706" target="blink">
-          GIT
+          GITHUB
         </a>
         <a href="mailto:foreverchoi0706@gmail.com">E-MAIL</a>
       </div>

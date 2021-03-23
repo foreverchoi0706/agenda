@@ -8,15 +8,25 @@ const History = () => {
     <article id="History" className={styles.Article}>
       <h2>History</h2>
       <section>
-        <ul className={styles.Career}>
+        <ul className={styles.History_container}>
           <li>
             <h3>CAL 株式会社 🇯🇵</h3>
             <ul>
               <li>
-                <Tags args={["Java", "Oracle", "Linux","React.js","Javascript","css"]} />
+                <Tags
+                  args={[
+                    "Java",
+                    "Oracle",
+                    "Linux",
+                    "React.js",
+                    "Javascript",
+                    "css",
+                  ]}
+                />
               </li>
               <li>2020/01 ~ 2021/01</li>
-              <li>금융계 코어 시스템 개발 및 유지보수</li>
+              <li>Java 기반 금융계 코어 시스템 개발 및 유지보수</li>
+              <li>React.js 기반 금융계 어드민 사이트 개발</li>
             </ul>
           </li>
           <li>
@@ -27,7 +37,7 @@ const History = () => {
                   args={[
                     "React.js",
                     "Redux",
-                    "Redux-toolkit",
+                    "ReduxToolkit",
                     "Sass",
                     "Docker",
                     "Jenkins",
