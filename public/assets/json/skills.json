@@ -39,6 +39,16 @@
       "name": "Node.js",
       "bg_color": "#68a063",
       "color": "black"
+    },
+    {
+      "name": "Webpack",
+      "bg_color": "#8ed5fa",
+      "color": "white"
+    },
+    {
+      "name": "Babel",
+      "bg_color": "#fae100",
+      "color": "black"
     }
   ],
   "sub_stack": [

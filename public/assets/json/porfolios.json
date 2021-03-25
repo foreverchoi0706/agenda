@@ -102,6 +102,16 @@
         "color": "white"
       },
       {
+        "name": "Webpack",
+        "bg_color": "#8ed5fa",
+        "color": "white"
+      },
+      {
+        "name": "Babel",
+        "bg_color": "#fae100",
+        "color": "black"
+      },
+      {
         "name": "Node.js",
         "bg_color": "#68a063",
         "color": "black"
@@ -117,7 +127,7 @@
         "color": "white"
       }
     ],
-    "description": "유명 게임의 전적 검색 사이트를 구현하였습니다. UI는 React.js, 상태관리는 Redux를 사용하였으며 백엔드는 Express.js를 사용, Aws Ec2로 배포하였습니다. 백엔드로부터 서버 상태와 게임 정보를 받아올 수 있으며, 유저의 게임 전적 검색 및 검색키워드 저장 기능을 제공하도록 하였습니다.  Redux-Saga를 통해 사이트 이펙트를 관리하였습니다.",
+    "description": "유명 게임의 전적 검색 사이트를 구현하였습니다. UI는 React.js, 상태관리는 Redux를 사용하였으며 Redux-Saga를 통해 사이트 이펙트를 관리하였습니다. 백엔드는 Express.js를 사용, Aws Ec2로 배포하였습니다. 백엔드로부터 서버 상태와 게임 정보를 받아올 수 있으며, 유저의 게임 전적 검색 및 검색키워드 저장 기능을 제공하도록 하였습니다. Webpack과 Babel을 이용하여 프로젝트 환경을 구축하였습니다.",
     "link": "https://foreverchoi0706.github.io/log-of-legend/",
     "git": "https://github.com/foreverchoi0706/log-of-legend"
   },
