@@ -6,4 +6,8 @@ import "../styles/global.css";
 
 const root = document.querySelector("#root");
 
-ReactDom.render(<App/>,root);
+const app = () => {
+  return <App />;
+};
+
+ReactDom.render(app(), root);
