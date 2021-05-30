@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import App from "./components/App";
+import App from "./App";
 import "../styles/global.css";
 
 const root = document.querySelector("#root");

@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   watch: true,
   entry: path.resolve(__dirname, "src/index.ts"),
   output: {
