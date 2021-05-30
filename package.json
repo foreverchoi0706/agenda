@@ -4,7 +4,9 @@
   "description": "portfolio",
   "main": "index.ts",
   "scripts": {
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "build": "webpack",
+    "serve": "serve -s dist -l 3000"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,8 @@
   "homepage": "https://github.com/foreverchoi0706/portfolio#readme",
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

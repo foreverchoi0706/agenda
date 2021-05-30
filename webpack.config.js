@@ -4,9 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   watch: true,
-  entry: path.resolve(__dirname, "src/index.js"),
+  entry: path.resolve(__dirname, "src/index.ts"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -50,7 +50,7 @@ module.exports = {
     // 전의 빌드를 삭제함
     new CleanWebpackPlugin(),
   ],
-  devtool: "inline-source-map",
+  devtool: "source-map",
   devServer: {
     contentBase: path.resolve(__dirname, "public"),
     publicPath: "/",
