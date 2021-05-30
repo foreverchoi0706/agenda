@@ -1,16 +1,25 @@
-import React from "react";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+//pages
+import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
+import About from "./pages/About";
+//components
 import Layout from "./components/Layout";
 
 const App = () => {
+  const [isLogined, setIsLogined] = useState(true);
+
   return (
     <BrowserRouter>
-      <Layout>
-        <Route path="/" component={Home} exact />
-        <Route path="/about" component={About} exact />
-      </Layout>
+      {isLogined ? (
+        <Route path="/" component={SignIn} exact />
+      ) : (
+        <Layout>
+          <Route path="/home" component={Home} exact />
+          <Route path="/about" component={About} exact />
+        </Layout>
+      )}
     </BrowserRouter>
   );
 };
