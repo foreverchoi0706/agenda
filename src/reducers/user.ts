@@ -19,3 +19,5 @@ const user = (state: User = initialState, action: Action) => {
             return state;
     }
 }
+
+export default user;

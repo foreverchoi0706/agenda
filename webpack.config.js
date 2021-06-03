@@ -7,7 +7,7 @@ module.exports = {
   mode: "development",
   // mode: "production",
   watch: true,
-  entry: path.resolve(__dirname, "src/index.ts"),
+  entry: path.resolve(__dirname, "src/index.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -30,6 +30,10 @@ module.exports = {
         test: /.css?$/,
         exclude: [path.resolve(__dirname, "node_modules")],
         use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: ["url-loader"],
       },
     ],
   },
