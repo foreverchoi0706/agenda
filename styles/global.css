@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "react-big-calendar/lib/css/react-big-calendar.css";
 
 @layer utilities {
   .agenda-box {
@@ -12,9 +13,15 @@
     border-radius: 5px;
     padding: 5px;
   }
+  .agenda-menu {
+    background-color: white;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+  }
 }
 
-#root {
+#agenda {
   width: 100%;
   height: 100vh;
   display: flex;

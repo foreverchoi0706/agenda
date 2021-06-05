@@ -12,15 +12,29 @@ const Layout = ({ children }: LayoutPorps) => {
 
   return (
     <React.Fragment>
-      <header className="bg-green-400">
-        <nav className="flex flex-col relative">
-          <span onClick={() => push()}>home</span>
-          <span onClick={() => push("about")}>map</span>
-          <span onClick={() => push("about")}>calendar</span>
-          <button className="absolute top-50vh left-10 bg-blue-400">+</button>
+      <header className="bg-blue-500">
+        <nav className="h-full flex flex-col justify-between relative">
+          <div className="flex flex-col">
+            <button className="agenda-menu">AG</button>
+            <button className="agenda-menu" onClick={() => push("home")}>
+              지도
+            </button>
+            <button className="agenda-menu" onClick={() => push("calendar")}>
+              달력
+            </button>
+            <button className="agenda-menu" onClick={() => push("about")}>
+              추가
+            </button>
+            <button className="agenda-menu" onClick={() => push("about")}>
+              분석
+            </button>
+          </div>
+          <button className="agenda-menu" onClick={() => push("about")}>
+            설정
+          </button>
         </nav>
       </header>
-      <body className="flex-grow bg-red-400">{children}</body>
+      <body className="flex-grow">{children}</body>
     </React.Fragment>
   );
 };

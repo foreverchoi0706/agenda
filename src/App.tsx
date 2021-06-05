@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch, HashRouter } from "react-router-dom";
 //pages
-import Home from "./pages/Home";
+import Map from "./pages/Map";
 import SignIn from "./pages/SignIn";
 import About from "./pages/About";
+import Calendar from "./pages/Calendar";
 //components
 import Layout from "./components/Layout";
 import { useSelector } from "react-redux";
@@ -12,13 +13,16 @@ const App = () => {
   const { isLogined } = useSelector((root: any) => root.user);
 
   return (
-    <BrowserRouter>
-      <Route path="/" component={SignIn} exact />
-      <Layout>
-        <Route path="/home" component={Home} exact />
-        <Route path="/about" component={About} exact />
-      </Layout>
-    </BrowserRouter>
+    <HashRouter>
+      <Switch>
+        <Route path="/" component={SignIn} exact />
+        <Layout>
+          <Route path="/home" component={Map} exact />
+          <Route path="/about" component={About} exact />
+          <Route path="/calendar" component={Calendar} exact />
+        </Layout>
+      </Switch>
+    </HashRouter>
   );
 };
 

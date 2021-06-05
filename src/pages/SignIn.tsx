@@ -20,7 +20,7 @@ const SignIn = () => {
   if (isLogined) return <Redirect to="/home" />;
 
   return (
-    <article className="bg-blue-500 w-full h-screen flex justify-center items-center">
+    <article className="bg-blue-500 w-full flex justify-center items-center">
       <form
         className="bg-white flex flex-col rounded-lg p-5 agenda-box"
         onSubmit={signIn}
