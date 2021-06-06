@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
+import { RootState } from "../reducers/root";
 //reducers
 import { SIGN_IN } from "../reducers/user";
 //assets
 
 const SignIn = () => {
-  const { isLogined } = useSelector((root: any) => root.user);
+  const { isLogined } = useSelector((root: RootState) => root.user);
 
   const dispatch = useDispatch();
 
@@ -17,7 +18,7 @@ const SignIn = () => {
     });
   };
 
-  if (isLogined) return <Redirect to="/home" />;
+  if (isLogined) return <Redirect to="/map" />;
 
   return (
     <article className="bg-blue-500 w-full flex justify-center items-center">

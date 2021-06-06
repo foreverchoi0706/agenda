@@ -1,8 +1,8 @@
 {
-  "name": "portfolio",
+  "name": "agenda",
   "version": "1.0.0",
-  "description": "portfolio",
-  "main": "index.ts",
+  "description": "agenda",
+  "main": "index.tsx",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
@@ -10,17 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/foreverchoi0706/portfolio.git"
+    "url": "git+https://github.com/foreverchoi0706/agenda.git"
   },
   "keywords": [],
   "author": "foreverchoi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/foreverchoi0706/portfolio/issues"
+    "url": "https://github.com/foreverchoi0706/agenda/issues"
   },
-  "homepage": "https://github.com/foreverchoi0706/portfolio#readme",
+  "homepage": "https://github.com/foreverchoi0706/agenda#readme",
   "dependencies": {
     "@types/react-big-calendar": "^0.31.0",
+    "@types/react-calendar": "^3.4.0",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux": "^3.6.0",
@@ -28,11 +29,13 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-big-calendar": "^0.33.5",
+    "react-calendar": "^3.4.0",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "types": "file:/react-calendar"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

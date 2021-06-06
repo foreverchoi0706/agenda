@@ -1,3 +1,4 @@
 export default interface User {
-    isLogined: Boolean
+    isLogined: Boolean;
+    isAdd: Boolean;
 }

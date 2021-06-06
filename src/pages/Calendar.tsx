@@ -1,21 +1,26 @@
 import React from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar as RBC, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
 const localizer = momentLocalizer(moment);
 
 const myEventsList: any[] = [];
 
-const About = () => {
+const Calendar = () => {
   return (
     <article>
-      <Calendar
-        style={{ height: "100vh" }}
+      <RBC
+        className="h-screen"
         localizer={localizer}
         events={myEventsList}
+        messages={{
+          today: "↩",
+          previous: "↓",
+          next: "↪",
+        }}
       />
     </article>
   );
 };
 
-export default About;
+export default Calendar;
