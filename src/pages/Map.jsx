@@ -16,13 +16,11 @@ const Map = () => {
   //상호작용
   const [interaction, setIneraction] = useState({
     keyword: "",
+    isSearched: false,
+    data: null,
   });
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      console.log(e);
-      if (e.key === "Enter") searchPlace();
-    });
     window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
   }, []);
 
@@ -56,15 +54,19 @@ const Map = () => {
       ...inputPlace,
       keyword: e.target.value,
     });
-    console.log(map);
   };
 
   //장소검색
   const searchPlace = () => {
     map.ps.keywordSearch(interaction.keyword, (data, status, pagination) => {
-      console.log(data);
-      console.log(status);
-      console.log(pagination.nextPage());
+      if (status === "OK") {
+        console.log(data);
+        setIneraction({
+          ...interaction,
+          isSearched: true,
+          data,
+        });
+      }
     });
   };
 
@@ -77,22 +79,39 @@ const Map = () => {
   return (
     <article>
       <div className="h-screen" id="map" />
-      <section className="flex absolute z-50 top-3 left-16">
-        <input
-          className="rounded-sm"
-          type="text"
-          placeholder="장소검색"
-          onChange={inputPlace}
-        />
-        <button className="agenda-btn" onClick={searchPlace}>
-          검색
-        </button>
+      <section className="absolute z-50 top-3 left-16">
+        <form className="flex">
+          <input
+            className="rounded-sm"
+            type="text"
+            placeholder="장소검색"
+            onKeyPress={searchPlace}
+            onChange={inputPlace}
+          />
+          <button className="agenda-btn" type="button" onClick={searchPlace}>
+            검색
+          </button>
+        </form>
+        {interaction.isSearched && (
+          <ul className="bg-white">
+            {interaction.data.map((place) => (
+              <li key={place.id}>
+                {place.place_name.length > 13
+                  ? place.place_name.substring(0, 13) + "..."
+                  : place.place_name}
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
-      <section className="absolute z-50 top-1/2 right-3 bg-white flex flex-col rounded-sm">
-        <button className="text-xl m-5" onClick={zoomIn}>
+      <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
+        <button className="text-xl m-2 font-bold" onClick={zoomIn}>
+          🔽
+        </button>
+        <button className="text-xl m-2 font-bold" onClick={zoomIn}>
           +
         </button>
-        <button className="text-xl m-5" onClick={zoomOut}>
+        <button className="text-xl m-2 font-bold" onClick={zoomOut}>
           -
         </button>
       </section>
