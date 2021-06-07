@@ -11,6 +11,7 @@ const Map = () => {
     level: 3,
     core: null,
     ps: null,
+    marker: null,
   });
 
   //상호작용
@@ -22,6 +23,7 @@ const Map = () => {
 
   useEffect(() => {
     window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
+    console.log(map);
   }, []);
 
   //스크립트추가
@@ -34,17 +36,22 @@ const Map = () => {
 
   //맵초기화
   const initMap = () => {
+    const container = document.getElementById("map");
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
-      const container = document.getElementById("map");
-      setMap({
+      const markerPosition = new kakao.maps.LatLng(latitude, longitude);
+      setMap((map) => ({
         ...map,
+        isLoaded: true,
         core: new kakao.maps.Map(container, {
-          center: new kakao.maps.LatLng(latitude, longitude),
-          level: 3,
+          center: markerPosition,
+          level: map.level,
         }),
         ps: new kakao.maps.services.Places(),
-      });
+        marker: new kakao.maps.Marker({
+          position: markerPosition,
+        }),
+      }));
     });
   };
 
@@ -57,10 +64,10 @@ const Map = () => {
   };
 
   //장소검색
-  const searchPlace = () => {
+  const searchPlace = (e) => {
+    e.preventDefault();
     map.ps.keywordSearch(interaction.keyword, (data, status, pagination) => {
       if (status === "OK") {
-        console.log(data);
         setIneraction({
           ...interaction,
           isSearched: true,
@@ -76,26 +83,35 @@ const Map = () => {
   //줌아웃
   const zoomOut = () => map.core.setLevel((map.level += 1));
 
+  //지도이동
+  const panTo = (x, y) => {
+    const moveLatLon = new kakao.maps.LatLng(x, y);
+    map.core.panTo(moveLatLon);
+  };
+
   return (
     <article>
       <div className="h-screen" id="map" />
       <section className="absolute z-50 top-3 left-16">
-        <form className="flex">
+        <form className="flex" onSubmit={searchPlace}>
           <input
             className="rounded-sm"
             type="text"
             placeholder="장소검색"
-            onKeyPress={searchPlace}
             onChange={inputPlace}
           />
-          <button className="agenda-btn" type="button" onClick={searchPlace}>
+          <button className="agenda-btn" type="submit">
             검색
           </button>
         </form>
         {interaction.isSearched && (
           <ul className="bg-white">
             {interaction.data.map((place) => (
-              <li key={place.id}>
+              <li
+                className="hover:bg-blue-500 hover:text-white p-1 cursor-pointer"
+                key={place.id}
+                onClick={() => panTo(place.x, place.y)}
+              >
                 {place.place_name.length > 13
                   ? place.place_name.substring(0, 13) + "..."
                   : place.place_name}
@@ -105,7 +121,7 @@ const Map = () => {
         )}
       </section>
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
-        <button className="text-xl m-2 font-bold" onClick={zoomIn}>
+        <button className="text-xl m-2 font-bold" onClick={initMap}>
           🔽
         </button>
         <button className="text-xl m-2 font-bold" onClick={zoomIn}>
