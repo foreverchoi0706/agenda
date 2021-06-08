@@ -7,11 +7,11 @@ const KAKAO_SCRIPT =
 const Map = () => {
   //지도
   const [map, setMap] = useState({
-    isLoaded: false,
     level: 3,
+    lat: null,
+    lon: null,
     core: null,
-    ps: null,
-    marker: null,
+    ps: null
   });
 
   //상호작용
@@ -22,9 +22,16 @@ const Map = () => {
   });
 
   useEffect(() => {
-    window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
-    console.log(map);
-  }, []);
+    if (!map.core) {
+      window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
+    } else {
+      const markerPosition = new kakao.maps.LatLng(map.lat, map.lon);
+      const marker = new kakao.maps.Marker({
+        position: markerPosition,
+      });
+      marker.setMap(map.core);
+    }
+  }, [map]);
 
   //스크립트추가
   const addKakaoMapScript = () => {
@@ -41,16 +48,13 @@ const Map = () => {
       const { latitude, longitude } = position.coords;
       const markerPosition = new kakao.maps.LatLng(latitude, longitude);
       setMap((map) => ({
-        ...map,
-        isLoaded: true,
+        lat: latitude,
+        lon: longitude,
         core: new kakao.maps.Map(container, {
           center: markerPosition,
           level: map.level,
         }),
         ps: new kakao.maps.services.Places(),
-        marker: new kakao.maps.Marker({
-          position: markerPosition,
-        }),
       }));
     });
   };
@@ -85,8 +89,9 @@ const Map = () => {
 
   //지도이동
   const panTo = (x, y) => {
-    const moveLatLon = new kakao.maps.LatLng(x, y);
-    map.core.panTo(moveLatLon);
+    const movePosition = new kakao.maps.LatLng(x, y);
+    console.log(map.core.panTo);
+    map.core.panTo(movePosition);
   };
 
   return (
