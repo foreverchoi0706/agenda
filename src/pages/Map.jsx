@@ -8,10 +8,10 @@ const Map = () => {
   //지도
   const [map, setMap] = useState({
     level: 3,
-    lat: null,
-    lon: null,
+    latitude: null,
+    longitude: null,
     core: null,
-    ps: null
+    ps: null,
   });
 
   //상호작용
@@ -25,7 +25,7 @@ const Map = () => {
     if (!map.core) {
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
-      const markerPosition = new kakao.maps.LatLng(map.lat, map.lon);
+      const markerPosition = new kakao.maps.LatLng(map.latitude, map.longitude);
       const marker = new kakao.maps.Marker({
         position: markerPosition,
       });
@@ -46,12 +46,11 @@ const Map = () => {
     const container = document.getElementById("map");
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
-      const markerPosition = new kakao.maps.LatLng(latitude, longitude);
       setMap((map) => ({
-        lat: latitude,
-        lon: longitude,
+        latitude,
+        longitude,
         core: new kakao.maps.Map(container, {
-          center: markerPosition,
+          center: new kakao.maps.LatLng(latitude, longitude),
           level: map.level,
         }),
         ps: new kakao.maps.services.Places(),
