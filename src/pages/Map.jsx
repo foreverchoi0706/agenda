@@ -25,11 +25,7 @@ const Map = () => {
     if (!map.core) {
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
-      const markerPosition = new kakao.maps.LatLng(map.latitude, map.longitude);
-      const marker = new kakao.maps.Marker({
-        position: markerPosition,
-      });
-      marker.setMap(map.core);
+      setMaker(map.latitude, map.longitude);
     }
   }, [map]);
 
@@ -88,9 +84,18 @@ const Map = () => {
 
   //지도이동
   const panTo = (x, y) => {
-    const movePosition = new kakao.maps.LatLng(x, y);
-    console.log(map.core.panTo);
-    map.core.panTo(movePosition);
+    const position = new kakao.maps.LatLng(y, x);
+    map.core.panTo(position);
+    setMaker(y, x);
+  };
+
+  //마커찍기
+  const setMaker = (latitude, longitude) => {
+    const position = new kakao.maps.LatLng(latitude, longitude);
+    const marker = new kakao.maps.Marker({
+      position: position,
+    });
+    marker.setMap(map.core);
   };
 
   return (
@@ -99,7 +104,7 @@ const Map = () => {
       <section className="absolute z-50 top-3 left-16">
         <form className="flex" onSubmit={searchPlace}>
           <input
-            className="rounded-sm"
+            className="focus:outline-none rounded-sm"
             type="text"
             placeholder="장소검색"
             onChange={inputPlace}
@@ -112,7 +117,7 @@ const Map = () => {
           <ul className="bg-white">
             {interaction.data.map((place) => (
               <li
-                className="hover:bg-blue-500 hover:text-white p-1 cursor-pointer"
+                className="hover:bg-blue-500 hover:text-white border-b-2 p-1 cursor-pointer"
                 key={place.id}
                 onClick={() => panTo(place.x, place.y)}
               >
