@@ -89,6 +89,10 @@ const Map = () => {
     setMaker(y, x);
   };
 
+  const test = () =>{
+    alert(123);
+  }
+
   //마커찍기
   const setMaker = (latitude, longitude) => {
     const position = new kakao.maps.LatLng(latitude, longitude);
@@ -96,6 +100,18 @@ const Map = () => {
       position: position,
     });
     marker.setMap(map.core);
+
+    var infowindow = new kakao.maps.InfoWindow({
+      content: `<button className="add">이 위치로 일정 등록</button>`,
+      removable: true,
+      onclick : (window,()=>alert(123))
+
+    });
+
+
+    window.kakao.maps.event.addListener(marker, 'click', function () {
+      infowindow.open(map.core, marker);
+    });
   };
 
   return (
