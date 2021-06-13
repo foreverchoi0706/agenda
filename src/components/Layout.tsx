@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+//reducers
 import { CLICK_ADD } from "../reducers/user";
 
 //assets

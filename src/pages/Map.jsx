@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+//reducers
+import { CLICK_ADD } from "../reducers/user";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
   "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=c18742c14562f73324a4c92c7d085dce&libraries=services";
 
 const Map = () => {
+  const dispatch = useDispatch();
+
   //지도
   const [map, setMap] = useState({
     level: 3,
@@ -13,6 +18,8 @@ const Map = () => {
     core: null,
     ps: null,
   });
+
+  const [markers, setMakers] = useState([]);
 
   //상호작용
   const [interaction, setIneraction] = useState({
@@ -23,11 +30,15 @@ const Map = () => {
 
   useEffect(() => {
     if (!map.core) {
+      //카카오맵이로딩되지않았다면맵로딩함
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
-      setMaker(map.latitude, map.longitude);
+      //로딩되었다면마커찍음
+      markers.forEach((position) => {
+        setMaker(position);
+      });
     }
-  }, [map]);
+  }, [map, markers]);
 
   //스크립트추가
   const addKakaoMapScript = () => {
@@ -40,17 +51,19 @@ const Map = () => {
   //맵초기화
   const initMap = () => {
     const container = document.getElementById("map");
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords;
+    navigator.geolocation.getCurrentPosition(async (result) => {
+      const { latitude, longitude } = result.coords;
+      const position = new kakao.maps.LatLng(latitude, longitude);
       setMap((map) => ({
         latitude,
         longitude,
         core: new kakao.maps.Map(container, {
-          center: new kakao.maps.LatLng(latitude, longitude),
+          center: position,
           level: map.level,
         }),
         ps: new kakao.maps.services.Places(),
       }));
+      setMakers(markers.concat(position));
     });
   };
 
@@ -86,31 +99,30 @@ const Map = () => {
   const panTo = (x, y) => {
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
-    setMaker(y, x);
+    setMakers(markers.concat(position));
   };
 
-  const test = () =>{
+  const test = () => {
     alert(123);
-  }
+  };
 
   //마커찍기
-  const setMaker = (latitude, longitude) => {
-    const position = new kakao.maps.LatLng(latitude, longitude);
+  const setMaker = (position) => {
     const marker = new kakao.maps.Marker({
-      position: position,
+      position,
     });
     marker.setMap(map.core);
 
     var infowindow = new kakao.maps.InfoWindow({
       content: `<button className="add">이 위치로 일정 등록</button>`,
       removable: true,
-      onclick : (window,()=>alert(123))
-
+      onclick,
     });
 
-
-    window.kakao.maps.event.addListener(marker, 'click', function () {
-      infowindow.open(map.core, marker);
+    window.kakao.maps.event.addListener(marker, "click", function () {
+      dispatch({
+        type: CLICK_ADD,
+      });
     });
   };
 

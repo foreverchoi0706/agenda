@@ -12,6 +12,20 @@ const Add = () => {
       <form className="flex flex-col p-5 bg-blue-100 rounded-sm">
         <h2 className="text-center">다음으로 일정을 추가합니다.</h2>
         <Calendar calendarType="US" />
+        <div>
+          <label>
+            긴급
+            <input name="division" type="radio" />
+          </label>
+          <label>
+            긴급
+            <input name="division" type="radio" />
+          </label>
+          <label>
+            긴급
+            <input name="division" type="radio" />
+          </label>
+        </div>
         <input type="text" placeholder="일정을 입력해주세요" />
         <textarea></textarea>
         <div className="">
