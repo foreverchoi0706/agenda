@@ -1,8 +1,9 @@
 import React, { ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import localforage from "../db/localforage";
 //reducers
-import { CLICK_ADD } from "../reducers/user";
+import { CLICK_ADD, SIGN_OUT } from "../reducers/user";
 
 //assets
 // import setting from "../assets/setting.png";
@@ -18,9 +19,15 @@ const Layout = ({ children }: LayoutPorps) => {
 
   const push = (path: string = "") => history.push(`/${path}`);
 
+  const signOut = () => {
+    dispatch({
+      type: SIGN_OUT,
+    });
+  };
+
   return (
     <React.Fragment>
-      <header className="bg-blue-500">
+      <header className="hidden bg-blue-500 sm:block">
         <nav className="h-full flex flex-col justify-between relative">
           <div className="flex flex-col">
             <h2 className="text-center text-white font-bold">A</h2>
@@ -46,6 +53,9 @@ const Layout = ({ children }: LayoutPorps) => {
             </button>
           </div>
           <button className="agenda-menu" onClick={() => push("config")}>
+            설정
+          </button>
+          <button className="agenda-menu" onClick={signOut}>
             설정
           </button>
         </nav>

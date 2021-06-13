@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //reducers
 import { CLICK_ADD } from "../reducers/user";
 
@@ -12,13 +12,14 @@ const Map = () => {
 
   //지도
   const [map, setMap] = useState({
-    level: 3,
-    latitude: null,
-    longitude: null,
-    core: null,
-    ps: null,
+    level: 3, //지도레벨
+    latitude: null, //지도위도
+    longitude: null, //지도경도
+    core: null, //지도코어
+    ps: null, //지도검색
   });
 
+  //마커배열
   const [markers, setMakers] = useState([]);
 
   //상호작용
@@ -78,15 +79,18 @@ const Map = () => {
   //장소검색
   const searchPlace = (e) => {
     e.preventDefault();
-    map.ps.keywordSearch(interaction.keyword, (data, status, pagination) => {
-      if (status === "OK") {
-        setIneraction({
-          ...interaction,
-          isSearched: true,
-          data,
-        });
-      }
-    });
+    if (interaction.keyword) {
+      //검색키워드가있다면검색
+      map.ps.keywordSearch(interaction.keyword, (data, status, pagination) => {
+        if (status === "OK") {
+          setIneraction({
+            ...interaction,
+            isSearched: true,
+            data,
+          });
+        }
+      });
+    }
   };
 
   //줌인
@@ -96,14 +100,17 @@ const Map = () => {
   const zoomOut = () => map.core.setLevel((map.level += 1));
 
   //지도이동
-  const panTo = (x, y) => {
+  const panTo = (x, y, placeName, addressName) => {
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
     setMakers(markers.concat(position));
-  };
 
-  const test = () => {
-    alert(123);
+    setIneraction((interaction) => ({
+      ...interaction,
+      isSearched: false,
+    }));
+
+    console.log(placeName, addressName);
   };
 
   //마커찍기
@@ -112,16 +119,10 @@ const Map = () => {
       position,
     });
     marker.setMap(map.core);
-
-    var infowindow = new kakao.maps.InfoWindow({
-      content: `<button className="add">이 위치로 일정 등록</button>`,
-      removable: true,
-      onclick,
-    });
-
-    window.kakao.maps.event.addListener(marker, "click", function () {
+    window.kakao.maps.event.addListener(marker, "click", () => {
       dispatch({
         type: CLICK_ADD,
+        payload: {},
       });
     });
   };
@@ -130,7 +131,7 @@ const Map = () => {
     <article>
       <div className="h-screen" id="map" />
       <section className="absolute z-50 top-3 left-16">
-        <form className="flex" onSubmit={searchPlace}>
+        <form className="flex" onSubmit={searchPlace} onClick={searchPlace}>
           <input
             className="focus:outline-none rounded-sm"
             type="text"
@@ -147,7 +148,9 @@ const Map = () => {
               <li
                 className="hover:bg-blue-500 hover:text-white border-b-2 p-1 cursor-pointer"
                 key={place.id}
-                onClick={() => panTo(place.x, place.y)}
+                onClick={() =>
+                  panTo(place.x, place.y, place.place_name, place.address_name)
+                }
               >
                 {place.place_name.length > 13
                   ? place.place_name.substring(0, 13) + "..."

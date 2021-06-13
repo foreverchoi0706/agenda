@@ -1,27 +1,39 @@
-import { Action } from "redux";
+//db
+import localforage from "../db/localforage";
 //interface
-import User from "../types/User";
+import { User, AgendaAction } from "../types/User";
 
+//로그인
 export const SIGN_IN = "SIGN_IN";
-
+//로그아웃
+export const SIGN_OUT = "SIGN_OUT";
+//일정추가
 export const CLICK_ADD = "CLICK_ADD";
 
 const initialState: User = {
-    isLogined: false,
-    isAdd: false,
+    name: "",
+    isAdded: false,
 }
 
-const user = (state: User = initialState, action: Action) => {
+const user = (state: User = initialState, action: AgendaAction) => {
     switch (action.type) {
         case SIGN_IN:
+            localforage.setItem("NAME", action.payload);
             return {
                 ...state,
-                isLogined: true
+                name: action.payload,
+            };
+        case SIGN_OUT:
+            localforage.removeItem("NAME");
+            window.location.href="/";
+            return {
+                ...initialState
             };
         case CLICK_ADD:
+            console.log(action.payload);
             return {
                 ...state,
-                isAdd: !state.isAdd
+                isAdded: !state.isAdded
             };
         default:
             return state;

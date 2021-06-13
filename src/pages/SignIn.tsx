@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { RootState } from "../reducers/root";
 //reducers
+import { RootState } from "../reducers/root";
 import { SIGN_IN } from "../reducers/user";
 //assets
 
 const SignIn = () => {
-  const { isLogined } = useSelector((root: RootState) => root.user);
+  const { name } = useSelector((root: RootState) => root.user);
 
   const dispatch = useDispatch();
+  //상호작용
+  const [inputValue, setInputValue] = useState("");
 
   const signIn = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({
       type: SIGN_IN,
+      payload: inputValue,
     });
   };
 
-  if (isLogined) return <Redirect to="/map" />;
+  const inputName = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setInputValue(() => e.target.value);
+
+  if (name) return <Redirect to="/map" />;
 
   return (
     <article className="bg-blue-500 w-full flex justify-center items-center">
@@ -30,6 +36,8 @@ const SignIn = () => {
         <input
           className="focus:outline-none text-center my-5"
           type="text"
+          value={inputValue}
+          onChange={inputName}
           placeholder="허니 아메리카노"
           required
         />
