@@ -16,8 +16,6 @@ interface LayoutPorps {
   children: ReactNode;
 }
 
-console.log(calendar);
-
 const Layout = ({ children }: LayoutPorps) => {
   const dispatch = useDispatch();
 

@@ -1,7 +1,7 @@
 //db
 import localforage from "../db/localforage";
 //interface
-import { User, AgendaAction } from "../types/User";
+import { User, AgendaAction } from "../types/Agenda";
 
 //로그인
 export const SIGN_IN = "SIGN_IN";

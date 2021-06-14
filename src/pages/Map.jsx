@@ -10,6 +10,8 @@ const KAKAO_SCRIPT =
   "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=c18742c14562f73324a4c92c7d085dce&libraries=services";
 
 const Map = () => {
+  const { name } = useSelector((root) => root.user);
+
   const dispatch = useDispatch();
 
   //지도
@@ -20,9 +22,6 @@ const Map = () => {
     core: null, //지도코어
     ps: null, //지도검색
   });
-
-  //마커배열
-  const [markers, setMakers] = useState([]);
 
   //상호작용
   const [interaction, setIneraction] = useState({
@@ -38,10 +37,11 @@ const Map = () => {
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
       //로딩되었다면마커찍음
-      console.log(interaction.position);
-      setMaker(interaction.position);
+      if (interaction.position) {
+        setMaker(interaction.position);
+      }
     }
-  }, [map, markers]);
+  }, [map]);
 
   //스크립트추가
   const addKakaoMapScript = () => {
@@ -66,7 +66,7 @@ const Map = () => {
         }),
         ps: new kakao.maps.services.Places(),
       }));
-      setMakers(markers.concat(position));
+      setMaker(position);
     });
   };
 
@@ -105,7 +105,7 @@ const Map = () => {
   const panTo = (x, y, placeName, addressName) => {
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
-    setMakers(markers.concat(position));
+    setMaker(position);
 
     setIneraction((interaction) => ({
       ...interaction,
@@ -131,7 +131,7 @@ const Map = () => {
   return (
     <article>
       <div className="h-screen" id="map" />
-      <section className="absolute z-50 top-3 left-16">
+      <section className="absolute z-50 top-3 left-3 md:left-16">
         <form className="flex" onSubmit={searchPlace} onClick={searchPlace}>
           <input
             className="focus:outline-none rounded-sm"
@@ -162,8 +162,8 @@ const Map = () => {
         )}
       </section>
 
-      <Widget />
-     
+      <Widget latitude={map.latitude} longitude={map.longitude} />
+
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
         <button className="text-xl m-2 font-bold" onClick={initMap}>
           🔽
