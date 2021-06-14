@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import localforage from "../db/localforage";
 //reducers
-import { CLICK_ADD, SIGN_OUT } from "../reducers/user";
+import { CLICK_ADD, CLICK_CONFIG, SIGN_OUT } from "../reducers/user";
 
 //assets
 import map from "../assets/map.png";
@@ -66,7 +66,7 @@ const Layout = ({ children }: LayoutPorps) => {
           <img
             className="agenda-menu"
             src={adjustments}
-            onClick={() => dispatch({ type: CLICK_ADD })}
+            onClick={() => dispatch({ type: CLICK_CONFIG })}
           />
         </nav>
       </header>
