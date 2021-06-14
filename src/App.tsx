@@ -10,12 +10,15 @@ import SignIn from "./pages/SignIn";
 import Chart from "./pages/Chart";
 import Calendar from "./pages/Calendar";
 import Add from "./pages/Add";
+import Config from "./pages/Config";
 //components
 import Layout from "./components/Layout";
 
 const App = () => {
   //일정추가여부
-  const { isAdded } = useSelector((root: RootState) => root.user);
+  const { isAddClicked, isConfigClicked } = useSelector(
+    (root: RootState) => root.user
+  );
   //로그인여부
   const [isSigned, setIsSigned] = useState(false);
 
@@ -36,7 +39,8 @@ const App = () => {
           <Redirect path="/" to="/map" />
         </Layout>
       </Switch>
-      {isAdded && <Add />}
+      {isAddClicked && <Add />}
+      {isConfigClicked && <Config />}
     </HashRouter>
   );
 };

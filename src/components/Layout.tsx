@@ -6,11 +6,17 @@ import localforage from "../db/localforage";
 import { CLICK_ADD, SIGN_OUT } from "../reducers/user";
 
 //assets
-// import setting from "../assets/setting.png";
+import map from "../assets/map.png";
+import calendar from "../assets/calendar.png";
+import bargraph from "../assets/bargraph.png";
+import alarmclock from "../assets/alarmclock.png";
+import adjustments from "../assets/adjustments.png";
 
 interface LayoutPorps {
   children: ReactNode;
 }
+
+console.log(calendar);
 
 const Layout = ({ children }: LayoutPorps) => {
   const dispatch = useDispatch();
@@ -36,28 +42,32 @@ const Layout = ({ children }: LayoutPorps) => {
             <h2 className="text-center text-white font-bold">N</h2>
             <h2 className="text-center text-white font-bold">D</h2>
             <h2 className="text-center text-white font-bold">A</h2>
-            <button className="agenda-menu" onClick={() => push("map")}>
-              지도
-            </button>
-            <button className="agenda-menu" onClick={() => push("calendar")}>
-              달력
-            </button>
-            <button className="agenda-menu" onClick={() => push("chart")}>
-              분석
-            </button>
-            <button
+            <img
               className="agenda-menu"
+              src={map}
+              onClick={() => push("map")}
+            />
+            <img
+              className="agenda-menu"
+              src={calendar}
+              onClick={() => push("calendar")}
+            />
+            <img
+              className="agenda-menu"
+              src={bargraph}
+              onClick={() => push("chart")}
+            />
+            <img
+              className="agenda-menu"
+              src={alarmclock}
               onClick={() => dispatch({ type: CLICK_ADD })}
-            >
-              추가
-            </button>
+            />
           </div>
-          <button className="agenda-menu" onClick={() => push("config")}>
-            설정
-          </button>
-          <button className="agenda-menu" onClick={signOut}>
-            설정
-          </button>
+          <img
+            className="agenda-menu"
+            src={adjustments}
+            onClick={() => dispatch({ type: CLICK_ADD })}
+          />
         </nav>
       </header>
       <div className="flex-grow">{children}</div>

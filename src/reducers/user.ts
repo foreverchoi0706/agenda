@@ -9,10 +9,13 @@ export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
 //일정추가
 export const CLICK_ADD = "CLICK_ADD";
+//환경설정
+export const CLICK_CONFIG = "CLICK_CONFIG";
 
 const initialState: User = {
     name: "",
-    isAdded: false,
+    isAddClicked: false,
+    isConfigClicked: false
 }
 
 const user = (state: User = initialState, action: AgendaAction) => {
@@ -25,15 +28,19 @@ const user = (state: User = initialState, action: AgendaAction) => {
             };
         case SIGN_OUT:
             localforage.removeItem("NAME");
-            window.location.href="/";
+            window.location.href = "/";
             return {
                 ...initialState
             };
         case CLICK_ADD:
-            console.log(action.payload);
             return {
                 ...state,
-                isAdded: !state.isAdded
+                isAddClicked: !state.isAddClicked
+            };
+        case CLICK_CONFIG:
+            return {
+                ...state,
+                isConfigClicked: !state.isConfigClicked
             };
         default:
             return state;

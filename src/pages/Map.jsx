@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+//components
+import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD } from "../reducers/user";
 
@@ -27,6 +29,7 @@ const Map = () => {
     keyword: "",
     isSearched: false,
     data: null,
+    position: null,
   });
 
   useEffect(() => {
@@ -35,9 +38,8 @@ const Map = () => {
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
       //로딩되었다면마커찍음
-      markers.forEach((position) => {
-        setMaker(position);
-      });
+      console.log(interaction.position);
+      setMaker(interaction.position);
     }
   }, [map, markers]);
 
@@ -108,9 +110,8 @@ const Map = () => {
     setIneraction((interaction) => ({
       ...interaction,
       isSearched: false,
+      position,
     }));
-
-    console.log(placeName, addressName);
   };
 
   //마커찍기
@@ -160,6 +161,9 @@ const Map = () => {
           </ul>
         )}
       </section>
+
+      <Widget />
+     
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
         <button className="text-xl m-2 font-bold" onClick={initMap}>
           🔽

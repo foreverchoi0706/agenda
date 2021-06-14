@@ -2,9 +2,10 @@ import { Action } from "redux";
 
 export interface User {
     name: "";
-    isAdded: Boolean;
+    isAddClicked: Boolean;
+    isConfigClicked: Boolean;
 }
 
 export interface AgendaAction extends Action {
     payload: Object
-} 
+}
