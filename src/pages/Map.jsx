@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faMinus,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 //components
 import Widget from "../components/Widget";
 //reducers
@@ -96,10 +102,10 @@ const Map = () => {
   };
 
   //줌인
-  const zoomIn = () => map.core.setLevel((map.level -= 1));
+  const zoomIn = () => map.core.setLevel(() => (map.level -= 1));
 
   //줌아웃
-  const zoomOut = () => map.core.setLevel((map.level += 1));
+  const zoomOut = () => map.core.setLevel(() => (map.level += 1));
 
   //지도이동
   const panTo = (x, y, placeName, addressName) => {
@@ -131,7 +137,7 @@ const Map = () => {
   return (
     <article>
       <div className="h-screen" id="map" />
-      <section className="absolute z-50 top-3 left-3 md:left-16">
+      <section className="absolute z-50 top-3 left-3 sm:left-16">
         <form className="flex" onSubmit={searchPlace} onClick={searchPlace}>
           <input
             className="focus:outline-none rounded-sm"
@@ -165,15 +171,21 @@ const Map = () => {
       <Widget latitude={map.latitude} longitude={map.longitude} />
 
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
-        <button className="text-xl m-2 font-bold" onClick={initMap}>
-          🔽
-        </button>
-        <button className="text-xl m-2 font-bold" onClick={zoomIn}>
-          +
-        </button>
-        <button className="text-xl m-2 font-bold" onClick={zoomOut}>
-          -
-        </button>
+        <FontAwesomeIcon
+          className="m-2 cursor-pointer text-blue-500"
+          icon={faMapMarkerAlt}
+          onClick={initMap}
+        />
+        <FontAwesomeIcon
+          className="m-2 cursor-pointer text-blue-500"
+          icon={faPlus}
+          onClick={zoomIn}
+        />
+        <FontAwesomeIcon
+          className="m-2 cursor-pointer text-blue-500"
+          icon={faMinus}
+          onClick={zoomOut}
+        />
       </section>
     </article>
   );

@@ -1,20 +1,27 @@
 import React, { ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkedAlt,
+  faCalendarAlt,
+  faList,
+  faCogs,
+  faPen,
+} from "@fortawesome/free-solid-svg-icons";
 import localforage from "../db/localforage";
 //reducers
 import { CLICK_ADD, CLICK_CONFIG, SIGN_OUT } from "../reducers/user";
 
-//assets
-import map from "../assets/map.png";
-import calendar from "../assets/calendar.png";
-import bargraph from "../assets/bargraph.png";
-import alarmclock from "../assets/alarmclock.png";
-import adjustments from "../assets/adjustments.png";
-
 interface LayoutPorps {
   children: ReactNode;
 }
+
+const iconStyle: React.CSSProperties = {
+  fontSize: "1.5rem",
+  margin: "0.5rem",
+  cursor: "pointer",
+};
 
 const Layout = ({ children }: LayoutPorps) => {
   const dispatch = useDispatch();
@@ -23,47 +30,42 @@ const Layout = ({ children }: LayoutPorps) => {
 
   const push = (path: string = "") => history.push(`/${path}`);
 
-  const signOut = () => {
-    dispatch({
-      type: SIGN_OUT,
-    });
-  };
-
   return (
     <React.Fragment>
       <header className="hidden bg-blue-500 sm:block">
         <nav className="h-full flex flex-col justify-between relative">
-          <div className="flex flex-col">
-            <h2 className="text-center text-white font-bold">A</h2>
-            <h2 className="text-center text-white font-bold">G</h2>
-            <h2 className="text-center text-white font-bold">E</h2>
-            <h2 className="text-center text-white font-bold">N</h2>
-            <h2 className="text-center text-white font-bold">D</h2>
-            <h2 className="text-center text-white font-bold">A</h2>
-            <img
-              className="agenda-menu"
-              src={map}
+          <div className="flex flex-col items-center text-white text-center font-bold">
+            <h2>A</h2>
+            <h2>G</h2>
+            <h2>E</h2>
+            <h2>N</h2>
+            <h2>D</h2>
+            <h2>A</h2>
+            <FontAwesomeIcon
+              icon={faMapMarkedAlt}
+              style={iconStyle}
               onClick={() => push("map")}
             />
-            <img
-              className="agenda-menu"
-              src={calendar}
+            <FontAwesomeIcon
+              icon={faCalendarAlt}
+              style={iconStyle}
               onClick={() => push("calendar")}
             />
-            <img
-              className="agenda-menu"
-              src={bargraph}
+            <FontAwesomeIcon
+              icon={faList}
+              style={iconStyle}
               onClick={() => push("chart")}
             />
-            <img
-              className="agenda-menu"
-              src={alarmclock}
+            <FontAwesomeIcon
+              icon={faPen}
+              style={iconStyle}
               onClick={() => dispatch({ type: CLICK_ADD })}
             />
           </div>
-          <img
-            className="agenda-menu"
-            src={adjustments}
+          <FontAwesomeIcon
+            className="text-white"
+            icon={faCogs}
+            style={iconStyle}
             onClick={() => dispatch({ type: CLICK_CONFIG })}
           />
         </nav>

@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/foreverchoi0706/agenda#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@types/react-big-calendar": "^0.31.0",
     "@types/react-calendar": "^3.4.0",
     "@types/react-redux": "^7.1.16",
