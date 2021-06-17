@@ -111,6 +111,7 @@ const Map = () => {
   const panTo = (x, y, placeName, addressName) => {
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
+    console.log(position.La);
     setMaker(position);
 
     setIneraction((interaction) => ({
