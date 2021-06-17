@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import localforage from "../db/localforage";
 //reducers
-import { CLICK_ADD, CLICK_CONFIG, SIGN_OUT } from "../reducers/user";
+import { CLICK_ADD, CLICK_CONFIG } from "../reducers/user";
 
 interface LayoutPorps {
   children: ReactNode;
@@ -19,7 +19,7 @@ interface LayoutPorps {
 
 const iconStyle: React.CSSProperties = {
   fontSize: "1.5rem",
-  margin: "0.5rem",
+  margin: "1rem 0.5rem",
   cursor: "pointer",
 };
 
@@ -32,7 +32,7 @@ const Layout = ({ children }: LayoutPorps) => {
 
   return (
     <React.Fragment>
-      <header className="hidden bg-blue-500 sm:block">
+      <header className="hidden bg-blue-500 h-full sm:block">
         <nav className="h-full flex flex-col justify-between relative">
           <div className="flex flex-col items-center text-white text-center font-bold">
             <h2>A</h2>

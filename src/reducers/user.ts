@@ -35,11 +35,13 @@ const user = (state: User = initialState, action: AgendaAction) => {
         case CLICK_ADD:
             return {
                 ...state,
-                isAddClicked: !state.isAddClicked
+                isAddClicked: !state.isAddClicked,
+                isConfigClicked: false
             };
         case CLICK_CONFIG:
             return {
                 ...state,
+                isAddClicked: false,
                 isConfigClicked: !state.isConfigClicked
             };
         default:

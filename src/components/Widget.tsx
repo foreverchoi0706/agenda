@@ -82,18 +82,19 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
   return (
     <section className="hidden sm:grid grid-cols-3 gap-1 absolute z-50 top-3 right-3 w-96 text-gray-500">
       <div className="col-start-1 col-end-4 font-bold bg-white rounded-sm flex justify-between items-center p-1">
-        <FontAwesomeIcon
-          icon={getWheaterIcon(weatherInfo?.weather[0].main)}
-          style={{ width: "1rem" }}
-        />
+        <div>
+          <FontAwesomeIcon
+            icon={getWheaterIcon(weatherInfo?.weather[0].main)}
+            style={{ width: "1rem" }}
+          />
+          &nbsp;
+          {weatherInfo?.name}
+        </div>
+
         <strong>안녕하세요 {name}님!</strong>
       </div>
       {weatherInfo ? (
         <ul className="bg-white rounded-sm flex flex-col justify-around">
-          <li className="flex justify-between items-center m-1 ">
-            <FontAwesomeIcon style={{ width: "1rem" }} icon={faMapMarkerAlt} />
-            {weatherInfo.name}
-          </li>
           <li className="flex justify-between items-center m-1">
             <FontAwesomeIcon
               style={{ width: "1rem" }}
@@ -121,7 +122,7 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
           </li>
         </ul>
       )}
-      <ul className="bg-white rounded-sm overflow-y-auto h-48 col-start-2 col-end-4 flex flex-col gap-1">
+      <ul className="bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
         <li>TEST</li>
         <li>TEST</li>
         <li>TEST</li>
