@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 //db
 import localforage from "../db/localforage";
 //interface
@@ -7,24 +8,32 @@ import { User, AgendaAction } from "../types/Agenda";
 export const SIGN_IN = "SIGN_IN";
 //로그아웃
 export const SIGN_OUT = "SIGN_OUT";
-//일정추가
+//이벤트추가
 export const CLICK_ADD = "CLICK_ADD";
 //환경설정
 export const CLICK_CONFIG = "CLICK_CONFIG";
+//테마색변경
+export const CHANGE_THEME_COLOR = "CHANGE_THEME_COLOR";
 
 const initialState: User = {
     name: "",
     isAddClicked: false,
-    isConfigClicked: false
+    isConfigClicked: false,
+    resource: {
+        placeName: "",
+        addressName: "",
+        position: null,
+    }
 }
 
-const user = (state: User = initialState, action: AgendaAction) => {
+
+const user: Reducer<User, AgendaAction> = (state: User = initialState, action: AgendaAction) => {
     switch (action.type) {
         case SIGN_IN:
             localforage.setItem("NAME", action.payload);
             return {
                 ...state,
-                name: action.payload,
+                name: "",
             };
         case SIGN_OUT:
             localforage.removeItem("NAME");
@@ -36,7 +45,10 @@ const user = (state: User = initialState, action: AgendaAction) => {
             return {
                 ...state,
                 isAddClicked: !state.isAddClicked,
-                isConfigClicked: false
+                isConfigClicked: false,
+                resource: {
+                    ...action.payload
+                }
             };
         case CLICK_CONFIG:
             return {

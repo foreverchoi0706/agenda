@@ -11,7 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import localforage from "../db/localforage";
 //reducers
-import { CLICK_ADD, CLICK_CONFIG } from "../reducers/user";
+import { CLICK_CONFIG } from "../reducers/user";
+import { CLICK_ADD } from "../reducers/event";
 
 interface LayoutPorps {
   children: ReactNode;
@@ -28,7 +29,7 @@ const Layout = ({ children }: LayoutPorps) => {
 
   const history = useHistory();
 
-  const push = (path: string = "") => history.push(`/${path}`);
+  const push = (path: string = "/") => history.push(`/${path}`);
 
   return (
     <React.Fragment>

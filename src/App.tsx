@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "./reducers/root";
 import { Route, Switch, HashRouter, Redirect } from "react-router-dom";
 //db
@@ -15,10 +15,12 @@ import Config from "./pages/Config";
 import Layout from "./components/Layout";
 
 const App = () => {
-  //일정추가여부
+  //이벤트추가,설정클릭여부
   const { isAddClicked, isConfigClicked } = useSelector(
-    (root: RootState) => root.user
+    (root: RootState) => root.user,
+    shallowEqual
   );
+
   //로그인여부
   const [isSigned, setIsSigned] = useState(false);
 

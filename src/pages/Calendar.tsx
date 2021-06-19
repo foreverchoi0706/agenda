@@ -1,5 +1,6 @@
 import React from "react";
 import { Calendar as RBC, momentLocalizer } from "react-big-calendar";
+
 import moment from "moment";
 
 const localizer = momentLocalizer(moment);
@@ -13,6 +14,7 @@ const Calendar = () => {
         className="h-screen"
         localizer={localizer}
         events={myEventsList}
+        views={{ month: true }}
         messages={{
           today: "↩",
           previous: "↓",

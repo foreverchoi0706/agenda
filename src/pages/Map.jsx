@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -16,25 +16,22 @@ const KAKAO_SCRIPT =
   "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=c18742c14562f73324a4c92c7d085dce&libraries=services";
 
 const Map = () => {
-  const { name } = useSelector((root) => root.user);
-
   const dispatch = useDispatch();
 
   //지도
   const [map, setMap] = useState({
     level: 3, //지도레벨
-    latitude: null, //지도위도
-    longitude: null, //지도경도
+    position: null, //현위치
     core: null, //지도코어
     ps: null, //지도검색
   });
 
   //상호작용
   const [interaction, setIneraction] = useState({
-    keyword: "",
-    isSearched: false,
-    data: null,
-    position: null,
+    keyword: "", //검색키워드
+    isSearched: false, //검색여부
+    data: null, //검색결과리스트
+    position: null, //선택된검색결과
   });
 
   useEffect(() => {
@@ -42,7 +39,9 @@ const Map = () => {
       //카카오맵이로딩되지않았다면맵로딩함
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
-      //로딩되었다면마커찍음
+      //현위치마커
+      setMaker(map.position);
+      //검색마커
       if (interaction.position) {
         setMaker(interaction.position);
       }
@@ -64,15 +63,13 @@ const Map = () => {
       const { latitude, longitude } = result.coords;
       const position = new kakao.maps.LatLng(latitude, longitude);
       setMap((map) => ({
-        latitude,
-        longitude,
+        position,
         core: new kakao.maps.Map(container, {
           center: position,
           level: map.level,
         }),
         ps: new kakao.maps.services.Places(),
       }));
-      setMaker(position);
     });
   };
 
@@ -90,7 +87,7 @@ const Map = () => {
     if (interaction.keyword) {
       //검색키워드가있다면검색
       map.ps.keywordSearch(interaction.keyword, (data, status, pagination) => {
-        if (status === "OK") {
+        if (status === kakao.maps.services.Status.OK) {
           setIneraction({
             ...interaction,
             isSearched: true,
@@ -111,9 +108,7 @@ const Map = () => {
   const panTo = (x, y, placeName, addressName) => {
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
-    console.log(position.La);
-    setMaker(position);
-
+    setMaker(position, placeName, addressName);
     setIneraction((interaction) => ({
       ...interaction,
       isSearched: false,
@@ -122,15 +117,16 @@ const Map = () => {
   };
 
   //마커찍기
-  const setMaker = (position) => {
+  const setMaker = (position, placeName = "현위치", addressName = "현위치") => {
     const marker = new kakao.maps.Marker({
       position,
     });
     marker.setMap(map.core);
+    //마커에 이벤트 추가
     window.kakao.maps.event.addListener(marker, "click", () => {
       dispatch({
         type: CLICK_ADD,
-        payload: {},
+        payload: { placeName, addressName, position },
       });
     });
   };
@@ -169,7 +165,10 @@ const Map = () => {
         )}
       </section>
 
-      <Widget latitude={map.latitude} longitude={map.longitude} />
+      <Widget
+        latitude={map.position?.getLat()}
+        longitude={map.position?.getLng()}
+      />
 
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
         <FontAwesomeIcon
