@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 //db
 import localforage from "../db/localforage";
 //interface
@@ -19,12 +20,16 @@ const initialState: AgendaEvent = {
     },
 }
 
-const event = (state: AgendaEvent = initialState, action: AgendaAction) => {
+const event: Reducer<AgendaEvent, AgendaAction> = (state: AgendaEvent = initialState, action: AgendaAction) => {
     switch (action.type) {
         case ADD_EVENT:
-            return {
-
-            }
+            localforage.getItem("EVENT").then((value: any) => {
+                if (!value) {
+                    localforage.setItem("EVENT", []);
+                } else {
+                    localforage.setItem("EVENT", value.concat(action.payload));
+                }
+            });
         default:
             return state;
     }

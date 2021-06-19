@@ -41,6 +41,7 @@ const App = () => {
           <Redirect path="/" to="/map" />
         </Layout>
       </Switch>
+    
       {isAddClicked && <Add />}
       {isConfigClicked && <Config />}
     </HashRouter>

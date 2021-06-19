@@ -1,11 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 //reducers
+import { RootState } from "../reducers/root";
 import { SIGN_OUT, CLICK_CONFIG, CHANGE_THEME_COLOR } from "../reducers/user";
 
 const Config = () => {
+  const { themeColor } = useSelector((root: RootState) => root.user);
+
   const dispatch = useDispatch();
 
   //로그아웃
@@ -15,41 +18,44 @@ const Config = () => {
     }
   };
 
-  const clickColor = (e: React.MouseEvent<HTMLLIElement>) => {
-    console.log(e);
+  const clickColor = (e: any) => {
+    dispatch({
+      type: CHANGE_THEME_COLOR,
+      payload: e.target.id,
+    });
   };
 
   const themeColors = [
     {
-      id: "bg-red-500",
+      id: "red-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-yellow-500",
+      id: "yellow-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-green-500",
+      id: "green-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-blue-500",
+      id: "blue-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-indigo-500",
+      id: "indigo-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-purple-500",
+      id: "purple-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-gray-500",
+      id: "gray-500",
       className: "w-8 h-8 cursor-pointer",
     },
     {
-      id: "bg-pink-500",
+      id: "pink-500",
       className: "w-8 h-8 cursor-pointer",
     },
   ];
@@ -66,27 +72,27 @@ const Config = () => {
         </div>
         <hr />
         <div>
-          <strong className="border-blue-500 border-l-4 pl-2">
+          <strong className={`border-${themeColor} border-l-4 pl-2`}>
             테마 색 변경
           </strong>
           <div className="text-blue-500 text-sm font-bold my-2">
             테마색을 변경할 수 있어요.
           </div>
           <ul className="grid grid-cols-4 grid-rows-2 justify-items-center gap-5">
-            {themeColors.map((themeColor, index) =>
-              React.createElement("li", {
-                style: { width: "32px", height: "32px", cursor: "pointer" },
-                key: index,
-                id: themeColor.id,
-                className: `${themeColor.id}`,
-                onClick: clickColor,
-              })
-            )}
+            {themeColors.map((themeColor, index) => (
+              <li
+                id={themeColor.id}
+                className={`bg-${themeColor.id}`}
+                key={index}
+                style={{ width: "32px", height: "32px", cursor: "pointer" }}
+                onClick={clickColor}
+              />
+            ))}
           </ul>
         </div>
 
         <div>
-          <strong className="border-blue-500 border-l-4 pl-2">
+          <strong className={`border-${themeColor} border-l-4 pl-2`}>
             계정삭제하기
           </strong>
           <div className="text-red-500 text-sm font-bold my-2">

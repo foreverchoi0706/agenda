@@ -11,6 +11,7 @@ export interface User {
         addressName?: string
         position?: any,
     } | null;
+    themeColor: string;
 }
 
 /** @summary 이벤트 */

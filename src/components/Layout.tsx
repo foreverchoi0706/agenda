@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import localforage from "../db/localforage";
 //reducers
+import { RootState } from "../reducers/root";
 import { CLICK_CONFIG } from "../reducers/user";
 import { CLICK_ADD } from "../reducers/event";
 
@@ -25,6 +26,8 @@ const iconStyle: React.CSSProperties = {
 };
 
 const Layout = ({ children }: LayoutPorps) => {
+  const { themeColor } = useSelector((root: RootState) => root.user);
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -33,7 +36,7 @@ const Layout = ({ children }: LayoutPorps) => {
 
   return (
     <React.Fragment>
-      <header className="hidden bg-blue-500 h-full sm:block">
+      <header className={`hidden bg-${themeColor} h-full sm:block`}>
         <nav className="h-full flex flex-col justify-between relative">
           <div className="flex flex-col items-center text-white text-center font-bold">
             <h2>A</h2>

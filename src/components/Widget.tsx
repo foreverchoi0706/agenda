@@ -12,7 +12,6 @@ import {
   faQuestion,
   faThermometerHalf,
   faSpinner,
-  faMapMarkerAlt,
   faEye,
   faTint,
   faSmile,
@@ -20,7 +19,7 @@ import {
 //db
 import localforage from "../db/localforage";
 //interface
-import { WeatherInfo } from "../types/Agenda";
+import { AgendaEvent, WeatherInfo } from "../types/Agenda";
 
 const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 
@@ -59,12 +58,18 @@ const getWheatherInfoURL = (latitude: number, longitude: number): string =>
 const Widget = ({ latitude, longitude }: WidgetProps) => {
   const [name, setName] = useState<String | unknown>("");
 
+  const [events, setEvents] = useState<Array<AgendaEvent>>([]);
+
   const [weatherInfo, setWeatherInfo] = useState<WeatherInfo | null>(null);
 
   useEffect(() => {
     //계정명가져오기
     localforage.getItem("NAME").then((value) => {
       setName((): String | unknown => value);
+    });
+    //이벤트가져오기
+    localforage.getItem("EVENT").then((value: any) => {
+      setEvents(() => value);
     });
     //날씨정보가져오기
     if (latitude && longitude) {
@@ -122,13 +127,10 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
           </li>
         </ul>
       )}
-      <ul className="bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        <li>TEST</li>
-        <li>TEST</li>
-        <li>TEST</li>
-        <li>TEST</li>
-        <li>TEST</li>
-        <li>TEST</li>
+      <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
+        {events.map((event, index) => (
+          <li className="m-1 bg-gray-100" key={index}>{event.title}</li>
+        ))}
       </ul>
     </section>
   );

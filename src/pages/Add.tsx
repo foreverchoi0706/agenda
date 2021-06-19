@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Event } from "react-big-calendar";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 //reducers
-import { CLICK_ADD } from "../reducers/user";
 import { RootState } from "../reducers/root";
+import { CLICK_ADD } from "../reducers/user";
+import { ADD_EVENT } from "../reducers/event";
 
 registerLocale("ko", ko);
 
 const Add = () => {
-  const { resource } = useSelector((root: RootState) => root.user);
+  const { themeColor, resource } = useSelector(
+    (root: RootState) => root.user,
+    shallowEqual
+  );
 
   const dispatch = useDispatch();
-
-  console.log(resource);
 
   const [event, setEvent] = useState<Event>({
     title: "",
@@ -24,15 +26,17 @@ const Add = () => {
     end: new Date(),
     resource: {
       detail: "",
-      label: 0,
+      tags: [],
     },
   });
 
-  const [label, setLabel] = useState<string | null>(null);
-
+  //이벤트추가시
   const addEvent = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(event);
+    dispatch({
+      type: ADD_EVENT,
+      payload: event,
+    });
   };
 
   //날짜선택시
@@ -56,29 +60,41 @@ const Add = () => {
     });
   };
 
-  //라벨선택시
-  const selectLabel = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    setLabel(e.target.value);
+  const addTag = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === "Enter") {
+      console.dir(e.target);
+      setEvent({
+        ...event,
+        resource: {
+          tags: event.resource.tags.concat("test"),
+        },
+      });
+    }
   };
 
   return (
     <article className="absolute z-50">
       <form
-        className="flex flex-col gap-3 p-3 bg-white rounded-sm"
+        className="flex flex-col gap-3 p-3 bg-gray-100 rounded-md"
         onSubmit={addEvent}
+        onKeyPress={(e) => e.key === "Enter" && e.preventDefault()}
       >
-        <h2 className="text-blue-500 font-bold text-center">
-          다음으로 일정을 추가할 수 있어요.
+        <h2 className={`text-${themeColor} font-bold text-center`}>
+          다음으로 일정을 추가합니다.
         </h2>
-        <h3 className="text-center">
-          <strong>{resource?.placeName}</strong>
-        </h3>
-        <h3>
-          <FontAwesomeIcon icon={faLocationArrow} />
-          <strong className="ml-3">{resource?.addressName}</strong>
-        </h3>
+        {resource?.position && (
+          <React.Fragment>
+            <h3 className="text-center">
+              <strong>{resource.placeName}</strong>
+            </h3>
+            <h3>
+              <FontAwesomeIcon icon={faLocationArrow} />
+              <strong className="ml-3">{resource.addressName}</strong>
+            </h3>
+          </React.Fragment>
+        )}
         <hr />
-        <strong className="border-blue-500 border-l-4 pl-2">
+        <strong className={`border-${themeColor} border-l-4 pl-2`}>
           날짜를 선택해 주세요.
         </strong>
         <div className="flex">
@@ -102,7 +118,7 @@ const Add = () => {
           까지
         </div>
 
-        <strong className="border-blue-500 border-l-4 pl-2">
+        <strong className={`border-${themeColor} border-l-4 pl-2`}>
           일정 타이틀은 필수예요.
         </strong>
         <input
@@ -110,18 +126,25 @@ const Add = () => {
           name="title"
           type="text"
           required
+          autoComplete="off"
           onChange={inputEvent}
         />
 
-        <strong className="border-blue-500 border-l-4 pl-2">
+        <strong className={`border-${themeColor} border-l-4 pl-2`}>
           일정에 대한 태그를 달 수 있어요.(3개까지)
         </strong>
         <div className="flex justify-between border-2 border-gray-300">
-          <input type="text" />
-          <span>{label}</span>
+          <input
+            name=""
+            className="focus:outline-none"
+            type="text"
+            onChange={inputEvent}
+            onKeyPress={addTag}
+          />
+          <span></span>
         </div>
 
-        <strong className="border-blue-500 border-l-4 pl-2">
+        <strong className={`border-${themeColor} border-l-4 pl-2`}>
           상세 일정은 선택이예요.
         </strong>
         <textarea
@@ -132,7 +155,7 @@ const Add = () => {
         />
         <div>
           <button
-            className="bg-blue-500 text-sm text-white w-1/2 p-2"
+            className={`bg-${themeColor} text-sm text-white w-1/2 p-2`}
             type="submit"
           >
             일정 추가하기

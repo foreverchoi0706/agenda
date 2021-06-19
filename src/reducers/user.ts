@@ -23,7 +23,8 @@ const initialState: User = {
         placeName: "",
         addressName: "",
         position: null,
-    }
+    },
+    themeColor: "",
 }
 
 
@@ -55,6 +56,12 @@ const user: Reducer<User, AgendaAction> = (state: User = initialState, action: A
                 ...state,
                 isAddClicked: false,
                 isConfigClicked: !state.isConfigClicked
+            };
+
+        case CHANGE_THEME_COLOR:
+            return {
+                ...state,
+                themeColor: action.payload
             };
         default:
             return state;
