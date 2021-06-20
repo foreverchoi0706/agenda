@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -16,6 +16,8 @@ const KAKAO_SCRIPT =
   "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=c18742c14562f73324a4c92c7d085dce&libraries=services";
 
 const Map = () => {
+  const { themeColor } = useSelector((root) => root.user);
+
   const dispatch = useDispatch();
 
   //지도
@@ -142,7 +144,7 @@ const Map = () => {
             placeholder="장소검색"
             onChange={inputPlace}
           />
-          <button className="agenda-btn" type="submit">
+          <button className={`bg-${themeColor} agenda-btn`} type="submit">
             검색
           </button>
         </form>
@@ -150,7 +152,7 @@ const Map = () => {
           <ul className="bg-white">
             {interaction.data.map((place) => (
               <li
-                className="hover:bg-blue-500 hover:text-white border-b-2 p-1 cursor-pointer"
+                className={`hover:bg-gray-200 hover:text-white border-b-2 p-1 cursor-pointer`}
                 key={place.id}
                 onClick={() =>
                   panTo(place.x, place.y, place.place_name, place.address_name)
@@ -172,17 +174,17 @@ const Map = () => {
 
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
         <FontAwesomeIcon
-          className="m-2 cursor-pointer text-blue-500"
+          className={`text-${themeColor} m-2 cursor-pointer`}
           icon={faMapMarkerAlt}
           onClick={initMap}
         />
         <FontAwesomeIcon
-          className="m-2 cursor-pointer text-blue-500"
+          className={`text-${themeColor} m-2 cursor-pointer`}
           icon={faPlus}
           onClick={zoomIn}
         />
         <FontAwesomeIcon
-          className="m-2 cursor-pointer text-blue-500"
+          className={`text-${themeColor} m-2 cursor-pointer`}
           icon={faMinus}
           onClick={zoomOut}
         />

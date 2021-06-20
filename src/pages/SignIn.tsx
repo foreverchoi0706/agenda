@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDice } from "@fortawesome/free-solid-svg-icons";
 //reducers
 import { RootState } from "../reducers/root";
-import { SIGN_IN } from "../reducers/user";
+import { GET_THEME_COLOR, SIGN_IN } from "../reducers/user";
 //assets
 
 const SignIn = () => {
-  const { name } = useSelector((root: RootState) => root.user);
+  const { name, themeColor } = useSelector(
+    (root: RootState) => root.user,
+    shallowEqual
+  );
 
   const dispatch = useDispatch();
 
@@ -35,7 +38,7 @@ const SignIn = () => {
       .then((value: AxiosResponse<any>) => {
         console.log(value);
       })
-      .catch((reason) => {
+      .catch((reason: any) => {
         console.error(reason);
       });
   };
@@ -43,7 +46,9 @@ const SignIn = () => {
   if (name) return <Redirect to="/map" />;
 
   return (
-    <article className="bg-blue-500 w-full h-full flex justify-center items-center">
+    <article
+      className={`bg-${themeColor} w-full h-full flex justify-center items-center`}
+    >
       <form
         className="bg-white flex flex-col rounded-lg p-5 agenda-box"
         onSubmit={signIn}
@@ -65,7 +70,7 @@ const SignIn = () => {
           />
         </div>
 
-        <button className="agenda-btn" type="submit">
+        <button className={`bg-${themeColor} agenda-btn`} type="submit">
           이 이름 사용하기
         </button>
       </form>

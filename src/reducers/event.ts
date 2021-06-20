@@ -30,6 +30,8 @@ const event: Reducer<AgendaEvent, AgendaAction> = (state: AgendaEvent = initialS
                     localforage.setItem("EVENT", value.concat(action.payload));
                 }
             });
+            alert("등록되었습니다.");
+            window.location.reload();
         default:
             return state;
     }

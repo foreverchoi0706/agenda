@@ -9,9 +9,13 @@ import moment from "moment";
 
 const localizer = momentLocalizer(moment);
 
+const message = {};
+
 const Calendar = () => {
   const [events, setEvents] = useState<Array<AgendaEvent>>([]);
   useEffect(() => {
+    console.log("test");
+    
     //이벤트가져오기
     localforage.getItem("EVENT").then((value: any) => {
       setEvents(() => value);
@@ -23,13 +27,9 @@ const Calendar = () => {
       <RBC
         className="h-screen"
         localizer={localizer}
-        events={events}
+        events={events ? events : []}
         views={{ month: true }}
-        messages={{
-          today: "↩",
-          previous: "↓",
-          next: "↪",
-        }}
+        messages={message}
       />
     </article>
   );

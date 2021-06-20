@@ -73,9 +73,11 @@ const Add = () => {
   };
 
   return (
-    <article className="absolute z-50">
+    <article
+      className={`absolute z-50 border-2 border-${themeColor} rounded-md`}
+    >
       <form
-        className="flex flex-col gap-3 p-3 bg-gray-100 rounded-md"
+        className="flex flex-col gap-3 p-3 bg-white"
         onSubmit={addEvent}
         onKeyPress={(e) => e.key === "Enter" && e.preventDefault()}
       >
@@ -106,7 +108,7 @@ const Add = () => {
             value={event.start?.toISOString().substring(0, 10)}
             onChange={selectDate}
           />
-          부터
+          <strong>부터</strong>
           <DatePicker
             className="text-center border-2 border-gray-300"
             name="end"
@@ -115,7 +117,7 @@ const Add = () => {
             value={event.end?.toISOString().substring(0, 10)}
             onChange={selectDate}
           />
-          까지
+          <strong>까지</strong>
         </div>
 
         <strong className={`border-${themeColor} border-l-4 pl-2`}>

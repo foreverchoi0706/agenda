@@ -76,8 +76,6 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
       axios
         .get(getWheatherInfoURL(latitude, longitude))
         .then((value: AxiosResponse<any>) => {
-          console.log(value.data);
-
           setWeatherInfo(value.data);
         })
         .catch((reason: any) => console.error(reason));
@@ -128,8 +126,8 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
         </ul>
       )}
       <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        {events.map((event, index) => (
-          <li className="m-1 bg-gray-100" key={index}>{event.title}</li>
+        {events?.map((event, index) => (
+          <li className="m-1 bg-gray-200" key={index}>{event.title}</li>
         ))}
       </ul>
     </section>
