@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack serve",
     "serve": "serve -s dist -l 3000",
-    "predeploy": "webpack",
-    "deploy": "gh-pages build -d dist"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
