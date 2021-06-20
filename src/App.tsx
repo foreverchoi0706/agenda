@@ -29,11 +29,18 @@ const App = () => {
   const [isSigned, setIsSigned] = useState(false);
 
   useEffect(() => {
+    //계정이있다면 바로 자동 로그인
     localforage.getItem("NAME").then((value) => {
       setIsSigned(Boolean(value));
     });
     localforage.getItem("THEME_COLOR").then((value) => {
-      dispatch({ type: GET_THEME_COLOR, payload: value });
+      if (value) {
+        //테마컬러가 있다면 가져오기
+        dispatch({ type: GET_THEME_COLOR, payload: value });
+      } else {
+        //없으면 파랑색으로 테마컬러 지정
+        localforage.setItem("THEME_COLOR", "blue-500");
+      }
     });
   });
 

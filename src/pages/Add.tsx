@@ -40,13 +40,14 @@ const Add = () => {
   };
 
   //날짜선택시
-  const selectDate = (
+  const pickDate = (
     date: Date | [Date, Date],
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
+    console.log(e.target);
     setEvent({
       ...event,
-      [e.target.name]: date,
+      [e.target.id]: date,
     });
   };
 
@@ -102,20 +103,20 @@ const Add = () => {
         <div className="flex">
           <DatePicker
             className="text-center border-2 border-gray-300"
-            name="start"
+            id="start"
             required
             locale="ko"
             value={event.start?.toISOString().substring(0, 10)}
-            onChange={selectDate}
+            onChange={pickDate}
           />
           <strong>부터</strong>
           <DatePicker
             className="text-center border-2 border-gray-300"
-            name="end"
+            id="end"
             required
             locale="ko"
             value={event.end?.toISOString().substring(0, 10)}
-            onChange={selectDate}
+            onChange={pickDate}
           />
           <strong>까지</strong>
         </div>
@@ -137,7 +138,7 @@ const Add = () => {
         </strong>
         <div className="flex justify-between border-2 border-gray-300">
           <input
-            name=""
+            name="tags"
             className="focus:outline-none"
             type="text"
             onChange={inputEvent}

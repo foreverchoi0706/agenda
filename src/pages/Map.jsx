@@ -13,7 +13,7 @@ import { CLICK_ADD } from "../reducers/user";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
-  "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=c18742c14562f73324a4c92c7d085dce&libraries=services";
+  "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c0a4bba1131d1334ee3dc75b1cc374f&libraries=services";
 
 const Map = () => {
   const { themeColor } = useSelector((root) => root.user);
