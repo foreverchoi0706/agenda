@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve",
-    "serve": "serve -s dist -l 3000",
+    "serve": "serve -s dist",
     "build": "webpack"
   },
   "repository": {
