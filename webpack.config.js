@@ -50,6 +50,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
       filename: "index.html",
+      favicon: path.resolve(__dirname, "public/favicon.ico"),
     }),
     // 전의 빌드를 삭제함
     new CleanWebpackPlugin(),
