@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Event } from "react-big-calendar";
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -9,6 +9,7 @@ import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { RootState } from "../reducers/root";
 import { CLICK_ADD } from "../reducers/user";
 import { ADD_EVENT } from "../reducers/event";
+import { AgendaEvent } from "../types/Agenda";
 
 registerLocale("ko", ko);
 
@@ -20,34 +21,31 @@ const Add = () => {
 
   const dispatch = useDispatch();
 
-  const [event, setEvent] = useState<Event>({
+  const [event, setEvent] = useState<AgendaEvent>({
     title: "",
     start: new Date(),
     end: new Date(),
     resource: {
+      position: resource!.position,
+      addressName: resource!.addressName,
+      placeName: resource!.placeName,
       detail: "",
       tags: [],
     },
   });
 
+  const refStart = useRef<null>(null);
+
   //이벤트추가시
   const addEvent = (e: React.FormEvent<HTMLFormElement>) => {
+    if (event.start.getTime() > event.end.getTime()) {
+      alert("일정의 시작 일자는 종료일자보다 클 수 없어요.");
+      return;
+    }
     e.preventDefault();
     dispatch({
       type: ADD_EVENT,
       payload: event,
-    });
-  };
-
-  //날짜선택시
-  const pickDate = (
-    date: Date | [Date, Date],
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    console.log(e.target);
-    setEvent({
-      ...event,
-      [e.target.id]: date,
     });
   };
 
@@ -63,11 +61,11 @@ const Add = () => {
 
   const addTag = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
-      console.dir(e.target);
       setEvent({
         ...event,
         resource: {
-          tags: event.resource.tags.concat("test"),
+          ...event.resource,
+          tags: event.resource.tags!.concat("test"),
         },
       });
     }
@@ -106,8 +104,14 @@ const Add = () => {
             id="start"
             required
             locale="ko"
-            value={event.start?.toISOString().substring(0, 10)}
-            onChange={pickDate}
+            selected={event.start}
+            dateFormat="yyyy-MM-dd"
+            onChange={(date: Date) =>
+              setEvent({
+                ...event,
+                start: date,
+              })
+            }
           />
           <strong>부터</strong>
           <DatePicker
@@ -115,8 +119,14 @@ const Add = () => {
             id="end"
             required
             locale="ko"
-            value={event.end?.toISOString().substring(0, 10)}
-            onChange={pickDate}
+            dateFormat="yyyy-MM-dd"
+            selected={event.end}
+            onChange={(date: Date) =>
+              setEvent({
+                ...event,
+                end: date,
+              })
+            }
           />
           <strong>까지</strong>
         </div>
@@ -153,7 +163,7 @@ const Add = () => {
         <textarea
           className="focus:outline-none border-2 border-gray-300 max-h-96"
           name="detail"
-          value={event.resource.detail}
+          value={event.resource!.detail}
           onChange={inputEvent}
         />
         <div>

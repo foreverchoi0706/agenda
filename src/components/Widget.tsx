@@ -119,16 +119,20 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
           </li>
         </ul>
       ) : (
-        <ul className="bg-white rounded-sm flex justify-center items-center">
+        <ul className="bg-white rounded-md flex justify-center items-center">
           <li>
             <FontAwesomeIcon icon={faSpinner} spin />
           </li>
         </ul>
       )}
       <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        {events?.map((event, index) => (
-          <li className="m-1 bg-gray-200" key={index}>{event.title}</li>
-        ))}
+        {events
+          ?.filter((event) => event.end!.getTime() >= new Date().getTime()-86400000)
+          .map((event, index) => (
+            <li className="m-1 bg-gray-200" key={index}>
+              {event.title}
+            </li>
+          ))}
       </ul>
     </section>
   );

@@ -17,6 +17,8 @@ const initialState: AgendaEvent = {
         placeName: "",
         addressName: "",
         position: null,
+        detail: "",
+        tags: [],
     },
 }
 
@@ -24,14 +26,17 @@ const event: Reducer<AgendaEvent, AgendaAction> = (state: AgendaEvent = initialS
     switch (action.type) {
         case ADD_EVENT:
             localforage.getItem("EVENT").then((value: any) => {
+                console.log(value);
                 if (!value) {
-                    localforage.setItem("EVENT", []);
+                    localforage.setItem("EVENT", [action.payload]);
+                    alert("등록되었습니다.");
+                    window.location.reload();
                 } else {
                     localforage.setItem("EVENT", value.concat(action.payload));
+                    alert("등록되었습니다.");
+                    window.location.reload();
                 }
             });
-            alert("등록되었습니다.");
-            window.location.reload();
         default:
             return state;
     }

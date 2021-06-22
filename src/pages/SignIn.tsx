@@ -17,26 +17,24 @@ const SignIn = () => {
 
   const dispatch = useDispatch();
 
-  const [inputValue, setInputValue] = useState("");
+  const [nickname, setNickname] = useState("");
 
   const signIn = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({
       type: SIGN_IN,
-      payload: inputValue,
+      payload: nickname,
     });
   };
 
   const inputName = (e: React.ChangeEvent<HTMLInputElement>): void =>
-    setInputValue(() => e.target.value);
+    setNickname(() => e.target.value);
 
   const setName = (): void => {
     axios
-      .get("https://nickname.hwanmoo.kr/?format=text&count=1", {
-        headers: {},
-      })
+      .get("https://foreverchoi0706.com/getNickname")
       .then((value: AxiosResponse<any>) => {
-        console.log(value);
+        setNickname(() => value.data.nickname);
       })
       .catch((reason: any) => {
         console.error(reason);
@@ -58,10 +56,10 @@ const SignIn = () => {
           <input
             className="focus:outline-none text-center my-5 flex-grow"
             type="text"
-            value={inputValue}
-            onChange={inputName}
             placeholder="ex) 허니 아메리카노"
             required
+            value={nickname}
+            onChange={inputName}
           />
           <FontAwesomeIcon
             className="cursor-pointer"

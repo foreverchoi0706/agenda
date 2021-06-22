@@ -16,15 +16,16 @@ export interface User {
 
 /** @summary 이벤트 */
 export interface AgendaEvent extends Event {
-    allDay?: boolean;
-    title?: string;
-    start?: Date;
-    end?: Date;
-    resource?: {
-        placeName?: string,
-        addressName?: string
-        position?: any,
-    } | null;
+    title: string;
+    start: Date;
+    end: Date;
+    resource: {
+        placeName: string | undefined,
+        addressName: string | undefined
+        position: any | undefined,
+        detail: string | undefined,
+        tags: Array<string> | undefined
+    };
 }
 
 /** @summary 날씨정보 **/
