@@ -7,7 +7,7 @@ import localforage from "./db/localforage";
 //pages
 import Map from "./pages/Map";
 import SignIn from "./pages/SignIn";
-import Chart from "./pages/Chart";
+import Overview from "./pages/Overview";
 import Calendar from "./pages/Calendar";
 import Add from "./pages/Add";
 import Config from "./pages/Config";
@@ -51,7 +51,7 @@ const App = () => {
         <Layout>
           <Route path="/map" component={Map} exact />
           <Route path="/calendar" component={Calendar} exact />
-          <Route path="/chart" component={Chart} exact />
+          <Route path="/overview" component={Overview} exact />
           <Redirect path="/" to="/map" />
         </Layout>
       </Switch>

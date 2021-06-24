@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkerAlt,
-  faMinus,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 //components
 import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD } from "../reducers/user";
+import localforage from "../db/localforage";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
@@ -61,7 +58,7 @@ const Map = () => {
   //맵초기화
   const initMap = () => {
     const container = document.getElementById("map");
-    navigator.geolocation.getCurrentPosition(async (result) => {
+    navigator.geolocation.getCurrentPosition((result) => {
       const { latitude, longitude } = result.coords;
       const position = new kakao.maps.LatLng(latitude, longitude);
       setMap((map) => ({
@@ -88,7 +85,7 @@ const Map = () => {
     e.preventDefault();
     if (interaction.keyword) {
       //검색키워드가있다면검색
-      map.ps.keywordSearch(interaction.keyword, (data, status, pagination) => {
+      map.ps.keywordSearch(interaction.keyword, (data, status) => {
         if (status === kakao.maps.services.Status.OK) {
           setIneraction({
             ...interaction,
@@ -99,12 +96,6 @@ const Map = () => {
       });
     }
   };
-
-  //줌인
-  const zoomIn = () => map.core.setLevel(() => (map.level -= 1));
-
-  //줌아웃
-  const zoomOut = () => map.core.setLevel(() => (map.level += 1));
 
   //지도이동
   const panTo = (x, y, placeName, addressName) => {
@@ -120,11 +111,17 @@ const Map = () => {
 
   //마커찍기
   const setMaker = (position, placeName = "현위치", addressName = "현위치") => {
+    const imageSrc =
+      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
+    const imageSize = new kakao.maps.Size(64, 69); // 마커크기
+    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
     const marker = new kakao.maps.Marker({
       position,
+      image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     });
     marker.setMap(map.core);
-    //마커에 이벤트 추가
+    //마커에 클릭 이벤트 추가
     window.kakao.maps.event.addListener(marker, "click", () => {
       dispatch({
         type: CLICK_ADD,
@@ -136,7 +133,7 @@ const Map = () => {
   return (
     <article>
       <div className="h-screen" id="map" />
-      <section className="absolute z-50 top-3 left-3 sm:left-16">
+      <section className="absolute z-50 top-3 left-16">
         <form className="flex" onSubmit={searchPlace} onClick={searchPlace}>
           <input
             className="focus:outline-none rounded-sm"
@@ -177,16 +174,6 @@ const Map = () => {
           className={`text-${themeColor} m-2 cursor-pointer`}
           icon={faMapMarkerAlt}
           onClick={initMap}
-        />
-        <FontAwesomeIcon
-          className={`text-${themeColor} m-2 cursor-pointer`}
-          icon={faPlus}
-          onClick={zoomIn}
-        />
-        <FontAwesomeIcon
-          className={`text-${themeColor} m-2 cursor-pointer`}
-          icon={faMinus}
-          onClick={zoomOut}
         />
       </section>
     </article>

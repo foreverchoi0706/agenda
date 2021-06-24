@@ -36,7 +36,7 @@ const Layout = ({ children }: LayoutPorps) => {
 
   return (
     <React.Fragment>
-      <header className={`hidden bg-${themeColor} h-full sm:block`}>
+      <header className={`bg-${themeColor} h-full sm:block`}>
         <nav className="h-full flex flex-col justify-between relative">
           <div className="flex flex-col items-center text-white text-center font-bold">
             <h2>A</h2>
@@ -58,7 +58,7 @@ const Layout = ({ children }: LayoutPorps) => {
             <FontAwesomeIcon
               icon={faList}
               style={iconStyle}
-              onClick={() => push("chart")}
+              onClick={() => push("overview")}
             />
             <FontAwesomeIcon
               icon={faPen}

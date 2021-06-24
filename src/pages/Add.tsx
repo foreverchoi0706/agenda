@@ -34,7 +34,7 @@ const Add = () => {
     },
   });
 
-  const refStart = useRef<null>(null);
+  const refInput = useRef<HTMLInputElement | null>(null);
 
   //이벤트추가시
   const addEvent = (e: React.FormEvent<HTMLFormElement>) => {
@@ -59,16 +59,33 @@ const Add = () => {
     });
   };
 
+  //태그추가시
   const addTag = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === "Enter") {
+    if (
+      e.key === "Enter" &&
+      event.resource.tags!.length < 3 &&
+      e.currentTarget.value
+    ) {
       setEvent({
         ...event,
         resource: {
           ...event.resource,
-          tags: event.resource.tags!.concat("test"),
+          tags: event.resource.tags!.concat(e.currentTarget.value),
         },
       });
+      if (refInput.current) refInput.current.value = "";
     }
+  };
+
+  //태그삭제시
+  const delTag = (arg: number): void => {
+    setEvent({
+      ...event,
+      resource: {
+        ...event.resource,
+        tags: event.resource.tags!.filter((_, index) => index !== arg),
+      },
+    });
   };
 
   return (
@@ -144,17 +161,29 @@ const Add = () => {
         />
 
         <strong className={`border-${themeColor} border-l-4 pl-2`}>
-          일정에 대한 태그를 달 수 있어요.(3개까지)
+          일정에 대한 태그를 달 수 있어요. ex) 긴급,정기,투두
         </strong>
         <div className="flex justify-between border-2 border-gray-300">
           <input
             name="tags"
             className="focus:outline-none"
             type="text"
+            autoComplete="off"
             onChange={inputEvent}
             onKeyPress={addTag}
+            ref={refInput}
           />
-          <span></span>
+          <div className="flex-grow flex justify-around">
+            {event.resource.tags!.map((tag, index) => (
+              <span
+                className={`bg-${themeColor} rounded-md text-white px-3 my-1 text-xs cursor-pointer`}
+                key={index}
+                onClick={() => delTag(index)}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
         <strong className={`border-${themeColor} border-l-4 pl-2`}>

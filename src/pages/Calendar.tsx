@@ -13,9 +13,7 @@ const message = {};
 
 const Calendar = () => {
   const [events, setEvents] = useState<Array<AgendaEvent>>([]);
-  useEffect(() => {
-    console.log("test");
-    
+  useEffect(() => {    
     //이벤트가져오기
     localforage.getItem("EVENT").then((value: any) => {
       setEvents(() => value);
