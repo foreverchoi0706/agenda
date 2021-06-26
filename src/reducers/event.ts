@@ -1,13 +1,11 @@
 import { Reducer } from "redux";
-//db
-import localforage from "../db/localforage";
 //interface
 import { AgendaEvent, AgendaAction } from "../types/Agenda";
 
-//이벤트추가버튼클릭
-export const CLICK_ADD = "CLICK_ADD";
 //이벤트추가
 export const ADD_EVENT = "ADD_EVENT";
+//이벤트리스트가져오기
+export const GET_EVENT_LIST = "GET_EVENT_LIST";
 
 const initialState: AgendaEvent = {
     title: "",
@@ -20,23 +18,22 @@ const initialState: AgendaEvent = {
         detail: "",
         tags: [],
     },
+    list: []
 }
 
 const event: Reducer<AgendaEvent, AgendaAction> = (state: AgendaEvent = initialState, action: AgendaAction) => {
     switch (action.type) {
         case ADD_EVENT:
-            localforage.getItem("EVENT").then((value: any) => {
-                console.log(value);
-                if (!value) {
-                    localforage.setItem("EVENT", [action.payload]);
-                    alert("등록되었습니다.");
-                    window.location.reload();
-                } else {
-                    localforage.setItem("EVENT", value.concat(action.payload));
-                    alert("등록되었습니다.");
-                    window.location.reload();
-                }
-            });
+            if (!localStorage.getItem("EVENT_LIST")) localStorage.setItem("EVENT_LIST", JSON.stringify([]));
+            state.list = JSON.parse(localStorage.getItem("EVENT_LIST")!.toString());
+            state.list!.push(action.payload);
+            localStorage.setItem("EVENT_LIST", JSON.stringify(state.list));
+            return state;
+        case GET_EVENT_LIST:
+            return {
+                ...state,
+                list: localStorage.getItem("EVENT_LIST") ? JSON.parse(localStorage.getItem("EVENT_LIST")!.toString()) : []
+            }
         default:
             return state;
     }

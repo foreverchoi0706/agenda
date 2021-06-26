@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 //components
 import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD } from "../reducers/user";
-import localforage from "../db/localforage";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
@@ -14,6 +13,8 @@ const KAKAO_SCRIPT =
 
 const Map = () => {
   const { themeColor } = useSelector((root) => root.user);
+
+  const { list } = useSelector((root) => root.event);
 
   const dispatch = useDispatch();
 
@@ -38,6 +39,9 @@ const Map = () => {
       //카카오맵이로딩되지않았다면맵로딩함
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
+      list.forEach((event) => {
+        setMaker(event.resource.position);
+      });
       //현위치마커
       setMaker(map.position);
       //검색마커
@@ -133,7 +137,7 @@ const Map = () => {
   return (
     <article>
       <div className="h-screen" id="map" />
-      <section className="absolute z-50 top-3 left-16">
+      <section className="absolute z-50 top-3 left-12 sm:left-16">
         <form className="flex" onSubmit={searchPlace} onClick={searchPlace}>
           <input
             className="focus:outline-none rounded-sm"
@@ -167,6 +171,7 @@ const Map = () => {
       <Widget
         latitude={map.position?.getLat()}
         longitude={map.position?.getLng()}
+        panTo={map.core?.panTo}
       />
 
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">

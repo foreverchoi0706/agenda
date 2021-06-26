@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
-//db
-import localforage from "../db/localforage";
 //interface
 import { User, AgendaAction } from "../types/Agenda";
 
+//초기화
+export const INIT = "INIT";
 //로그인
 export const SIGN_IN = "SIGN_IN";
 //로그아웃
@@ -12,13 +12,11 @@ export const SIGN_OUT = "SIGN_OUT";
 export const CLICK_ADD = "CLICK_ADD";
 //환경설정
 export const CLICK_CONFIG = "CLICK_CONFIG";
-//테마색
-export const GET_THEME_COLOR = "GET_THEME_COLOR";
 //테마색변경
 export const CHANGE_THEME_COLOR = "CHANGE_THEME_COLOR";
 
 const initialState: User = {
-    name: "",
+    nickName: "",
     isAddClicked: false,
     isConfigClicked: false,
     resource: {
@@ -32,18 +30,24 @@ const initialState: User = {
 
 const user: Reducer<User, AgendaAction> = (state: User = initialState, action: AgendaAction) => {
     switch (action.type) {
-        case SIGN_IN:
-            localforage.setItem("NAME", action.payload);
+        case INIT:
+            const themeColor = localStorage.getItem("THEME_COLOR") || "blue-500";
+            const nickName = localStorage.getItem("NICK_NAME");
             return {
                 ...state,
-                name: action.payload,
+                nickName,
+                themeColor
+            };
+        case SIGN_IN:
+            localStorage.setItem("NICK_NAME", action.payload);
+            return {
+                ...state,
+                nickName: action.payload,
             };
         case SIGN_OUT:
-            Promise.all([
-                localforage.removeItem("NAME"), 
-                localforage.removeItem("EVENT"), 
-                localforage.removeItem("THEME_COLOR")
-            ]);
+            localStorage.removeItem("NICK_NAME");
+            localStorage.removeItem("EVENT_LIST");
+            localStorage.removeItem("THEME_COLOR");
             window.location.href = "/";
             return {
                 ...initialState
@@ -63,13 +67,8 @@ const user: Reducer<User, AgendaAction> = (state: User = initialState, action: A
                 isAddClicked: false,
                 isConfigClicked: !state.isConfigClicked
             };
-        case GET_THEME_COLOR:
-            return {
-                ...state,
-                themeColor: action.payload
-            };
         case CHANGE_THEME_COLOR:
-            localforage.setItem("THEME_COLOR", action.payload);
+            localStorage.setItem("THEME_COLOR", action.payload);
             return {
                 ...state,
                 themeColor: action.payload

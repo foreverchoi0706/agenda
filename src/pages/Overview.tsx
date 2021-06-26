@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Chart, registerables } from "chart.js";
 import { Line } from "react-chartjs-2";
-//db
-import localforage from "../db/localforage";
 //interface
 import { AgendaEvent } from "../types/Agenda";
 //reducer
@@ -29,10 +27,7 @@ const Overview = () => {
   const [events, setEvents] = useState<Array<AgendaEvent>>([]);
 
   useEffect(() => {
-    //이벤트가져오기
-    localforage.getItem("EVENT").then((value: any) => {
-      setEvents(() => value);
-    });
+  
   }, []);
 
   return (

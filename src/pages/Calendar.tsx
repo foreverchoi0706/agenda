@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Calendar as RBC, momentLocalizer } from "react-big-calendar";
-//db
-import localforage from "../db/localforage";
-//interface
-import { AgendaEvent } from "../types/Agenda";
-
 import moment from "moment";
+//rducers
+import { RootState } from "../reducers/root";
 
 const localizer = momentLocalizer(moment);
 
 const message = {};
 
 const Calendar = () => {
-  const [events, setEvents] = useState<Array<AgendaEvent>>([]);
-  useEffect(() => {    
-    //이벤트가져오기
-    localforage.getItem("EVENT").then((value: any) => {
-      setEvents(() => value);
-    });
-  }, []);
+  const { list } = useSelector((root: RootState) => root.event);
 
   return (
     <article>
       <RBC
         className="h-screen"
         localizer={localizer}
-        events={events ? events : []}
+        events={list ? list : []}
         views={{ month: true }}
         messages={message}
       />

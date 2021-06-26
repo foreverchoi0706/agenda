@@ -9,18 +9,15 @@ import {
   faCogs,
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
-import localforage from "../db/localforage";
 //reducers
 import { RootState } from "../reducers/root";
-import { CLICK_CONFIG } from "../reducers/user";
-import { CLICK_ADD } from "../reducers/event";
+import { CLICK_ADD, CLICK_CONFIG } from "../reducers/user";
 
 interface LayoutPorps {
   children: ReactNode;
 }
 
 const iconStyle: React.CSSProperties = {
-  fontSize: "1.5rem",
   margin: "1rem 0.5rem",
   cursor: "pointer",
 };
@@ -46,28 +43,32 @@ const Layout = ({ children }: LayoutPorps) => {
             <h2>D</h2>
             <h2>A</h2>
             <FontAwesomeIcon
+              className="text-base sm:text-2xl"
               icon={faMapMarkedAlt}
               style={iconStyle}
               onClick={() => push("map")}
             />
             <FontAwesomeIcon
+              className="text-base sm:text-2xl"
               icon={faCalendarAlt}
               style={iconStyle}
               onClick={() => push("calendar")}
             />
             <FontAwesomeIcon
+              className="text-base sm:text-2xl"
               icon={faList}
               style={iconStyle}
               onClick={() => push("overview")}
             />
             <FontAwesomeIcon
+              className="text-base sm:text-2xl"
               icon={faPen}
               style={iconStyle}
               onClick={() => dispatch({ type: CLICK_ADD })}
             />
           </div>
           <FontAwesomeIcon
-            className="text-white"
+            className="text-base sm:text-2xl text-white"
             icon={faCogs}
             style={iconStyle}
             onClick={() => dispatch({ type: CLICK_CONFIG })}

@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDice } from "@fortawesome/free-solid-svg-icons";
 //reducers
 import { RootState } from "../reducers/root";
-import { GET_THEME_COLOR, SIGN_IN } from "../reducers/user";
+import { SIGN_IN } from "../reducers/user";
 //assets
 
 const SignIn = () => {
-  const { name, themeColor } = useSelector(
+  const { nickName, themeColor } = useSelector(
     (root: RootState) => root.user,
     shallowEqual
   );
@@ -41,7 +41,7 @@ const SignIn = () => {
       });
   };
 
-  if (name) return <Redirect to="/map" />;
+  if (nickName) return <Redirect to="/map" />;
 
   return (
     <article
@@ -67,7 +67,6 @@ const SignIn = () => {
             onClick={setName}
           />
         </div>
-
         <button className={`bg-${themeColor} agenda-btn`} type="submit">
           이 이름 사용하기
         </button>

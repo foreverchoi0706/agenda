@@ -49,3 +49,9 @@ ul {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@media (max-width: 512px) {
+  body {
+    font-size: 0.6rem;
+  }
+}

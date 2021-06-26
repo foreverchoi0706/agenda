@@ -3,7 +3,7 @@ import { Event } from "react-big-calendar";
 
 /** @summary 유저&상호작용 **/
 export interface User {
-    name: string;
+    nickName: string;
     isAddClicked: Boolean;
     isConfigClicked: Boolean;
     resource: {
@@ -26,6 +26,7 @@ export interface AgendaEvent extends Event {
         detail: string | undefined,
         tags: Array<string> | undefined
     };
+    list? : Array<Event>
 }
 
 /** @summary 날씨정보 **/

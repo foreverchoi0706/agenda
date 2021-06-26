@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios, { AxiosResponse } from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -16,10 +17,11 @@ import {
   faTint,
   faSmile,
 } from "@fortawesome/free-solid-svg-icons";
-//db
-import localforage from "../db/localforage";
 //interface
-import { AgendaEvent, WeatherInfo } from "../types/Agenda";
+import { WeatherInfo } from "../types/Agenda";
+//reducers
+import { RootState } from "../reducers/root";
+import { GET_EVENT_LIST } from "../reducers/event";
 
 const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 
@@ -27,6 +29,7 @@ const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 interface WidgetProps {
   latitude: number;
   longitude: number;
+  panTo: any;
 }
 
 const getWheaterIcon = (wheater: string): IconProp => {
@@ -55,22 +58,17 @@ const getWheaterIcon = (wheater: string): IconProp => {
 const getWheatherInfoURL = (latitude: number, longitude: number): string =>
   `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
 
-const Widget = ({ latitude, longitude }: WidgetProps) => {
-  const [name, setName] = useState<String | unknown>("");
+const Widget = ({ latitude, longitude, panTo }: WidgetProps) => {
+  const { nickName } = useSelector((root: RootState) => root.user);
 
-  const [events, setEvents] = useState<Array<AgendaEvent>>([]);
+  const { list } = useSelector((root: RootState) => root.event);
+
+  const dispatch = useDispatch();
 
   const [weatherInfo, setWeatherInfo] = useState<WeatherInfo | null>(null);
 
   useEffect(() => {
-    //계정명가져오기
-    localforage.getItem("NAME").then((value) => {
-      setName((): String | unknown => value);
-    });
-    //이벤트가져오기
-    localforage.getItem("EVENT").then((value: any) => {
-      setEvents(() => value);
-    });
+    dispatch({ type: GET_EVENT_LIST });
     //날씨정보가져오기
     if (latitude && longitude) {
       axios
@@ -94,7 +92,7 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
           {weatherInfo?.name}
         </div>
 
-        <strong>안녕하세요 {name}님!</strong>
+        <strong>안녕하세요 {nickName}님!</strong>
       </div>
       {weatherInfo ? (
         <ul className="bg-white rounded-sm flex flex-col justify-around">
@@ -126,13 +124,22 @@ const Widget = ({ latitude, longitude }: WidgetProps) => {
         </ul>
       )}
       <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        {events
-          ?.filter((event) => event.end!.getTime() >= new Date().getTime()-86400000)
-          .map((event, index) => (
-            <li className="m-1 bg-gray-200" key={index}>
-              {event.title}
-            </li>
-          ))}
+        {list!.length &&
+          list
+            ?.filter(
+              (event) =>
+                new Date(event.end!.toString()).getTime() >=
+                new Date().getTime() - 86400000
+            )
+            .map((event, index) => (
+              <li
+                className="m-1 bg-gray-200 cursor-pointer"
+                key={index}
+                onClick={() => panTo(event?.resource?.position)}
+              >
+                {event.title}
+              </li>
+            ))}
       </ul>
     </section>
   );
