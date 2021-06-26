@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
 //components
 import Widget from "../components/Widget";
 //reducers
@@ -23,10 +23,11 @@ const Map = () => {
     level: 3, //지도레벨
     position: null, //현위치
     core: null, //지도코어
-    ps: null, //지도검색
+    ps: null, //장소검색
+    gc: null, //좌표검색
   });
 
-  //상호작용
+  //검색위치
   const [interaction, setIneraction] = useState({
     keyword: "", //검색키워드
     isSearched: false, //검색여부
@@ -39,15 +40,21 @@ const Map = () => {
       //카카오맵이로딩되지않았다면맵로딩함
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
-      list.forEach((event) => {
-        setMaker(event.resource.position);
-      });
-      //현위치마커
-      setMaker(map.position);
+      // for (let event of list) {
+      //   if (event.resource.position) {
+      //     const { position, placeName, addressName } = event.resource;
+      //     setMaker(position, placeName, addressName);
+      //   };
+      // }
       //검색마커
-      if (interaction.position) {
-        setMaker(interaction.position);
-      }
+      if (interaction.position) setMaker(interaction.position);
+      //현위치 마커
+      map.gc.coord2Address(map.position.getLng(), map.position.getLat(), (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          //현위치마커
+          setMaker(map.position, "현위치", result[0].address.address_name);
+        }
+      });
     }
   }, [map]);
 
@@ -72,6 +79,7 @@ const Map = () => {
           level: map.level,
         }),
         ps: new kakao.maps.services.Places(),
+        gc: new kakao.maps.services.Geocoder(),
       }));
     });
   };
@@ -115,14 +123,14 @@ const Map = () => {
 
   //마커찍기
   const setMaker = (position, placeName = "현위치", addressName = "현위치") => {
-    const imageSrc =
-      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
-    const imageSize = new kakao.maps.Size(64, 69); // 마커크기
-    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    // const imageSrc =
+    //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
+    // const imageSize = new kakao.maps.Size(64, 69); // 마커크기
+    // const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     const marker = new kakao.maps.Marker({
       position,
-      image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+      // image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     });
     marker.setMap(map.core);
     //마커에 클릭 이벤트 추가
@@ -142,11 +150,11 @@ const Map = () => {
           <input
             className="focus:outline-none rounded-sm"
             type="text"
-            placeholder="장소검색"
+            placeholder=" 장소검색"
             onChange={inputPlace}
           />
           <button className={`bg-${themeColor} agenda-btn`} type="submit">
-            검색
+            <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
         {interaction.isSearched && (

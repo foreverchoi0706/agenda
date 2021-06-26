@@ -197,7 +197,7 @@ const Add = () => {
         />
         <div>
           <button
-            className={`bg-${themeColor} text-sm text-white w-1/2 p-2`}
+            className={`bg-${themeColor} agenda-btn text-sm text-white w-1/2 p-2`}
             type="submit"
           >
             일정 추가하기

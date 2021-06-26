@@ -124,7 +124,7 @@ const Widget = ({ latitude, longitude, panTo }: WidgetProps) => {
         </ul>
       )}
       <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        {list!.length &&
+        {list!.length ?
           list
             ?.filter(
               (event) =>
@@ -139,7 +139,7 @@ const Widget = ({ latitude, longitude, panTo }: WidgetProps) => {
               >
                 {event.title}
               </li>
-            ))}
+            )) : null}
       </ul>
     </section>
   );
