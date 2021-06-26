@@ -92,7 +92,7 @@ const Widget = ({ latitude, longitude, panTo }: WidgetProps) => {
           {weatherInfo?.name}
         </div>
 
-        <strong>안녕하세요 {nickName}님!</strong>
+        <strong className="text-sm">안녕하세요 {nickName}님!</strong>
       </div>
       {weatherInfo ? (
         <ul className="bg-white rounded-sm flex flex-col justify-around">

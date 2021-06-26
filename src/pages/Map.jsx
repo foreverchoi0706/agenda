@@ -20,7 +20,7 @@ const Map = () => {
 
   //지도
   const [map, setMap] = useState({
-    level: 3, //지도레벨
+    level: 8, //지도레벨
     position: null, //현위치
     core: null, //지도코어
     ps: null, //장소검색
@@ -36,24 +36,18 @@ const Map = () => {
   });
 
   useEffect(() => {
+    console.log(list);
     if (!map.core) {
       //카카오맵이로딩되지않았다면맵로딩함
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
-      // for (let event of list) {
-      //   if (event.resource.position) {
-      //     const { position, placeName, addressName } = event.resource;
-      //     setMaker(position, placeName, addressName);
-      //   };
-      // }
-      //검색마커
-      if (interaction.position) setMaker(interaction.position);
       //현위치 마커
-      map.gc.coord2Address(map.position.getLng(), map.position.getLat(), (result, status) => {
-        if (status === kakao.maps.services.Status.OK) {
-          //현위치마커
-          setMaker(map.position, "현위치", result[0].address.address_name);
-        }
+      map.gc.coord2Address(map.position.getLng(), map.position.getLat(), (data, status) => {
+        if (status === kakao.maps.services.Status.OK) setMaker(map.position, "현위치", data[0].address.address_name);
+      });
+      list.forEach(event => {
+        const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
+        setEventMaker(position, event.resource.placeName, event.resource.addressName, event.resource.tags);
       });
     }
   }, [map]);
@@ -121,16 +115,15 @@ const Map = () => {
     }));
   };
 
-  //마커찍기
+  //현위치마커,검색마커찍기
   const setMaker = (position, placeName = "현위치", addressName = "현위치") => {
-    // const imageSrc =
-    //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
-    // const imageSize = new kakao.maps.Size(64, 69); // 마커크기
-    // const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
+    const imageSrc =
+      "https://i.pinimg.com/564x/e0/72/b9/e072b995e5ce100c4bae3eda2893603f.jpg"; // 마커이미지
+    const imageSize = new kakao.maps.Size(64, 69); // 마커크기
+    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
     const marker = new kakao.maps.Marker({
       position,
-      // image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+      image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     });
     marker.setMap(map.core);
     //마커에 클릭 이벤트 추가
@@ -140,6 +133,26 @@ const Map = () => {
         payload: { placeName, addressName, position },
       });
     });
+  };
+
+  //이벤트마커찍기
+  const setEventMaker = (position, placeName, addressName, tags) => {
+    // const imageSrc =
+    //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
+    // const imageSize = new kakao.maps.Size(64, 69); // 마커크기
+    // const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    const marker = new kakao.maps.Marker({
+      position,
+      // image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    });
+    marker.setMap(map.core);
+    const infowindow = new kakao.maps.InfoWindow({
+      position,
+      content: `<span class="bg-${themeColor} text-white rounded-md mx-2 p-1 text-sm">${tags.map(tag => tag)}</span>`
+    });
+    //마커에인포윈도우추가
+    window.kakao.maps.event.addListener(marker, "mouseover", () => { infowindow.open(map.core, marker); });
+    window.kakao.maps.event.addListener(marker, "mouseout", () => { infowindow.close(); });
   };
 
   return (
@@ -161,7 +174,7 @@ const Map = () => {
           <ul className="bg-white">
             {interaction.data.map((place) => (
               <li
-                className={`hover:bg-gray-200 hover:text-white border-b-2 p-1 cursor-pointer`}
+                className={`hover:bg-gray-200 hover:text-white px-3 my-1 text-xs cursor-pointer`}
                 key={place.id}
                 onClick={() =>
                   panTo(place.x, place.y, place.place_name, place.address_name)
