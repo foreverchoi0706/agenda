@@ -42,7 +42,7 @@ const Map = () => {
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
     } else {
       //현위치 마커
-      map.gc.coord2Address(map.position.getLng(), map.position.getLat(), (data, status) => {
+      map.geocoder.coord2Address(map.position.getLng(), map.position.getLat(), (data, status) => {
         if (status === kakao.maps.services.Status.OK) setMaker(map.position, "현위치", data[0].address.address_name);
       });
       list.forEach(event => {
@@ -72,8 +72,8 @@ const Map = () => {
           center: position,
           level: map.level,
         }),
-        ps: new kakao.maps.services.Places(),
-        gc: new kakao.maps.services.Geocoder(),
+        places: new kakao.maps.services.Places(),
+        geocoder: new kakao.maps.services.Geocoder(),
       }));
     });
   };
@@ -91,7 +91,7 @@ const Map = () => {
     e.preventDefault();
     if (interaction.keyword) {
       //검색키워드가있다면검색
-      map.ps.keywordSearch(interaction.keyword, (data, status) => {
+      map.places.keywordSearch(interaction.keyword, (data, status) => {
         if (status === kakao.maps.services.Status.OK) {
           setIneraction({
             ...interaction,
@@ -105,6 +105,7 @@ const Map = () => {
 
   //지도이동
   const panTo = (x, y, placeName, addressName) => {
+    console.log(x, y, placeName, addressName);
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
     setMaker(position, placeName, addressName);
@@ -117,13 +118,8 @@ const Map = () => {
 
   //현위치마커,검색마커찍기
   const setMaker = (position, placeName = "현위치", addressName = "현위치") => {
-    const imageSrc =
-      "https://i.pinimg.com/564x/e0/72/b9/e072b995e5ce100c4bae3eda2893603f.jpg"; // 마커이미지
-    const imageSize = new kakao.maps.Size(64, 69); // 마커크기
-    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
     const marker = new kakao.maps.Marker({
       position,
-      image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     });
     marker.setMap(map.core);
     //마커에 클릭 이벤트 추가
@@ -137,20 +133,20 @@ const Map = () => {
 
   //이벤트마커찍기
   const setEventMaker = (position, placeName, addressName, tags) => {
-    // const imageSrc =
-    //   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
-    // const imageSize = new kakao.maps.Size(64, 69); // 마커크기
-    // const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    const imageSrc =
+      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
+    const imageSize = new kakao.maps.Size(32, 34.5); // 마커크기
+    const imageOption = { offset: new kakao.maps.Point(13.5, 34.5) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
     const marker = new kakao.maps.Marker({
       position,
-      // image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+      image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     });
     marker.setMap(map.core);
     const infowindow = new kakao.maps.InfoWindow({
       position,
-      content: `<span class="bg-${themeColor} text-white rounded-md mx-2 p-1 text-sm">${tags.map(tag => tag)}</span>`
+      content: `<div class="w-36 flex justify-around"><span class="mx-2 p-1 text-sm">#${tags.map(tag => tag)}</span></div>`
     });
-    //마커에인포윈도우추가
+    //마커에인포윈도우이벤트추가
     window.kakao.maps.event.addListener(marker, "mouseover", () => { infowindow.open(map.core, marker); });
     window.kakao.maps.event.addListener(marker, "mouseout", () => { infowindow.close(); });
   };
@@ -188,18 +184,17 @@ const Map = () => {
           </ul>
         )}
       </section>
-
       <Widget
         latitude={map.position?.getLat()}
         longitude={map.position?.getLng()}
-        panTo={map.core?.panTo}
+        kakao={window.kakao}
+        core={map.core}
       />
-
       <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
         <FontAwesomeIcon
           className={`text-${themeColor} m-2 cursor-pointer`}
           icon={faMapMarkerAlt}
-          onClick={initMap}
+          onClick={() => map.core.panTo(map.position)}
         />
       </section>
     </article>

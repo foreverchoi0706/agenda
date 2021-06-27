@@ -29,7 +29,8 @@ const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 interface WidgetProps {
   latitude: number;
   longitude: number;
-  panTo: any;
+  kakao: any;
+  core: any;
 }
 
 const getWheaterIcon = (wheater: string): IconProp => {
@@ -58,7 +59,7 @@ const getWheaterIcon = (wheater: string): IconProp => {
 const getWheatherInfoURL = (latitude: number, longitude: number): string =>
   `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
 
-const Widget = ({ latitude, longitude, panTo }: WidgetProps) => {
+const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
   const { nickName } = useSelector((root: RootState) => root.user);
 
   const { list } = useSelector((root: RootState) => root.event);
@@ -135,8 +136,10 @@ const Widget = ({ latitude, longitude, panTo }: WidgetProps) => {
               <li
                 className="m-1 bg-gray-200 cursor-pointer"
                 key={index}
-                onClick={() => panTo(event?.resource?.position)}
-              >
+                onClick={() => {
+                  const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
+                  return core.panTo(position);
+                }}>
                 {event.title}
               </li>
             )) : null}
