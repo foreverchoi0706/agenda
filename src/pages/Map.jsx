@@ -5,7 +5,7 @@ import { faMapMarkerAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
 //components
 import Widget from "../components/Widget";
 //reducers
-import { CLICK_ADD } from "../reducers/user";
+import { CLICK_ADD, SET_RESOURCE } from "../reducers/user";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
@@ -20,11 +20,11 @@ const Map = () => {
 
   //지도
   const [map, setMap] = useState({
-    level: 8, //지도레벨
+    level: 5, //지도레벨
     position: null, //현위치
     core: null, //지도코어
-    ps: null, //장소검색
-    gc: null, //좌표검색
+    places: null, //장소검색
+    geocoder: null, //좌표검색
   });
 
   //검색위치
@@ -33,23 +33,40 @@ const Map = () => {
     isSearched: false, //검색여부
     data: null, //검색결과리스트
     position: null, //선택된검색결과
+    bounds: null, //범위설정
   });
 
   useEffect(() => {
-    console.log(list);
     if (!map.core) {
       //카카오맵이로딩되지않았다면맵로딩함
       window.kakao && window.kakao.maps ? initMap() : addKakaoMapScript();
-    } else {
-      //현위치 마커
-      map.geocoder.coord2Address(map.position.getLng(), map.position.getLat(), (data, status) => {
-        if (status === kakao.maps.services.Status.OK) setMaker(map.position, "현위치", data[0].address.address_name);
-      });
-      list.forEach(event => {
-        const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
-        setEventMaker(position, event.resource.placeName, event.resource.addressName, event.resource.tags);
-      });
+      return;
     }
+    //현위치마커
+    map.geocoder.coord2Address(map.position.getLng(), map.position.getLat(), (data, status) => {
+      if (status === kakao.maps.services.Status.OK) {
+        setMaker(map.position, "현위치", data[0].address.address_name);
+        dispatch({
+          type: SET_RESOURCE,
+          payload: {
+            position: map.position,
+            placeName: "현위치",
+            addressName: data[0].address.address_name,
+          }
+        });
+      };
+    });
+    map.bounds.extend(map.position);
+    //이벤트마커
+    list.forEach(event => {
+      if (new Date(event.end.toString()).getTime() >=
+        new Date().getTime() - 86400000) {
+        const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
+        setEventMaker(position, event.resource.placeName, event.resource.tags);
+        map.bounds.extend(position);
+      }
+    });
+    map.core.setBounds(map.bounds);
   }, [map]);
 
   //스크립트추가
@@ -62,8 +79,8 @@ const Map = () => {
 
   //맵초기화
   const initMap = () => {
-    const container = document.getElementById("map");
     navigator.geolocation.getCurrentPosition((result) => {
+      const container = document.getElementById("map");
       const { latitude, longitude } = result.coords;
       const position = new kakao.maps.LatLng(latitude, longitude);
       setMap((map) => ({
@@ -74,6 +91,7 @@ const Map = () => {
         }),
         places: new kakao.maps.services.Places(),
         geocoder: new kakao.maps.services.Geocoder(),
+        bounds: new kakao.maps.LatLngBounds()
       }));
     });
   };
@@ -105,7 +123,6 @@ const Map = () => {
 
   //지도이동
   const panTo = (x, y, placeName, addressName) => {
-    console.log(x, y, placeName, addressName);
     const position = new kakao.maps.LatLng(y, x);
     map.core.panTo(position);
     setMaker(position, placeName, addressName);
@@ -117,7 +134,7 @@ const Map = () => {
   };
 
   //현위치마커,검색마커찍기
-  const setMaker = (position, placeName = "현위치", addressName = "현위치") => {
+  const setMaker = (position, placeName, addressName) => {
     const marker = new kakao.maps.Marker({
       position,
     });
@@ -132,7 +149,7 @@ const Map = () => {
   };
 
   //이벤트마커찍기
-  const setEventMaker = (position, placeName, addressName, tags) => {
+  const setEventMaker = (position, placeName, tags) => {
     const imageSrc =
       "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커이미지
     const imageSize = new kakao.maps.Size(32, 34.5); // 마커크기
@@ -144,7 +161,11 @@ const Map = () => {
     marker.setMap(map.core);
     const infowindow = new kakao.maps.InfoWindow({
       position,
-      content: `<div class="w-36 flex justify-around"><span class="mx-2 p-1 text-sm">#${tags.map(tag => tag)}</span></div>`
+      content: `
+        <div class="w-36 flex flex-col justify-around">
+          <h2 class="font-bold text-center">${placeName}</h2>
+          <span class="mx-2 p-1 text-sm text-center">#${tags.length ? tags.map(tag => tag) : "태그없음"}</span>
+        </div>`
     });
     //마커에인포윈도우이벤트추가
     window.kakao.maps.event.addListener(marker, "mouseover", () => { infowindow.open(map.core, marker); });
@@ -170,12 +191,9 @@ const Map = () => {
           <ul className="bg-white">
             {interaction.data.map((place) => (
               <li
-                className={`hover:bg-gray-200 hover:text-white px-3 my-1 text-xs cursor-pointer`}
+                className={`hover:bg-gray-200 hover:text-white px-3 border-gray-100 border-2 text-sm cursor-pointer`}
                 key={place.id}
-                onClick={() =>
-                  panTo(place.x, place.y, place.place_name, place.address_name)
-                }
-              >
+                onClick={() => panTo(place.x, place.y, place.place_name, place.address_name)}>
                 {place.place_name.length > 13
                   ? place.place_name.substring(0, 13) + "..."
                   : place.place_name}

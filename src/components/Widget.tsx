@@ -125,6 +125,7 @@ const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
         </ul>
       )}
       <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
+        <li>TO DO</li>
         {list!.length ?
           list
             ?.filter(

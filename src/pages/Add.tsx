@@ -29,7 +29,6 @@ const Add = () => {
       position: resource!.position,
       addressName: resource!.addressName,
       placeName: resource!.placeName,
-      detail: "",
       tags: [],
     },
   });
@@ -46,6 +45,9 @@ const Add = () => {
     dispatch({
       type: ADD_EVENT,
       payload: event,
+    });
+    dispatch({
+      type: CLICK_ADD,
     });
   };
 
@@ -185,16 +187,6 @@ const Add = () => {
             ))}
           </div>
         </div>
-
-        <strong className={`border-${themeColor} border-l-4 pl-2`}>
-          상세 일정은 선택이예요.
-        </strong>
-        <textarea
-          className="focus:outline-none border-2 border-gray-300 max-h-96"
-          name="detail"
-          value={event.resource!.detail}
-          onChange={inputEvent}
-        />
         <div>
           <button
             className={`bg-${themeColor} agenda-btn text-sm text-white w-1/2 p-2`}

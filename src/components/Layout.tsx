@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { ReactNode, useEffect, useState } from "react";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,11 +23,19 @@ const iconStyle: React.CSSProperties = {
 };
 
 const Layout = ({ children }: LayoutPorps) => {
-  const { themeColor } = useSelector((root: RootState) => root.user);
+  const { resource, themeColor } = useSelector((root: RootState) => root.user, shallowEqual);
+
+  const [state,setState] = useState<any | null>(null);
 
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  useEffect(() => {
+    setState({
+      ...resource
+    })
+  }, [resource])
 
   const push = (path: string = "/") => history.push(`/${path}`);
 
@@ -64,7 +72,10 @@ const Layout = ({ children }: LayoutPorps) => {
               className="text-base sm:text-2xl"
               icon={faPen}
               style={iconStyle}
-              onClick={() => dispatch({ type: CLICK_ADD })}
+              onClick={() => dispatch({
+                type: CLICK_ADD,
+                payload: { ...state }
+              })}
             />
           </div>
           <FontAwesomeIcon

@@ -8,15 +8,13 @@ import { AgendaEvent } from "../types/Agenda";
 import { RootState } from "../reducers/root";
 
 const data = {
-  labels: ["1번 막대", "2번 막대", "3번 막대"],
+  labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
   datasets: [
     {
-      data: ["1번 막대", "2번 막대", "3번 막대"],
+      data: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
       lineTension: 0,
       backgroundColor: "rgba(15, 107, 255, 0.1)",
-      borderWidth: 1,
-      borderColor: "#0f6bff",
-      fill: true,
+      width: "100%"
     },
   ],
 };
@@ -27,31 +25,26 @@ const Overview = () => {
   const [events, setEvents] = useState<Array<AgendaEvent>>([]);
 
   useEffect(() => {
-  
+
   }, []);
 
   return (
     <article className="bg-gray-200 h-screen overflow-y-scroll flex flex-col">
-      {events.map((event) => (
-        <section className="bg-white">
-          <Line
-            type="line"
-            data={data}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: "top",
-                },
-                title: {
-                  display: true,
-                  text: event.start.toISOString().slice(0, 10),
-                },
-              },
-            }}
-          />
-        </section>
-      ))}
+      <Line
+        type="line"
+        data={data}
+        options={{
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            title: {
+              display: true,
+            },
+          },
+        }}
+      />
     </article>
   );
 };

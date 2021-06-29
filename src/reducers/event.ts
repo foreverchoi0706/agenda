@@ -15,7 +15,6 @@ const initialState: AgendaEvent = {
         placeName: "",
         addressName: "",
         position: null,
-        detail: "",
         tags: [],
     },
     list: []
@@ -28,7 +27,10 @@ const event: Reducer<AgendaEvent, AgendaAction> = (state: AgendaEvent = initialS
             state.list = JSON.parse(localStorage.getItem("EVENT_LIST")!.toString());
             state.list!.push(action.payload);
             localStorage.setItem("EVENT_LIST", JSON.stringify(state.list));
-            return state;
+            return {
+                ...state,
+                list: JSON.parse(localStorage.getItem("EVENT_LIST")!.toString()),
+            };
         case GET_EVENT_LIST:
             return {
                 ...state,

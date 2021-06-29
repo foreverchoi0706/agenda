@@ -14,6 +14,8 @@ export const CLICK_ADD = "CLICK_ADD";
 export const CLICK_CONFIG = "CLICK_CONFIG";
 //테마색변경
 export const CHANGE_THEME_COLOR = "CHANGE_THEME_COLOR";
+//현위치가져오기
+export const SET_RESOURCE = "SET_RESOURCE";
 
 const initialState: User = {
     nickName: "",
@@ -52,14 +54,22 @@ const user: Reducer<User, AgendaAction> = (state: User = initialState, action: A
             return {
                 ...initialState
             };
+        case SET_RESOURCE:
+            return {
+                ...state,
+                resource: {
+                    ...action.payload
+                }
+            }
         case CLICK_ADD:
             return {
                 ...state,
                 isAddClicked: !state.isAddClicked,
                 isConfigClicked: false,
-                resource: {
+                //위치정보가{}이면기존것을할당
+                resource: action.payload && Object.keys(action.payload).length != 0 ? {
                     ...action.payload
-                }
+                } : state.resource
             };
         case CLICK_CONFIG:
             return {

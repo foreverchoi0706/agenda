@@ -23,7 +23,6 @@ export interface AgendaEvent extends Event {
         placeName: string | undefined,
         addressName: string | undefined
         position: any | undefined,
-        detail: string | undefined,
         tags: Array<string> | undefined
     };
     list? : Array<Event>
