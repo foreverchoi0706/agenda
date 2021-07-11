@@ -8,3 +8,9 @@
 
 ## 주요기능
 
+
+## 미리보기
+
+
+
+<img src="https://images.velog.io/images/foreverchoi0706/post/10e0582e-f30e-4a23-8828-db1fd1203aef/localhost_8080_(Surface%20Duo)%20(1).png" width="200" height="300"> <img src="https://images.velog.io/images/foreverchoi0706/post/69d39643-6711-4393-835d-d47e42c988b8/localhost_8080_(Surface%20Duo).png" width="200" height="300"> <img src="https://images.velog.io/images/foreverchoi0706/post/c1cd809e-47f5-454b-8f40-f04f93239099/localhost_8080_(iPad).png" width="200" height="300">
