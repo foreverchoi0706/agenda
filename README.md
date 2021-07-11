@@ -22,6 +22,8 @@
 ![REACT.js](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black) 
 ![REDUX](https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
 ![TAILWIND](https://img.shields.io/badge/tailwindcss-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![WEBPACK](https://img.shields.io/badge/webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)
+![BABEL](https://img.shields.io/badge/babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=black)
 
 ## 미리보기
 
