@@ -43,25 +43,34 @@ const Map = () => {
       return;
     }
     //현위치마커
-    map.geocoder.coord2Address(map.position.getLng(), map.position.getLat(), (data, status) => {
-      if (status === kakao.maps.services.Status.OK) {
-        setMaker(map.position, "현위치", data[0].address.address_name);
-        dispatch({
-          type: SET_RESOURCE,
-          payload: {
-            position: map.position,
-            placeName: "현위치",
-            addressName: data[0].address.address_name,
-          }
-        });
-      };
-    });
+    map.geocoder.coord2Address(
+      map.position.getLng(),
+      map.position.getLat(),
+      (data, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          setMaker(map.position, "현위치", data[0].address.address_name);
+          dispatch({
+            type: SET_RESOURCE,
+            payload: {
+              position: map.position,
+              placeName: "현위치",
+              addressName: data[0].address.address_name,
+            },
+          });
+        }
+      }
+    );
     map.bounds.extend(map.position);
     //이벤트마커
-    list.forEach(event => {
-      if (new Date(event.end.toString()).getTime() >=
-        new Date().getTime() - 86400000) {
-        const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
+    list.forEach((event) => {
+      if (
+        new Date(event.end.toString()).getTime() >=
+        new Date().getTime() - 86400000
+      ) {
+        const position = new kakao.maps.LatLng(
+          event.resource.position.Ma,
+          event.resource.position.La
+        );
         setEventMaker(position, event.resource.placeName, event.resource.tags);
         map.bounds.extend(position);
       }
@@ -91,7 +100,7 @@ const Map = () => {
         }),
         places: new kakao.maps.services.Places(),
         geocoder: new kakao.maps.services.Geocoder(),
-        bounds: new kakao.maps.LatLngBounds()
+        bounds: new kakao.maps.LatLngBounds(),
       }));
     });
   };
@@ -164,21 +173,31 @@ const Map = () => {
       content: `
         <div class="w-36 flex flex-col justify-around">
           <h2 class="font-bold text-center">${placeName}</h2>
-          <span class="mx-2 p-1 text-sm text-center">#${tags.length ? tags.map(tag => tag) : "태그없음"}</span>
-        </div>`
+          <span class="mx-2 p-1 text-sm text-center">#${
+            tags.length ? tags.map((tag) => tag) : "태그없음"
+          }</span>
+        </div>`,
+      removable: document.body.clientWidth <= 1024 ? true : false,
     });
     //마커에인포윈도우이벤트추가
-    window.kakao.maps.event.addListener(marker, "mouseover", () => { infowindow.open(map.core, marker); });
-    window.kakao.maps.event.addListener(marker, "mouseout", () => { infowindow.close(); });
+    window.kakao.maps.event.addListener(marker, "mouseover", () => {
+      infowindow.open(map.core, marker);
+    });
+    window.kakao.maps.event.addListener(marker, "mouseout", () => {
+      infowindow.close();
+    });
+    window.kakao.maps.event.addListener(marker, "click", () => {
+      infowindow.open(map.core, marker);
+    });
   };
 
   return (
     <article>
       <div className="h-screen" id="map" />
-      <section className="absolute z-50 top-3 left-12 sm:left-16">
+      <section className="w-5/6 absolute z-50 top-3 left-12 sm:w-auto sm:left-16">
         <form className="flex" onSubmit={searchPlace} onClick={searchPlace}>
           <input
-            className="focus:outline-none rounded-sm"
+            className="w-full focus:outline-none rounded-md rounded-r-none"
             type="text"
             placeholder=" 장소검색"
             onChange={inputPlace}
@@ -193,7 +212,10 @@ const Map = () => {
               <li
                 className={`hover:bg-gray-200 hover:text-white px-3 border-gray-100 border-2 text-sm cursor-pointer`}
                 key={place.id}
-                onClick={() => panTo(place.x, place.y, place.place_name, place.address_name)}>
+                onClick={() =>
+                  panTo(place.x, place.y, place.place_name, place.address_name)
+                }
+              >
                 {place.place_name.length > 13
                   ? place.place_name.substring(0, 13) + "..."
                   : place.place_name}
@@ -208,11 +230,13 @@ const Map = () => {
         kakao={window.kakao}
         core={map.core}
       />
-      <section className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-sm">
+      <section
+        className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-md"
+        onClick={() => map.core.panTo(map.position)}
+      >
         <FontAwesomeIcon
           className={`text-${themeColor} m-2 cursor-pointer`}
           icon={faMapMarkerAlt}
-          onClick={() => map.core.panTo(map.position)}
         />
       </section>
     </article>

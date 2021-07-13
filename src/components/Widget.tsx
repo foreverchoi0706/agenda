@@ -16,12 +16,14 @@ import {
   faEye,
   faTint,
   faSmile,
+  faSkull
 } from "@fortawesome/free-solid-svg-icons";
 //interface
 import { WeatherInfo } from "../types/Agenda";
 //reducers
 import { RootState } from "../reducers/root";
 import { GET_EVENT_LIST } from "../reducers/event";
+import { Event } from "react-big-calendar";
 
 const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 
@@ -68,6 +70,8 @@ const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
 
   const [weatherInfo, setWeatherInfo] = useState<WeatherInfo | null>(null);
 
+  const [todo, setTodo] = useState<Array<Event>>([]);
+
   useEffect(() => {
     dispatch({ type: GET_EVENT_LIST });
     //날씨정보가져오기
@@ -81,40 +85,50 @@ const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
     }
   }, [latitude, longitude]);
 
+  useEffect(() => {
+    if (list?.length) {
+      setTodo(list.filter(
+        (event) =>
+          new Date(event.end!.toString()).getTime() >=
+          new Date().getTime() - 86400000
+      ));
+    }
+  }, []);
+
   return (
-    <section className="hidden sm:grid grid-cols-3 gap-1 absolute z-50 top-3 right-3 w-96 text-gray-500">
-      <div className="col-start-1 col-end-4 font-bold bg-white rounded-sm flex justify-between items-center p-1">
+    <section className="hidden sm:grid grid-cols-3 gap-1 absolute z-50 top-3 right-3 w-80 text-gray-500">
+      <div className="col-start-1 col-end-4 font-bold bg-white rounded-md flex justify-between items-center p-1">
         <div>
           <FontAwesomeIcon
             icon={getWheaterIcon(weatherInfo?.weather[0].main)}
             style={{ width: "1rem" }}
           />
           &nbsp;
-          {weatherInfo?.name}
+          <strong className="text-xs">{weatherInfo?.name}</strong>
         </div>
 
-        <strong className="text-sm">안녕하세요 {nickName}님!</strong>
+        <strong className="text-xs">안녕하세요 {nickName}님!</strong>
       </div>
       {weatherInfo ? (
-        <ul className="bg-white rounded-sm flex flex-col justify-around">
+        <ul className="bg-white rounded-md flex flex-col justify-around">
           <li className="flex justify-between items-center m-1">
             <FontAwesomeIcon
               style={{ width: "1rem" }}
               icon={faThermometerHalf}
             />
-            {weatherInfo.main.temp}°C
+            <strong className="text-xs">{weatherInfo.main.temp}°C</strong>
           </li>
           <li className="flex justify-between items-center m-1">
             <FontAwesomeIcon style={{ width: "1rem" }} icon={faEye} />
-            {weatherInfo.visibility}m
+            <strong className="text-xs">{weatherInfo.visibility}m</strong>
           </li>
           <li className="flex justify-between items-center m-1">
             <FontAwesomeIcon style={{ width: "1rem" }} icon={faTint} />
-            {weatherInfo.main.humidity}g/m3
+            <strong className="text-xs">{weatherInfo.main.humidity}g/m3</strong>
           </li>
           <li className="flex justify-between items-center m-1">
             <FontAwesomeIcon style={{ width: "1rem" }} icon={faSmile} />
-            {weatherInfo.main.feels_like}di
+            <strong className="text-xs">{weatherInfo.main.feels_like}di</strong>
           </li>
         </ul>
       ) : (
@@ -124,26 +138,24 @@ const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
           </li>
         </ul>
       )}
-      <ul className="event_list bg-white rounded-sm overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        <li>TO DO</li>
-        {list!.length ?
-          list
-            ?.filter(
-              (event) =>
-                new Date(event.end!.toString()).getTime() >=
-                new Date().getTime() - 86400000
-            )
-            .map((event, index) => (
-              <li
-                className="m-1 bg-gray-200 cursor-pointer"
-                key={index}
-                onClick={() => {
-                  const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
-                  return core.panTo(position);
-                }}>
-                {event.title}
-              </li>
-            )) : null}
+      <ul className="event_list bg-white rounded-md overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
+        {todo.length ?
+          todo.map((event, index) => (
+            <li
+              className="m-1 bg-gray-200 text-xs cursor-pointer"
+              key={index}
+              onClick={() => {
+                const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
+                return core.panTo(position);
+              }}>
+              {event.title}
+            </li>
+          )) :
+          <>
+            <li className="flex justify-center"><strong className="text-xs">이런...예정된 이벤트가 없어요!</strong></li>
+            <li className="flex justify-center"><FontAwesomeIcon icon={faSkull} /></li>
+          </>
+        }
       </ul>
     </section>
   );

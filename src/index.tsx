@@ -8,7 +8,7 @@ import root from "./reducers/root";
 import App from "./App";
 import "../styles/global.css";
 
-const store = createStore(root, applyMiddleware(logger));
+const store = createStore(root, applyMiddleware());
 
 const agenda = document.querySelector("#agenda");
 

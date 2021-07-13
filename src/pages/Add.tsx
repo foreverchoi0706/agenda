@@ -37,11 +37,11 @@ const Add = () => {
 
   //이벤트추가시
   const addEvent = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (event.start.getTime() > event.end.getTime()) {
       alert("일정의 시작 일자는 종료일자보다 클 수 없어요.");
       return;
     }
-    e.preventDefault();
     dispatch({
       type: ADD_EVENT,
       payload: event,

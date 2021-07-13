@@ -33,7 +33,7 @@ const initialState: User = {
 const user: Reducer<User, AgendaAction> = (state: User = initialState, action: AgendaAction) => {
     switch (action.type) {
         case INIT:
-            const themeColor = localStorage.getItem("THEME_COLOR") || "blue-500";
+            const themeColor = localStorage.getItem("THEME_COLOR") || "red-500";
             const nickName = localStorage.getItem("NICK_NAME");
             return {
                 ...state,

@@ -45,8 +45,11 @@ const SignIn = () => {
 
   return (
     <article
-      className={`bg-${themeColor} w-full h-full flex justify-center items-center`}
+      className={`bg-${themeColor} w-full h-full flex flex-col justify-center items-center`}
     >
+      <h1 className="text-white p-4 animate-reverse-one-ping">
+        당신을 위한 일정 매니저,<br /><div className="text-right">AGENDA</div>
+      </h1>
       <form
         className="bg-white flex flex-col rounded-lg p-5 agenda-box"
         onSubmit={signIn}
@@ -71,6 +74,9 @@ const SignIn = () => {
           이 이름 사용하기
         </button>
       </form>
+      <h2 className="text-white p-4">
+       &copy; foreverchoi
+      </h2>
     </article>
   );
 };

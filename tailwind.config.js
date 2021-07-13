@@ -1,8 +1,12 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "reverse-one-ping": 'ping 1.5s linear reverse',
+      }
+    },
   },
   variants: {
     extend: {},
