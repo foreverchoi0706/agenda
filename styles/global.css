@@ -36,6 +36,14 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+#appear{
+  animation: appear 0.5s cubic-bezier(0.69, 1.28, 1, 1) forwards;
+}
+
+#disappear{
+  animation: disappear 0.5s cubic-bezier(0.69, 1.28, 1, 1) forwards;
+}
+
 button:focus {
   outline: none;
 }
@@ -53,5 +61,17 @@ ul {
 @media (max-width: 512px) {
   body {
     font-size: 0.6rem;
+  }
+}
+
+@keyframes appear {
+  to{
+    right: 0;
+  }
+}
+
+@keyframes disappear {
+  to{
+    right: -20rem;
   }
 }

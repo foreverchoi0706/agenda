@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMapMarkerAlt,
+  faSearch,
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
+} from "@fortawesome/free-solid-svg-icons";
 //components
 import Widget from "../components/Widget";
 //reducers
@@ -35,6 +40,8 @@ const Map = () => {
     position: null, //선택된검색결과
     bounds: null, //범위설정
   });
+
+  const [toggled, setToggled] = useState(true);
 
   useEffect(() => {
     if (!map.core) {
@@ -191,6 +198,11 @@ const Map = () => {
     });
   };
 
+  //위젯표시여부
+  const toggleWidget = () => {
+    setToggled((toggled) => !toggled);
+  };
+
   return (
     <article>
       <div className="h-screen" id="map" />
@@ -225,19 +237,29 @@ const Map = () => {
         )}
       </section>
       <Widget
+        toggled={toggled}
         latitude={map.position?.getLat()}
         longitude={map.position?.getLng()}
         kakao={window.kakao}
         core={map.core}
       />
-      <section
-        className="absolute z-50 top-1/3 right-3 bg-white flex flex-col rounded-md"
-        onClick={() => map.core.panTo(map.position)}
-      >
-        <FontAwesomeIcon
-          className={`text-${themeColor} m-2 cursor-pointer`}
-          icon={faMapMarkerAlt}
-        />
+      <section className="absolute z-50 top-1/4 right-3 flex flex-col rounded-md">
+        <div className="bg-white rounded-md my-3" onClick={toggleWidget}>
+          <FontAwesomeIcon
+            className={`text-${themeColor} m-2 cursor-pointer`}
+            icon={toggled ? faAngleDoubleLeft : faAngleDoubleRight}
+          />
+        </div>
+
+        <div
+          className="bg-white rounded-md my-3"
+          onClick={() => map.core.panTo(map.position)}
+        >
+          <FontAwesomeIcon
+            className={`text-${themeColor} m-2 cursor-pointer`}
+            icon={faMapMarkerAlt}
+          />
+        </div>
       </section>
     </article>
   );

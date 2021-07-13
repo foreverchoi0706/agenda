@@ -29,6 +29,7 @@ const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 
 /** @interface props **/
 interface WidgetProps {
+  toggled: boolean,
   latitude: number;
   longitude: number;
   kakao: any;
@@ -61,7 +62,7 @@ const getWheaterIcon = (wheater: string): IconProp => {
 const getWheatherInfoURL = (latitude: number, longitude: number): string =>
   `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
 
-const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
+const Widget = ({ toggled, latitude, longitude, kakao, core }: WidgetProps) => {
   const { nickName } = useSelector((root: RootState) => root.user);
 
   const { list } = useSelector((root: RootState) => root.event);
@@ -96,7 +97,7 @@ const Widget = ({ latitude, longitude, kakao, core }: WidgetProps) => {
   }, []);
 
   return (
-    <section className="hidden sm:grid grid-cols-3 gap-1 absolute z-50 top-3 right-3 w-80 text-gray-500">
+    <section id={toggled ? "appear" : "disappear"} className="bottom-3 grid grid-cols-3 gap-1 absolute z-50 sm:top-3 right-3 w-80 text-gray-500">
       <div className="col-start-1 col-end-4 font-bold bg-white rounded-md flex justify-between items-center p-1">
         <div>
           <FontAwesomeIcon
