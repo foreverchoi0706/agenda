@@ -25,6 +25,10 @@
     transform: scale(0.9);
   }
 }
+body{
+  width: 100%;
+  overflow-x: hidden;
+}
 
 #agenda {
   width: 100%;
@@ -65,12 +69,18 @@ ul {
 }
 
 @keyframes appear {
+  from{
+    right: -20rem;
+  }
   to{
-    right: 0;
+    right: 0.75rem;
   }
 }
 
 @keyframes disappear {
+  from{
+    right: 0.75rem;
+  }
   to{
     right: -20rem;
   }

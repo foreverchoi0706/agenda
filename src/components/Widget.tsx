@@ -36,6 +36,8 @@ interface WidgetProps {
   core: any;
 }
 
+const ONE_DAY = 86400000;
+
 const getWheaterIcon = (wheater: string): IconProp => {
   switch (wheater) {
     case "Clear":
@@ -91,13 +93,13 @@ const Widget = ({ toggled, latitude, longitude, kakao, core }: WidgetProps) => {
       setTodo(list.filter(
         (event) =>
           new Date(event.end!.toString()).getTime() >=
-          new Date().getTime() - 86400000
+          new Date().getTime() - ONE_DAY
       ));
     }
   }, []);
 
   return (
-    <section id={toggled ? "appear" : "disappear"} className="bottom-3 grid grid-cols-3 gap-1 absolute z-50 sm:top-3 right-3 w-80 text-gray-500">
+    <section id={toggled ? "appear" : "disappear"} className="bottom-3 grid grid-cols-3 gap-1 absolute top-auto z-50 w-80 text-gray-500 sm:top-3 sm:bottom-auto">
       <div className="col-start-1 col-end-4 font-bold bg-white rounded-md flex justify-between items-center p-1">
         <div>
           <FontAwesomeIcon
