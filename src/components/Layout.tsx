@@ -19,13 +19,12 @@ interface LayoutPorps {
 
 const iconStyle: React.CSSProperties = {
   margin: "1rem 0.5rem",
-  cursor: "pointer",
 };
 
 const Layout = ({ children }: LayoutPorps) => {
   const { resource, themeColor } = useSelector((root: RootState) => root.user, shallowEqual);
 
-  const [state,setState] = useState<any | null>(null);
+  const [state, setState] = useState<any | null>(null);
 
   const dispatch = useDispatch();
 
@@ -50,40 +49,48 @@ const Layout = ({ children }: LayoutPorps) => {
             <h2>N</h2>
             <h2>D</h2>
             <h2>A</h2>
-            <FontAwesomeIcon
-              className="text-base sm:text-2xl"
-              icon={faMapMarkedAlt}
-              style={iconStyle}
-              onClick={() => push("map")}
-            />
-            <FontAwesomeIcon
-              className="text-base sm:text-2xl"
-              icon={faCalendarAlt}
-              style={iconStyle}
-              onClick={() => push("calendar")}
-            />
-            <FontAwesomeIcon
-              className="text-base sm:text-2xl"
-              icon={faList}
-              style={iconStyle}
-              onClick={() => push("overview")}
-            />
-            <FontAwesomeIcon
-              className="text-base sm:text-2xl"
-              icon={faPen}
-              style={iconStyle}
-              onClick={() => dispatch({
+            <ul>
+              <li className="cursor-pointer" onClick={() => push("map")}>
+                <FontAwesomeIcon
+                  className="text-base sm:text-2xl"
+                  icon={faMapMarkedAlt}
+                  style={iconStyle}
+                />
+              </li>
+              <li className="cursor-pointer" onClick={() => push("calendar")}>
+                <FontAwesomeIcon
+                  className="text-base sm:text-2xl"
+                  icon={faCalendarAlt}
+                  style={iconStyle}
+                />
+              </li>
+              <li className="cursor-pointer" onClick={() => push("overview")}>
+                <FontAwesomeIcon
+                  className="text-base sm:text-2xl"
+                  icon={faList}
+                  style={iconStyle}
+                />
+              </li>
+              <li className="cursor-pointer" onClick={() => dispatch({
                 type: CLICK_ADD,
                 payload: { ...state }
-              })}
-            />
+              })}>
+                <FontAwesomeIcon
+                  className="text-base sm:text-2xl"
+                  icon={faPen}
+                  style={iconStyle}
+
+                />
+              </li>
+              <li className="cursor-pointer" onClick={() => dispatch({ type: CLICK_CONFIG })}>
+                <FontAwesomeIcon
+                  className="text-base sm:text-2xl text-white"
+                  icon={faCogs}
+                  style={iconStyle}
+                />
+              </li>
+            </ul>
           </div>
-          <FontAwesomeIcon
-            className="text-base sm:text-2xl text-white"
-            icon={faCogs}
-            style={iconStyle}
-            onClick={() => dispatch({ type: CLICK_CONFIG })}
-          />
         </nav>
       </header>
       <div className="flex-grow">{children}</div>
