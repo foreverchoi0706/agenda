@@ -82,14 +82,14 @@ const Layout = ({ children }: LayoutPorps) => {
 
                 />
               </li>
-              <li className="cursor-pointer" onClick={() => dispatch({ type: CLICK_CONFIG })}>
-                <FontAwesomeIcon
-                  className="text-base sm:text-2xl text-white"
-                  icon={faCogs}
-                  style={iconStyle}
-                />
-              </li>
             </ul>
+          </div>
+          <div className="cursor-pointer" onClick={() => dispatch({ type: CLICK_CONFIG })}>
+            <FontAwesomeIcon
+              className="text-base sm:text-2xl text-white"
+              icon={faCogs}
+              style={iconStyle}
+            />
           </div>
         </nav>
       </header>

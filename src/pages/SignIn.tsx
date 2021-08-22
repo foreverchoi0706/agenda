@@ -32,7 +32,7 @@ const SignIn = () => {
 
   const setName = (): void => {
     axios
-      .get("https://foreverchoi0706.com/getNickname")
+      .get("https://uriai-api.foreverchoi0706.com/getNickname")
       .then((value: AxiosResponse<any>) => {
         setNickname(() => value.data.nickname);
       })
