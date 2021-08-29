@@ -85,6 +85,11 @@ const Map = () => {
     map.core.setBounds(map.bounds);
   }, [map]);
 
+
+  useEffect(()=> {
+    document.querySelector("div").click();
+  },[map]);
+
   //스크립트추가
   const addKakaoMapScript = () => {
     const script = document.createElement("script");
@@ -174,25 +179,28 @@ const Map = () => {
       position,
       image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
     });
+
+    //길찾기파라미터
+    const to = `${placeName},${position.Ma},${position.La}`;
+
     marker.setMap(map.core);
     const infowindow = new kakao.maps.InfoWindow({
       position,
       content: `
-        <div class="w-36 flex flex-col justify-around">
+        <div class="w-148 flex flex-col justify-around">
           <h2 class="font-bold text-center">${placeName}</h2>
-          <span class="mx-2 p-1 text-sm text-center">#${
+          <span class="my-1 text-sm text-center">#${
             tags.length ? tags.map((tag) => tag) : "태그없음"
           }</span>
+          <a class="my-1 font-bold text-sm text-center" href="https://map.kakao.com/link/to/${to}" target="_blank">길찾기</a>
         </div>`,
       removable: document.body.clientWidth <= 1024 ? true : false,
     });
-    //마커에인포윈도우이벤트추가
+    //마커호버시(웹)
     window.kakao.maps.event.addListener(marker, "mouseover", () => {
       infowindow.open(map.core, marker);
     });
-    window.kakao.maps.event.addListener(marker, "mouseout", () => {
-      infowindow.close();
-    });
+    //마커클릭시(모바일)
     window.kakao.maps.event.addListener(marker, "click", () => {
       infowindow.open(map.core, marker);
     });

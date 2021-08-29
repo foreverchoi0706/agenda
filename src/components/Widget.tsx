@@ -96,7 +96,7 @@ const Widget = ({ toggled, latitude, longitude, kakao, core }: WidgetProps) => {
           new Date().getTime() - ONE_DAY
       ));
     }
-  }, []);
+  }, [list]);
 
   return (
     <section id={toggled ? "appear" : "disappear"} className="bottom-3 grid grid-cols-3 gap-1 absolute top-auto z-50 w-80 text-gray-500 sm:top-3 sm:bottom-auto">

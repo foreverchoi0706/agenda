@@ -1,7 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Calendar as RBC, momentLocalizer, Messages } from "react-big-calendar";
-import "moment/locale/ko"
+import { useHistory, useLocation } from "react-router-dom";
+import {
+  Calendar as RBC,
+  momentLocalizer,
+  Messages,
+  Event,
+} from "react-big-calendar";
+import "moment/locale/ko";
 import moment from "moment";
 //rducers
 import { RootState } from "../reducers/root";
@@ -11,14 +17,21 @@ const localizer = momentLocalizer(moment);
 const message: Messages = {
   today: "▼",
   previous: "◀︎",
-  next: "▶︎"
+  next: "▶︎",
 };
 
 const Calendar = () => {
+  const history = useHistory();
+
+  const location = useLocation();
 
   const { themeColor } = useSelector((root: RootState) => root.user);
 
   const { list } = useSelector((root: RootState) => root.event);
+
+  const goEvent = (e: Event) => {
+    history.push("/map");
+  };
 
   return (
     <article className="h-screen">
@@ -30,14 +43,16 @@ const Calendar = () => {
         eventPropGetter={(event) => {
           const className = `bg-${themeColor}`;
           const style = {
-            borderRadius: '0px',
+            borderRadius: "0px",
           };
           return {
             className,
-            style
+            style,
           };
-        }
-        }
+        }}
+        onSelectEvent={(e) => {
+          goEvent(e);
+        }}
       />
     </article>
   );

@@ -51,6 +51,15 @@ body{
 button:focus {
   outline: none;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+article::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+article {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 ul::-webkit-scrollbar {
