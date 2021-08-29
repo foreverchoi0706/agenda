@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { Event } from "react-big-calendar";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

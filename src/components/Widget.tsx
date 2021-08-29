@@ -16,7 +16,7 @@ import {
   faEye,
   faTint,
   faSmile,
-  faSkull
+  faSkull,
 } from "@fortawesome/free-solid-svg-icons";
 //interface
 import { WeatherInfo } from "../types/Agenda";
@@ -29,7 +29,7 @@ const API_KEY = "b1ba56378836cbc4530aa5c6991311dc";
 
 /** @interface props **/
 interface WidgetProps {
-  toggled: boolean,
+  toggled: boolean;
   latitude: number;
   longitude: number;
   kakao: any;
@@ -90,16 +90,21 @@ const Widget = ({ toggled, latitude, longitude, kakao, core }: WidgetProps) => {
 
   useEffect(() => {
     if (list?.length) {
-      setTodo(list.filter(
-        (event) =>
-          new Date(event.end!.toString()).getTime() >=
-          new Date().getTime() - ONE_DAY
-      ));
+      setTodo(
+        list.filter(
+          (event) =>
+            new Date(event.end!.toString()).getTime() >=
+            new Date().getTime() - ONE_DAY
+        )
+      );
     }
   }, [list]);
 
   return (
-    <section id={toggled ? "appear" : "disappear"} className="bottom-3 grid grid-cols-3 gap-1 absolute top-auto z-50 w-80 text-gray-500 sm:top-3 sm:bottom-auto">
+    <section
+      id={toggled ? "appear" : "disappear"}
+      className="bottom-3 grid grid-cols-3 gap-1 absolute top-auto z-50 w-80 text-gray-500 sm:top-3 sm:bottom-auto"
+    >
       <div className="col-start-1 col-end-4 font-bold bg-white rounded-md flex justify-between items-center p-1">
         <div>
           <FontAwesomeIcon
@@ -142,23 +147,32 @@ const Widget = ({ toggled, latitude, longitude, kakao, core }: WidgetProps) => {
         </ul>
       )}
       <ul className="event_list bg-white rounded-md overflow-y-auto h-40 col-start-2 col-end-4 flex flex-col gap-1">
-        {todo.length ?
+        {todo.length ? (
           todo.map((event, index) => (
             <li
               className="m-1 bg-gray-200 text-xs cursor-pointer"
               key={index}
               onClick={() => {
-                const position = new kakao.maps.LatLng(event.resource.position.Ma, event.resource.position.La);
+                const position = new kakao.maps.LatLng(
+                  event.resource.position.Ma,
+                  event.resource.position.La
+                );
                 return core.panTo(position);
-              }}>
+              }}
+            >
               {event.title}
             </li>
-          )) :
+          ))
+        ) : (
           <>
-            <li className="flex justify-center"><strong className="text-xs">이런...예정된 이벤트가 없어요!</strong></li>
-            <li className="flex justify-center"><FontAwesomeIcon icon={faSkull} /></li>
+            <li className="flex justify-center">
+              <strong className="text-xs">
+                이런...예정된 이벤트가 없어요!
+              </strong>&nbsp;
+              <FontAwesomeIcon icon={faSkull} />
+            </li>
           </>
-        }
+        )}
       </ul>
     </section>
   );

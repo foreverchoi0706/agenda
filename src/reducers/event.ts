@@ -28,7 +28,6 @@ const event: Reducer<AgendaEvent, AgendaAction> = (state: AgendaEvent = initialS
             state.list = JSON.parse(localStorage.getItem("EVENT_LIST")!.toString());
             state.list!.push(action.payload);
             localStorage.setItem("EVENT_LIST", JSON.stringify(state.list));
-            window.location.reload();
             return state;
         case GET_EVENT_LIST:
             return {

@@ -11,6 +11,7 @@ import {
 import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD, SET_RESOURCE } from "../reducers/user";
+import { WarningAlert } from "../components/Alert";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
@@ -85,10 +86,12 @@ const Map = () => {
     map.core.setBounds(map.bounds);
   }, [map]);
 
-
-  useEffect(()=> {
-    document.querySelector("div").click();
-  },[map]);
+  useEffect(() => {
+    WarningAlert("das");
+    // if (!"geolocation" in window.navigator) {
+    //   alert("위치서비스를 켜주세요");
+    // }
+  }, []);
 
   //스크립트추가
   const addKakaoMapScript = () => {
