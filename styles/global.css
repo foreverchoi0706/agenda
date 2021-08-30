@@ -11,8 +11,9 @@
   }
   .agenda-btn {
     color: white;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     padding: 5px;
+    font-size : 0.9rem;
   }
   .agenda-menu {
     background-color: white;

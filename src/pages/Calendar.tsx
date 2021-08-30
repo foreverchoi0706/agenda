@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import {
   Calendar as RBC,
@@ -11,6 +11,7 @@ import "moment/locale/ko";
 import moment from "moment";
 //rducers
 import { RootState } from "../reducers/root";
+import { PAN_TO } from "../reducers/event";
 
 const localizer = momentLocalizer(moment);
 
@@ -23,13 +24,17 @@ const message: Messages = {
 const Calendar = () => {
   const history = useHistory();
 
-  const location = useLocation();
+  const dispatch = useDispatch();
 
   const { themeColor } = useSelector((root: RootState) => root.user);
 
   const { list } = useSelector((root: RootState) => root.event);
 
   const goEvent = (e: Event) => {
+    dispatch({
+      type : PAN_TO,
+      payload : e.resource,
+    });
     history.push("/map");
   };
 

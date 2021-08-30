@@ -11,7 +11,6 @@ import {
 import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD, SET_RESOURCE } from "../reducers/user";
-import { WarningAlert } from "../components/Alert";
 
 // 카카오맵스크립트
 const KAKAO_SCRIPT =
@@ -20,7 +19,7 @@ const KAKAO_SCRIPT =
 const Map = () => {
   const { themeColor } = useSelector((root) => root.user);
 
-  const { list } = useSelector((root) => root.event);
+  const { list, resource } = useSelector((root) => root.event);
 
   const dispatch = useDispatch();
 
@@ -51,7 +50,12 @@ const Map = () => {
       return;
     }
     //현위치마커
-    map.geocoder.coord2Address(
+    if (resource.position) {
+      const { addressName, placeName, position } = resource;
+      console.log("resource::", resource);
+      panTo(position.La, position.Ma, placeName, addressName);
+    }else{
+   map.geocoder.coord2Address(
       map.position.getLng(),
       map.position.getLat(),
       (data, status) => {
@@ -69,6 +73,9 @@ const Map = () => {
       }
     );
     map.bounds.extend(map.position);
+    }
+ 
+ 
     //이벤트마커
     list.forEach((event) => {
       if (
@@ -84,14 +91,13 @@ const Map = () => {
       }
     });
     map.core.setBounds(map.bounds);
-  }, [map]);
 
-  useEffect(() => {
-    WarningAlert("das");
-    // if (!"geolocation" in window.navigator) {
-    //   alert("위치서비스를 켜주세요");
-    // }
-  }, []);
+    
+  }, [map, resource]);
+
+  // useEffect(() => {
+
+  // }, [resource]);
 
   //스크립트추가
   const addKakaoMapScript = () => {
@@ -225,7 +231,10 @@ const Map = () => {
             placeholder=" 장소검색"
             onChange={inputPlace}
           />
-          <button className={`bg-${themeColor} agenda-btn`} type="submit">
+          <button
+            className={`bg-${themeColor} text-white py-1 px-2 rounded-r-md`}
+            type="submit"
+          >
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>

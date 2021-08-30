@@ -7,6 +7,7 @@ import { faDice } from "@fortawesome/free-solid-svg-icons";
 //reducers
 import { RootState } from "../reducers/root";
 import { SIGN_IN } from "../reducers/user";
+import { loading } from "../components/Alert";
 //assets
 
 const SignIn = () => {
@@ -31,6 +32,7 @@ const SignIn = () => {
     setNickname(() => e.target.value);
 
   const setName = (): void => {
+    loading("잠시만 기다려 주세요...");
     axios
       .get("https://uriai-api.foreverchoi0706.com/getNickname")
       .then((value: AxiosResponse<any>) => {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 //components
-import { Confirm } from "../components/Alert";
+import { confirm } from "../components/Alert";
 //reducers
 import { RootState } from "../reducers/root";
 import { SIGN_OUT, CLICK_CONFIG, CHANGE_THEME_COLOR } from "../reducers/user";
@@ -51,7 +51,7 @@ const Config = () => {
   //계정삭제클릭시
   const signOut = () => {
     const callback = () => dispatch({ type: SIGN_OUT });
-    Confirm("계정이 삭제되고 초기화면으로 이동해요. 계속하시겠어요?", callback);
+    confirm("계정이 삭제되고 초기화면으로 이동해요. 계속하시겠어요?", callback);
   };
 
   //테마색클릭시
@@ -102,7 +102,7 @@ const Config = () => {
           <div className="text-red-500 text-sm font-bold my-2">
             계정 및 모든 일정이 삭제되요. 계속하시겠어요?
           </div>
-          <button className={`bg-${themeColor} agenda-btn`} onClick={signOut}>
+          <button className={`bg-${themeColor} agenda-btn w-full`} type="button" onClick={signOut}>
             네 삭제할게요.
           </button>
         </div>

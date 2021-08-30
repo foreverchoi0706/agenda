@@ -9,6 +9,7 @@ import { RootState } from "../reducers/root";
 import { CLICK_ADD } from "../reducers/user";
 import { ADD_EVENT } from "../reducers/event";
 import { AgendaEvent } from "../types/Agenda";
+import { warningAlert } from "../components/Alert";
 
 registerLocale("ko", ko);
 
@@ -38,7 +39,7 @@ const Add = () => {
   const addEvent = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (event.start.getTime() > event.end.getTime()) {
-      alert("일정의 시작 일자는 종료일자보다 클 수 없어요.");
+      warningAlert("일정의 시작일자는 종료일자보다 클 수 없어요.");
       return;
     }
     dispatch({
@@ -188,7 +189,7 @@ const Add = () => {
         </div>
         <div>
           <button
-            className={`bg-${themeColor} agenda-btn text-sm text-white w-1/2 p-2`}
+            className={`bg-${themeColor} agenda-btn text-white w-1/2 p-2`}
             type="submit"
           >
             일정 추가하기
