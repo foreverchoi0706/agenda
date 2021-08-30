@@ -30,7 +30,7 @@ const Calendar = () => {
 
   const { list } = useSelector((root: RootState) => root.event);
 
-  const goEvent = (e: Event) => {
+  const goMarker = (e: Event) => {
     dispatch({
       type : PAN_TO,
       payload : e.resource,
@@ -56,7 +56,7 @@ const Calendar = () => {
           };
         }}
         onSelectEvent={(e) => {
-          goEvent(e);
+          goMarker(e);
         }}
       />
     </article>

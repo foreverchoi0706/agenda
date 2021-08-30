@@ -2,7 +2,6 @@ import {
   faCalendarAlt,
   faLocationArrow,
   faSkull,
-  faTag,
   faTags,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +10,9 @@ import React, { ChangeEvent, FormEvent } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Event } from "react-big-calendar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { PAN_TO } from "../reducers/event";
 //reducer
 import { RootState } from "../reducers/root";
 
@@ -23,18 +24,20 @@ const dateToYyyymmddhh = (date: Date | undefined): string => {
 };
 
 const Overview = () => {
-  const [filter, setFilter] = useState<{ [index: string]: any }>({
-    keyword: "",
-    year: new Date().getFullYear(),
-  });
+  const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const { list } = useSelector((root: RootState) => root.event);
 
   const { themeColor } = useSelector((root: RootState) => root.user);
 
-  const [radios, setRadios] = useState<Array<any>>([]);
-
   const [overViews, setOverViews] = useState<Array<Event>>([]);
+
+  const [filter, setFilter] = useState<{ [index: string]: any }>({
+    keyword: "",
+    year: new Date().getFullYear(),
+  });
 
   useEffect(() => {
     if (list && list.length) {
@@ -65,6 +68,14 @@ const Overview = () => {
     );
   };
 
+  const goMarker = (resource: any) => {
+    dispatch({
+      type: PAN_TO,
+      payload: resource,
+    });
+    history.push("/map");
+  };
+
   return (
     <article className="bg-gray-200 h-screen overflow-x-hidden">
       <form
@@ -82,14 +93,14 @@ const Overview = () => {
           value={filter.keyword}
           onChange={inputFilter}
         />
-        {radios.length
+        {/* {radios.length
           ? radios.map((item) => (
               <label>
                 {item}&nbsp;
                 <input type="radio" />
               </label>
             ))
-          : null}
+          : null} */}
       </form>
       {overViews.length ? (
         overViews.map((item, index) => (
@@ -110,7 +121,9 @@ const Overview = () => {
               </a>
             </h3>
             <h4 className="flex justify-between">
-              {item.title}
+              <strong className="cursor-pointer hover:underline" onClick={() => goMarker(item.resource)}>
+                {item.title}
+              </strong>
               {item.resource.tags.length ? (
                 <div className="flex  items-center ">
                   <FontAwesomeIcon className="text-gray-500 " icon={faTags} />
