@@ -1,5 +1,4 @@
 import {
-  faCalendar,
   faCalendarAlt,
   faLocationArrow,
   faSkull,
@@ -8,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import produce from "immer";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Event } from "react-big-calendar";
@@ -68,9 +67,14 @@ const Overview = () => {
 
   return (
     <article className="bg-gray-200 h-screen overflow-x-hidden">
-      <form className="flex gap-2 w-3/5 p-2 md:p-4">
+      <form
+        className="flex gap-2 w-auto p-2 sm:w-2/5 md:p-4"
+        onSubmit={(e: FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+        }}
+      >
         <input
-          className="px-2 focus:outline-none"
+          className="p-2 flex-grow rounded-md focus:outline-none"
           name="keyword"
           type="text"
           placeholder="키워드를 입력해 주세요."
@@ -95,7 +99,7 @@ const Overview = () => {
               &nbsp;
               {dateToYyyymmddhh(item?.start)} ~ {dateToYyyymmddhh(item?.end)}
             </h2>
-            <h3 className="text-gray-500 text-sm">
+            <h3 className="text-gray-500">
               <a
                 className="hover:underline"
                 href={`https://map.kakao.com/link/to/${item.resource.placeName},${item.resource.position.Ma},${item.resource.position.La}`}
@@ -108,14 +112,12 @@ const Overview = () => {
             <h4 className="flex justify-between">
               {item.title}
               {item.resource.tags.length ? (
-                <div>
-                  <FontAwesomeIcon
-                    className="text-gray-500 text-sm"
-                    icon={faTags}
-                  />
-                  {item.resource.tags.map((item) => (
+                <div className="flex  items-center ">
+                  <FontAwesomeIcon className="text-gray-500 " icon={faTags} />
+                  {item.resource.tags.map((item, index) => (
                     <span
-                      className={`bg-${themeColor} rounded-md px-3 mx-1 text-white text-sm`}
+                      key={index}
+                      className={`bg-${themeColor} flex items-center rounded-md px-4 mx-1 text-white`}
                     >
                       {String(item)}
                     </span>

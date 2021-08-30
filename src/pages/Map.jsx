@@ -12,7 +12,10 @@ import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD, SET_RESOURCE } from "../reducers/user";
 
-// 카카오맵스크립트
+//하루ms
+const ONE_DAY = "86400000";
+
+//카카오맵스크립트
 const KAKAO_SCRIPT =
   "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c0a4bba1131d1334ee3dc75b1cc374f&libraries=services";
 
@@ -50,35 +53,30 @@ const Map = () => {
       return;
     }
     //현위치마커
-    if (resource.position) {
-      const { addressName, placeName, position } = resource;
-      console.log("resource::", resource);
-      panTo(position.La, position.Ma, placeName, addressName);
-    } else {
-      map.geocoder.coord2Address(
-        map.position.getLng(),
-        map.position.getLat(),
-        (data, status) => {
-          if (status === kakao.maps.services.Status.OK) {
-            setMaker(map.position, "현위치", data[0].address.address_name);
-            dispatch({
-              type: SET_RESOURCE,
-              payload: {
-                position: map.position,
-                placeName: "현위치",
-                addressName: data[0].address.address_name,
-              },
-            });
-          }
+    map.geocoder.coord2Address(
+      map.position.getLng(),
+      map.position.getLat(),
+      (data, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          setMaker(map.position, "현위치", data[0].address.address_name);
+          dispatch({
+            type: SET_RESOURCE,
+            payload: {
+              position: map.position,
+              placeName: "현위치",
+              addressName: data[0].address.address_name,
+            },
+          });
         }
-      );
-      map.bounds.extend(map.position);
-    }
+      }
+    );
+    map.bounds.extend(map.position);
+
     //이벤트마커
     list.forEach((event) => {
       if (
         new Date(event.end.toString()).getTime() >=
-        new Date().getTime() - 86400000
+        new Date().getTime() - ONE_DAY
       ) {
         const position = new kakao.maps.LatLng(
           event.resource.position.Ma,
@@ -89,11 +87,14 @@ const Map = () => {
       }
     });
     map.core.setBounds(map.bounds);
+
+    //달력에서이벤트클릭시
+    if (resource.position) {
+      const { position } = resource;
+      console.log(position);
+      map.core.panTo(new kakao.maps.LatLng(position.Ma, position.La));
+    }
   }, [map, resource]);
-
-  // useEffect(() => {
-
-  // }, [resource]);
 
   //스크립트추가
   const addKakaoMapScript = () => {
@@ -228,7 +229,7 @@ const Map = () => {
             onChange={inputPlace}
           />
           <button
-            className={`bg-${themeColor} text-white py-1 px-2 rounded-r-md`}
+            className={`bg-${themeColor} text-white p-2 rounded-r-md`}
             type="submit"
           >
             <FontAwesomeIcon icon={faSearch} />

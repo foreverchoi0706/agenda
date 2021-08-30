@@ -49,7 +49,7 @@ const SignIn = () => {
     <article
       className={`bg-${themeColor} w-full h-full flex flex-col justify-center items-center`}
     >
-      <h1 className="text-white p-4 animate-reverse-one-ping">
+      <h1 className="text-white p-4 animate-reverse-one-ping text-xl">
         당신을 위한 일정 매니저,<br /><div className="text-right">AGENDA</div>
       </h1>
       <form

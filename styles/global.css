@@ -72,8 +72,13 @@ ul {
   scrollbar-width: none; /* Firefox */
 }
 
+.swal2-popup {
+  font-size: 0.8rem !important;
+}
+
+
 @media (max-width: 512px) {
-  body {
+  body * {
     font-size: 0.6rem;
   }
 }

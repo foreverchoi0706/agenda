@@ -163,11 +163,12 @@ const Add = () => {
         />
 
         <strong className={`border-${themeColor} border-l-4 pl-2`}>
-          일정에 대한 태그를 달 수 있어요. ex) 긴급,정기,투두
+          태그를 입력하고 엔터 키를 누르세요. ex) 긴급,정기,투두
         </strong>
         <div className="flex justify-between border-2 border-gray-300">
           <input
             name="tags"
+            maxLength={6}
             className="focus:outline-none"
             type="text"
             autoComplete="off"
