@@ -54,28 +54,26 @@ const Map = () => {
       const { addressName, placeName, position } = resource;
       console.log("resource::", resource);
       panTo(position.La, position.Ma, placeName, addressName);
-    }else{
-   map.geocoder.coord2Address(
-      map.position.getLng(),
-      map.position.getLat(),
-      (data, status) => {
-        if (status === kakao.maps.services.Status.OK) {
-          setMaker(map.position, "현위치", data[0].address.address_name);
-          dispatch({
-            type: SET_RESOURCE,
-            payload: {
-              position: map.position,
-              placeName: "현위치",
-              addressName: data[0].address.address_name,
-            },
-          });
+    } else {
+      map.geocoder.coord2Address(
+        map.position.getLng(),
+        map.position.getLat(),
+        (data, status) => {
+          if (status === kakao.maps.services.Status.OK) {
+            setMaker(map.position, "현위치", data[0].address.address_name);
+            dispatch({
+              type: SET_RESOURCE,
+              payload: {
+                position: map.position,
+                placeName: "현위치",
+                addressName: data[0].address.address_name,
+              },
+            });
+          }
         }
-      }
-    );
-    map.bounds.extend(map.position);
+      );
+      map.bounds.extend(map.position);
     }
- 
- 
     //이벤트마커
     list.forEach((event) => {
       if (
@@ -91,8 +89,6 @@ const Map = () => {
       }
     });
     map.core.setBounds(map.bounds);
-
-    
   }, [map, resource]);
 
   // useEffect(() => {
