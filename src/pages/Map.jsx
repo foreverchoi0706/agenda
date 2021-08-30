@@ -11,6 +11,7 @@ import {
 import Widget from "../components/Widget";
 //reducers
 import { CLICK_ADD, SET_RESOURCE } from "../reducers/user";
+import { warningAlert } from "../components/Alert";
 
 //하루ms
 const ONE_DAY = "86400000";
@@ -106,21 +107,28 @@ const Map = () => {
 
   //맵초기화
   const initMap = () => {
-    navigator.geolocation.getCurrentPosition((result) => {
-      const container = document.getElementById("map");
-      const { latitude, longitude } = result.coords;
-      const position = new kakao.maps.LatLng(latitude, longitude);
-      setMap((map) => ({
-        position,
-        core: new kakao.maps.Map(container, {
-          center: position,
-          level: map.level,
-        }),
-        places: new kakao.maps.services.Places(),
-        geocoder: new kakao.maps.services.Geocoder(),
-        bounds: new kakao.maps.LatLngBounds(),
-      }));
-    });
+    navigator.geolocation.getCurrentPosition(
+      (result) => {
+        const container = document.getElementById("map");
+        const { latitude, longitude } = result.coords;
+        const position = new kakao.maps.LatLng(latitude, longitude);
+        setMap((map) => ({
+          position,
+          core: new kakao.maps.Map(container, {
+            center: position,
+            level: map.level,
+          }),
+          places: new kakao.maps.services.Places(),
+          geocoder: new kakao.maps.services.Geocoder(),
+          bounds: new kakao.maps.LatLngBounds(),
+        }));
+      },
+      (error) => {
+        if (error.message) {
+          warningAlert("위치 서비스를 켜주세요.");
+        }
+      }
+    );
   };
 
   //장소입력
