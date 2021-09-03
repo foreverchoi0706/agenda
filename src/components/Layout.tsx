@@ -22,7 +22,10 @@ const iconStyle: React.CSSProperties = {
 };
 
 const Layout = ({ children }: LayoutPorps) => {
-  const { resource, themeColor } = useSelector((root: RootState) => root.user, shallowEqual);
+  const { resource, themeColor } = useSelector(
+    (root: RootState) => root.user,
+    shallowEqual
+  );
 
   const [state, setState] = useState<any | null>(null);
 
@@ -32,9 +35,9 @@ const Layout = ({ children }: LayoutPorps) => {
 
   useEffect(() => {
     setState({
-      ...resource
-    })
-  }, [resource])
+      ...resource,
+    });
+  }, [resource]);
 
   const push = (path: string = "/") => history.push(`/${path}`);
 
@@ -71,25 +74,32 @@ const Layout = ({ children }: LayoutPorps) => {
                   style={iconStyle}
                 />
               </li>
-              <li className="cursor-pointer" onClick={() => dispatch({
-                type: CLICK_ADD,
-                payload: { ...state }
-              })}>
+              <li
+                className="cursor-pointer"
+                onClick={() =>
+                  dispatch({
+                    type: CLICK_ADD,
+                    payload: { ...state },
+                  })
+                }
+              >
                 <FontAwesomeIcon
                   className="text-base sm:text-2xl"
                   icon={faPen}
                   style={iconStyle}
-
+                />
+              </li>
+              <li
+                className="cursor-pointer"
+                onClick={() => dispatch({ type: CLICK_CONFIG })}
+              >
+                <FontAwesomeIcon
+                  className="text-base sm:text-2xl text-white"
+                  icon={faCogs}
+                  style={iconStyle}
                 />
               </li>
             </ul>
-          </div>
-          <div className="cursor-pointer" onClick={() => dispatch({ type: CLICK_CONFIG })}>
-            <FontAwesomeIcon
-              className="text-base sm:text-2xl text-white"
-              icon={faCogs}
-              style={iconStyle}
-            />
           </div>
         </nav>
       </header>
