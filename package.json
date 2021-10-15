@@ -4,9 +4,10 @@
   "description": "agenda",
   "main": "index.tsx",
   "scripts": {
-    "start": "webpack serve",
-    "serve": "serve -s dist",
-    "build": "webpack"
+    "dev": "webpack serve",
+    "build": "webpack",
+    "prestart" : "npm run build",
+    "start": "serve -s dist"
   },
   "repository": {
     "type": "git",
