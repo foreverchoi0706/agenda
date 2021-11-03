@@ -34,7 +34,7 @@ const SignIn = () => {
   const setName = (): void => {
     loading("잠시만 기다려 주세요...");
     axios
-      .get("https://puddy.foreverchoi0706.com/getNickname")
+      .get("https://blog_back.foreverchoi0706.com/getNickname")
       .then((value: AxiosResponse<any>) => {
         setNickname(() => value.data.nickname);
       })
